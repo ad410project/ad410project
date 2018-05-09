@@ -1,4 +1,5 @@
 <?php
+
 function call($controller, $action) {
     require_once('controllers/'. $controller .'_controller.php');
 
@@ -17,6 +18,10 @@ function call($controller, $action) {
 
 $controllers = array('static' => ['landing', 'error']);
 
+// check that the requested controller and action are both allowed
+// if someone tries to access something else
+// they will be redirected to the error action of the pages controller
+
 if (array_key_exists($controller, $controllers)) {
     if (in_array($action, $controllers[$controller])) {
         call($controller, $action);
@@ -26,5 +31,3 @@ if (array_key_exists($controller, $controllers)) {
 } else {
     call('static', 'error');
 }
-
-?>
