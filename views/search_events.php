@@ -21,50 +21,9 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 
-    <style>
-        body {
-            background-color: snow;
-        }
+    <link rel="stylesheet" href="search_events.css">
 
-        #tabs_section {
-            float: left;
-            width: 40%;
-        }
-
-        #filter_section {
-            float: right;
-            margin-top: 12em;
-            margin-right: 8em;
-            alignment: center;
-            width: 35%;
-        }
-
-        #map {
-            width: 550px;
-            height: 400px;
-            background-color: grey;
-        }
-    </style>
-
-    <script>
-        function initMap() {
-            var seattle = {lat: 47.608013, lng: -122.335167};
-            var northSet = {lat: 47.699598, lng: -122.332292};
-            var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 10,
-                center: seattle
-            });
-            var marker1 = new google.maps.Marker({
-                position: seattle,
-                map: map
-            });
-
-            var marker2 = new google.maps.Marker({
-                position: northSet,
-                map: map
-            })
-        }
-    </script>
+    <script src="search_events.js"></script>
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCf6m35Pbc-BmCZzxrlUlCWmMpHOrWyMms&callback=initMap">
     </script>
@@ -88,14 +47,11 @@
 
             </div>
 
-
+            <!--FRANCESCO, PLEASE INCORPORATE -->
             <div id="list" class="container tab-pane fade">
-                <ul>Activity Name, Address, Description, Contact</ul>
-                <ul>Activity Name, Address, Description, Contact</ul>
-                <ul>Activity Name, Address, Description, Contact</ul>
-                <ul>Activity Name, Address, Description, Contact</ul>
-                <ul>Activity Name, Address, Description, Contact</ul>
-                <ul>Activity Name, Address, Description, Contact</ul>
+                <!-- Prints filler text -->
+                <ul><?php for($i = 0; $i < 10; $i++) { print "<h4>Filler text</h4>"; }?></ul>
+
             </div>
 
             <div id="calendar" class="container tab-pane fade">

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a19f31a2-23f3-4ff5-919a-48878a31c6f4" name="Default" comment="" />
+    <list default="true" id="a19f31a2-23f3-4ff5-919a-48878a31c6f4" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/search_events.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/search_events.php" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,8 +17,26 @@
       <file leaf-file-name="search_events.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/search_events.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="67">
-              <caret line="106" column="33" lean-forward="true" selection-start-line="106" selection-start-column="33" selection-end-line="106" selection-end-column="33" />
+            <state relative-caret-position="350">
+              <caret line="49" column="45" selection-start-line="49" selection-start-column="45" selection-end-line="49" selection-end-column="45" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="search_events.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/search_events.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="320">
+              <caret line="16" selection-start-line="16" selection-end-line="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="search_events.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/search_events.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="420">
+              <caret line="21" column="1" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -26,6 +47,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
+        <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -39,6 +62,9 @@
       <command text="git checkout -b searchPage" />
       <command text="git status" />
       <command text="git push --set-upstream origin searchPage" />
+      <command text="git add ." />
+      <command text="git commit -m &quot;initial commit&quot;" />
+      <command text="git push" />
     </commandsHistory>
   </component>
   <component name="Git.Settings">
@@ -51,6 +77,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/views/pageMap.html" />
+        <option value="$PROJECT_DIR$/views/search_events.css" />
+        <option value="$PROJECT_DIR$/views/search_events.js" />
         <option value="$PROJECT_DIR$/views/search_events.php" />
       </list>
     </option>
@@ -99,6 +127,11 @@
               <item name="ad410project" type="b2602c69:ProjectViewProjectNode" />
               <item name="ad410project" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="ad410project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ad410project" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -120,6 +153,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="C:/MAMP/htdocs" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
@@ -161,25 +195,26 @@
       <workItem from="1525977704405" duration="53000" />
       <workItem from="1525977913125" duration="3269000" />
       <workItem from="1525982751899" duration="1174000" />
-      <workItem from="1526162086908" duration="9160000" />
+      <workItem from="1526162086908" duration="10969000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="38994000" />
+    <option name="totallyTimeSpent" value="40803000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="12" />
       <window_info anchor="bottom" id="Event Log" order="6" side_tool="true" weight="0.32936507" />
-      <window_info active="true" anchor="bottom" id="Command Line Tools Console" visible="true" weight="0.66798943" />
+      <window_info anchor="bottom" id="Command Line Tools Console" weight="0.66798943" />
       <window_info anchor="bottom" id="Database Changes" order="1" show_stripe_button="false" />
       <window_info anchor="bottom" id="File Transfer" order="3" weight="0.32936507" />
       <window_info anchor="bottom" id="Version Control" order="5" />
       <window_info anchor="bottom" id="Run" order="8" />
       <window_info anchor="bottom" id="Terminal" order="2" />
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.1373698" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.1373698" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="0" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
@@ -283,10 +318,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/views/search_events.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="21" column="1" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/search_events.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/views/search_events.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="67">
-          <caret line="106" column="33" lean-forward="true" selection-start-line="106" selection-start-column="33" selection-end-line="106" selection-end-column="33" />
+        <state relative-caret-position="350">
+          <caret line="49" column="45" selection-start-line="49" selection-start-column="45" selection-end-line="49" selection-end-column="45" />
         </state>
       </provider>
     </entry>

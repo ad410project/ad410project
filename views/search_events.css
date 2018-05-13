@@ -1,0 +1,22 @@
+body {
+    background-color: snow;
+}
+
+#tabs_section {
+    float: left;
+    width: 40%;
+}
+
+#filter_section {
+    float: right;
+    margin-top: 12em;
+    margin-right: 8em;
+    alignment: center;
+    width: 35%;
+}
+
+#map {
+    width: 550px;
+    height: 400px;
+    background-color: grey;
+}
