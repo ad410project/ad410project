@@ -8,7 +8,7 @@
     <meta name="description" content="Sign Up Page">
     <meta name="author" content="SitePoint">
 
-    <link rel="stylesheet" href="/views/css/style.css"/>
+    <link rel="stylesheet" href="../css/style.css"/>
     <!--[if lt IE 9 compatibility]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
     <![endif]-->
@@ -24,8 +24,8 @@
     <form class="modal-content animate" action="/action_page.php">
         <div class="img-container">
             <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-            <div><img src="/views/images/Fun_Logo1.png" alt="Logo" class="logo"></div>
-            <img src="/views/images/img_avatar2.png" alt="Avatar" class="avatar">
+            <div><img src="../images/Fun_Logo1.png" alt="Logo" class="logo"></div>
+            <img src="../images/img_avatar2.png" alt="Avatar" class="avatar">
             <div>
                 <!-- Add icon library from font-awesome -->
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -59,7 +59,7 @@
 
 <script>
     // Get the modal
-    let modal = document.getElementById('id01');
+    var modal = document.getElementById('id01');
 
     // When the user clicks anywhere outside of the modal, the modal with close
     window.onclick = function(event) {
