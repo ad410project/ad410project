@@ -36,22 +36,16 @@
     <section id="tabs_section">
 
         <ul class="nav nav-tabs">
-
             <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#map">Map</a></li>
             <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#list">List</a></li>
             <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#calendar">Calendar</a></li>
         </ul>
-
+        <p id="demo"></p>
         <div class="tab-content">
-            <div id="map" class="container tab-pane active">
+            <div id="map" class="container tab-pane active"></div>
 
-            </div>
-
-            <!--FRANCESCO, PLEASE INCORPORATE -->
             <div id="list" class="container tab-pane fade">
-                <!-- Prints filler text -->
-                <ul><?php for($i = 0; $i < 10; $i++) { print "<h4>Filler text</h4>"; }?></ul>
-
+                <?php require('search_events_curlAPI.php'); ?>
             </div>
 
             <div id="calendar" class="container tab-pane fade">
