@@ -8,7 +8,7 @@
     <meta name="description" content="Sign Up Page">
     <meta name="author" content="SitePoint">
 
-    <link rel="stylesheet" href="./views/css/style.css"/>
+    <link rel="stylesheet" href="views/styles/styles.css"/>
     <!--[if lt IE 9 compatibility]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
     <![endif]-->
