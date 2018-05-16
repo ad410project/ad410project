@@ -9,7 +9,7 @@
 
 $api_key = "rjq7yk9u6bmm6fs5zhyx6dd2";
 $ch = curl_init();
-$url = "http://api.amp.active.com/v2/search?query=running&category=event&start_date=2013-07-04..&near=Seattle,WA,US&radius=50&api_key=" . $api_key;
+    $url = "http://api.amp.active.com/v2/search?query=running&category=event&start_date=2013-07-04..&near=Seattle,WA,US&radius=50&api_key=" . $api_key;
 
 //Set the URL that you want to GET by using the CURLOPT_URL option.
 curl_setopt($ch, CURLOPT_URL, $url);
@@ -58,7 +58,8 @@ foreach ($json_output as $k => $v) {
 
 ?>
 
-<script src="search_events.js">
+<script>
     var locations = <?php echo json_encode($geo_locals) ?>;
 </script>
+<script src="scripts/main.js"></script>
 
