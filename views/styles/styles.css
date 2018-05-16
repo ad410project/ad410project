@@ -1,0 +1,12 @@
+#carousel{
+    background-color: darkgrey;
+}
+span.carousel-control-next-icon{
+    background-color: red;
+}
+span.carousel-control-prev-icon{
+    background-color: red;
+}
+a.navbar-brand{
+    margin-right: 78%;
+}
