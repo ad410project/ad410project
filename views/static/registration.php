@@ -1,5 +1,3 @@
-<?php include '../templates/header.html'; ?>
-
 <h3>Registration Form</h3>
 
 <form name="registrationForm" onsubmit="return validateForm()" method="post">
@@ -59,5 +57,3 @@
 
 <br>
 <br>
-
-<?php include '../templates/footer.html'; ?>
