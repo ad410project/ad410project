@@ -45,4 +45,5 @@
 
         </div>
     </div>
+    <a href="#" id="searchEvents">Search Events</a>
 </div>
