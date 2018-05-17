@@ -44,11 +44,11 @@ foreach ($json_output as $k => $v) {
             }
 
         }
-        foreach ($geo_locals as $locale) {
+/*        foreach ($geo_locals as $locale) {
             foreach($locale as $city){
             echo $city." ";}
             echo "<br>";
-        }
+        }*/
 
 
     }

@@ -5,6 +5,7 @@
  * Date: 5/8/2018
  * Time: 3:55 PM
  */
+
 ?>
 
 
@@ -27,7 +28,6 @@
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCf6m35Pbc-BmCZzxrlUlCWmMpHOrWyMms&callback=initMap">
     </script>
-
 </head>
 <body>
 <div class="container">
@@ -40,7 +40,6 @@
             <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#list">List</a></li>
             <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#calendar">Calendar</a></li>
         </ul>
-        <p id="demo"></p>
         <div class="tab-content">
             <div id="map" class="container tab-pane active"></div>
 
@@ -53,6 +52,7 @@
                 bgcolor=%23FFFFFF&amp;src=n2arhrlms9u36kgjs3sb8c2ago%40group.calendar.google.com&amp;color=%23AB8B00&amp;ctz=America%2FLos_Angeles"
                         style="border-width:0" width="500" height="400" frameborder="0" scrolling="no"></iframe>
             </div>
+        </div>
     </section>
     <section id="filter_section">
 
