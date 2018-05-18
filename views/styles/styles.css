@@ -1,15 +1,3 @@
-#carousel{
-    background-color: darkgrey;
-}
-span.carousel-control-next-icon{
-    background-color: red;
-}
-span.carousel-control-prev-icon{
-    background-color: red;
-}
-a.navbar-brand{
-    margin-right: 78%;
-}
 
 /* Full-width input fields */
 body {font-family: Arial, Helvetica, sans-serif;}
@@ -200,4 +188,17 @@ footer ul {
     float: left;
     display: block;
     left: 50%;
+}
+
+#carousel{
+    background-color: darkgrey;
+}
+span.carousel-control-next-icon{
+    background-color: red;
+}
+span.carousel-control-prev-icon{
+    background-color: red;
+}
+a.navbar-brand{
+    margin-right: 78%;
 }
