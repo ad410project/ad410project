@@ -83,6 +83,7 @@
                 <iframe src="https://calendar.google.com/calendar/embed?showTitle=0&amp;height=400&amp;wkst=1&amp;
                 bgcolor=%23FFFFFF&amp;src=n2arhrlms9u36kgjs3sb8c2ago%40group.calendar.google.com&amp;color=%23AB8B00&amp;ctz=America%2FLos_Angeles"
                         style="border-width:0" width="500" height="400" frameborder="0" scrolling="no"></iframe>
+            </div>
         </div>
     </section>
     <div class="col-sm-6 float-right clearfix">
