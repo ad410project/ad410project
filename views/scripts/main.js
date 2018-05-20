@@ -57,5 +57,38 @@ function isOkPass(p){
     return obj;
 }
 
+function initMap() {
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom:6,
+        center: {lat: 47.608013, lng: -122.335167}
+    });
+
+    setMarkers(map);
+}
+
+
+function setMarkers(map){
+
+    for (var i = 0; i < locations.length; i++) {
+        var city = locations[i];
+        // document.getElementById('demo').innerHTML = locations.length.toString();
+        var marker = new google.maps.Marker({
+            position: {lat: parseInt(city[0]), lng: parseInt(city[1])},
+            map: map
+        });
+    }
+}
+
+//tentative added by Francesco
+function hideMap() {
+    document.getElementById("map").setAttribute('hidden','true');
+}
+
+//@TODO need to show map after moving off calendar tab and back onto map tab. This does not work currently
+function showMap() {
+    document.getElementById("map").setAttribute('hidden','false');
+}
+
+
 
 
