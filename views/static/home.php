@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html xmlns:float="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
     <!-- jQuery library -->
@@ -40,14 +40,14 @@
         </div>
     </section>
     <br>
-    <section id="tabs_section" class="w-50 p-3 float-left clearfix">
+    <section id="tabs_section" class="w-60 p-3 float-left clearfix">
         <ul class="nav nav-tabs">
-            <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#map">Map</a></li>
+            <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#map" onclick="initMap()">Map</a></li>
             <!-- <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#list">List</a></li>-->
-            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#calendar">Calendar</a></li>
+            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#calendar" onclick="hideMap()">Calendar</a></li>
             <!-- search + filter -->
-            <li id="filter_section" class="list-unstyled float-right clearfix">
-                <div class="col-sm-12">
+            <li id="filter_section" class="nav-item">
+                <div>
                     <div class="input-group">
                         <input type="text" class="form-control" placeholder="Search for...">
                         <span class="input-group-btn">
@@ -71,22 +71,22 @@
                 </div>
             </li>
         </ul>
-        <div class="col-sm-4">
+        <div class="col-sm-3">
             <div id="map" class="container tab-pane active"></div>
 
-            <div id="list" class="container tab-pane fade">
-            <!--
-                 <?php #require('search_events_curlAPI.php'); ?>
-            -->
+            <div id="list" class="container tab-pane fade" style="height: 0; width: 0">
+
+                 <?php require('../search_events_curlAPI.php'); ?>
+
             </div>
-            <div id="calendar" class="container tab-pane fade">
+            <div id="calendar" class="container tab-pane fade align-top">
                 <iframe src="https://calendar.google.com/calendar/embed?showTitle=0&amp;height=400&amp;wkst=1&amp;
                 bgcolor=%23FFFFFF&amp;src=n2arhrlms9u36kgjs3sb8c2ago%40group.calendar.google.com&amp;color=%23AB8B00&amp;ctz=America%2FLos_Angeles"
                         style="border-width:0" width="500" height="400" frameborder="0" scrolling="no"></iframe>
             </div>
         </div>
     </section>
-    <div class="col-sm-6 float-right clearfix">
+    <div class="col-sm-4 float-right clearfix">
         <ul class="list-group">
             <h3>Event List</h3>
             <li class="list-unstyled">All events <button type="button" class="btn float-right btn-primary dropdown-toggle" data-toggle="dropdown">
