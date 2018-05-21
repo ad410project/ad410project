@@ -49,6 +49,16 @@
             <input type="password" class="form-control" id="confirmPassword" placeholder="Re-enter password" name="confirmPassword" required>
         </div>
 
+        <div class="form-group col-md-12">
+            <label for="userRole">Register as </label>
+            <select name="userRole" id="userRole" required>
+                <option value="">Select...</option>
+                <option value="user">Individual User</option>
+                <option value="admin">Admin</option>
+                <option value="organization">Organization</option>
+            </select>
+        </div>
+
 
     </div>
 
