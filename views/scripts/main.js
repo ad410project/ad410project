@@ -68,7 +68,6 @@ function initMap() {
 
 
 function setMarkers(map){
-
     for (var i = 0; i < locations.length; i++) {
         var city = locations[i];
         // document.getElementById('demo').innerHTML = locations.length.toString();
@@ -79,14 +78,21 @@ function setMarkers(map){
     }
 }
 
-//tentative added by Francesco
-function hideMap() {
-    document.getElementById("map").setAttribute('hidden','true');
+//added by Francesco
+function hideMapShowCal() {
+    //toggle map
+    var obj = document.getElementById('map');
+    obj.style.display = 'none';
+    var cal = document.getElementById('calendar');
+    cal.style.display = 'block';
 }
 
-//@TODO need to show map after moving off calendar tab and back onto map tab. This does not work currently
-function showMap() {
-    document.getElementById("map").setAttribute('hidden','false');
+function showMapHideCal() {
+    //toggle calendar
+    var cal = document.getElementById('calendar');
+    cal.style.display = 'none';
+    var map = document.getElementById('map');
+    map.style.display = 'block';
 }
 
 
