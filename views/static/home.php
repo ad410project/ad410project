@@ -43,9 +43,9 @@
     <br>
     <section id="tabs_section" class="w-60 p-3 float-left clearfix">
         <ul class="nav nav-tabs">
-            <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#map" onclick="initMap()">Map</a></li>
+            <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#map" onclick="showMapHideCal()">Map</a></li>
             <!-- <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#list">List</a></li>-->
-            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#calendar" onclick="hideMap()">Calendar</a></li>
+            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#calendar" onclick="hideMapShowCal()">Calendar</a></li>
             <!-- search + filter -->
             <li id="filter_section" class="nav-item">
                 <div>
@@ -74,11 +74,9 @@
         </ul>
         <div class="col-sm-3">
             <div id="map" class="container tab-pane active"></div>
-
+            <!-- require php script here to load variables but don't display on page -->
             <div id="list" class="container tab-pane fade" style="height: 0; width: 0">
-
-                 <?php require('../search_events_curlAPI.php'); ?>
-
+                <?php require('../search_events_curlAPI.php'); ?>
             </div>
             <div id="calendar" class="container tab-pane fade align-top">
                 <iframe src="https://calendar.google.com/calendar/embed?showTitle=0&amp;height=400&amp;wkst=1&amp;
