@@ -1,3 +1,6 @@
+-- Think of this file of an extension of the create db script run it once on your schema to use these!
+
+
 delimiter //
 -- basic getters for all tables
 CREATE PROCEDURE getChildren ()
