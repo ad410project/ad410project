@@ -3,40 +3,40 @@ class event
 {
 
     private $eventId;
+    private $organizationId;
     private $creatorId;
     private $name;
     private $description;
     private $location;
-    private $startTime;
-    private $endTime;
-    private $organizer;
+    private $startDate;
+    private $endDate;
     private $categories;
     private $type;
-    private $cost;
-    private $minimumAge;
-    private $maximumAge;
-    private $registrationStartTime;
-    private $registrationEndTime;
+    private $price;
+    private $minAge;
+    private $maxAge;
+    private $registrationOpen;
+    private $registrationClose;
 
-    public function __construct($eventId, $creatorId, $name, $description, $location, $startTime, $endTime,
-                                $organizer, $categories, $type, $cost, $minimumAge, $maximumAge,
-                                $registrationStartTime, $registrationEndTime)
+    public function __construct($eventId, $creatorId, $name, $description, $location, $startDate, $endDate,
+                                $organizationId, $categories, $type, $price, $minAge, $maxAge,
+                                $registrationOpen, $registrationClose)
     {
         $this->eventId = $eventId;
         $this->creatorId = $creatorId;
         $this->name = $name;
         $this->description = $description;
         $this->location = $location;
-        $this->startTime = $startTime;
-        $this->endTime = $endTime;
-        $this->organizer = $organizer;
+        $this->startDate = $startDate;
+        $this->endDate = $endDate;
+        $this->organizationId = $organizationId;
         $this->categories = $categories;
         $this->type = $type;
-        $this->cost = $cost;
-        $this->minimumAge = $minimumAge;
-        $this->maximumAge = $maximumAge;
-        $this->registrationStartTime = $registrationStartTime;
-        $this->registrationEndTime = $registrationEndTime;
+        $this->price = $price;
+        $this->minAge = $minAge;
+        $this->maxAge = $maxAge;
+        $this->registrationOpen = $registrationOpen;
+        $this->registrationClose = $registrationClose;
     }
 
     public static function addEvent($event)
@@ -49,82 +49,9 @@ class event
         //delete the event
     }
 
-    public function editEvent($fieldToEdit, $changeToThis)
+    public static function getEventsByUserId($userId)
     {
-        //edit event characteristics, might replace with multiple methods in the
-        //form of setEventName, setEventDescription, setEventLocation, etc.
-    }
-
-    public function addCategory($category)
-    {
-        $categories[] = $category;
-    }
-    public function getEventId()
-    {
-        return $this->eventId;
-    }
-
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    public function getDescription()
-    {
-        return $this->description;
-    }
-
-    public function getLocation()
-    {
-        return $this->location;
-    }
-
-    public function getStartTime(){
-        return $this->startTime;
-    }
-
-    public function getEndTime(){
-        return $this->endTime;
-    }
-
-    public function getOrganizer()
-    {
-        return $this->organizer;
-    }
-
-    public function getCategories()
-    {
-        return $this->categories;
-    }
-
-    public function getType()
-    {
-        return $this->type;
-    }
-
-    public function getCost()
-    {
-        return $this->cost;
-    }
-
-    public function getMinimumAge()
-    {
-        return $this->minimumAge;
-    }
-
-    public function getMaximumAge()
-    {
-        return $this->maximumAge;
-    }
-
-    public function getRegistrationStartTime()
-    {
-        return $this->registrationStartTime;
-    }
-
-    public function getRegistrationEndTime()
-    {
-        return $this->registrationEndTime;
+        //return events for the user ID
     }
 
     public static function getEventsByCategory($category)
@@ -147,8 +74,140 @@ class event
         //return events that fall within the date range
     }
 
-    public static function getEventsByUserId($userId)
+    public static function getEventsByAgeRange($minAge, $maxAge)
     {
-        //return events for the user ID
+        //return events for the age range
+    }
+
+    public static function getEventsByPriceRange($minPrice, $maxPrice)
+    {
+        //return events for the price range
+    }
+
+    public static function getEventsByLocation($location, $distance)
+    {
+        //return events within a range of the location
+    }
+
+    public static function editEventField($eventId, $fieldToChange, $changeToThis)
+    {
+        //edit event characteristics, might replace with multiple methods in the
+        //form of setEventName, setEventDescription, setEventLocation, etc.
+    }
+
+    public static function addCategory($eventId, $category)
+    {
+        //add a category to the event in the database
+
+        //categories, types, and addresses likely need their own
+        //methods for changes since they can have multiple entries
+    }
+
+    public static function removeCategory($eventId, $category)
+    {
+        //remove a category from the event in the database
+
+        //categories, types, and addresses likely need their own
+        //methods for changes since they can have multiple entries
+    }
+
+    public static function addType($eventId, $type)
+    {
+        //add a type to the event in the database
+
+        //categories, types, and addresses likely need their own
+        //methods for changes since they can have multiple entries
+    }
+
+    public static function removeType($eventId, $type)
+    {
+        //remove a type from the event in the database
+
+        //categories, types, and addresses likely need their own
+        //methods for changes since they can have multiple entries
+    }
+
+    public static function addAddress($eventId, $address)
+    {
+        //add an address to the event in the database
+
+        //categories, types, and addresses likely need their own
+        //methods for changes since they can have multiple entries
+    }
+
+    public static function removeAddress($eventId, $address)
+    {
+        //remove an address from the event in the database
+
+        //categories, types, and addresses likely need their own
+        //methods for changes since they can have multiple entries
+    }
+
+    public function getEventId()
+    {
+        return $this->eventId;
+    }
+
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    public function getLocation()
+    {
+        return $this->location;
+    }
+
+    public function getStartDate(){
+        return $this->startDate;
+    }
+
+    public function getEndDate(){
+        return $this->endDate;
+    }
+
+    public function getOrganizationId()
+    {
+        return $this->organizationId;
+    }
+
+    public function getCategories()
+    {
+        return $this->categories;
+    }
+
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+    public function getMinAge()
+    {
+        return $this->minAge;
+    }
+
+    public function getMaxAge()
+    {
+        return $this->maxAge;
+    }
+
+    public function getRegistrationOpen()
+    {
+        return $this->registrationOpen;
+    }
+
+    public function getRegistrationClose()
+    {
+        return $this->registrationClose;
     }
 }
