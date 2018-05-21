@@ -10,6 +10,7 @@
 <html xmlns:float="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
+    <title>Home</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
     <!-- jQuery library -->
