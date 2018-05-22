@@ -68,7 +68,6 @@ function initMap() {
 
 
 function setMarkers(map){
-
     for (var i = 0; i < locations.length; i++) {
         var city = locations[i];
         // document.getElementById('demo').innerHTML = locations.length.toString();
@@ -78,6 +77,24 @@ function setMarkers(map){
         });
     }
 }
+
+//added by Francesco
+function hideMapShowCal() {
+    //toggle map
+    var obj = document.getElementById('map');
+    obj.style.display = 'none';
+    var cal = document.getElementById('calendar');
+    cal.style.display = 'block';
+}
+
+function showMapHideCal() {
+    //toggle calendar
+    var cal = document.getElementById('calendar');
+    cal.style.display = 'none';
+    var map = document.getElementById('map');
+    map.style.display = 'block';
+}
+
 
 
 
