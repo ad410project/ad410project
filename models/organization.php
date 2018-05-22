@@ -1,11 +1,3 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: melsm
- * Date: 5/18/2018
- * Time: 3:02 PM
- */
-
 class Organization
 {
     public $organization_id; // Organization ID Ex: <to be defined>
