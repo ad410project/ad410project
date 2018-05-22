@@ -7,16 +7,24 @@ function call($controller, $action) {
         case 'static':
             $controller = new StaticController();
             break;
-//        case 'books':
-//            require_once('model/model.php');
-//            $controller = new BooksController();
-//            break;
+        case 'event':
+            require_once('models/event.php');
+            $controller = new EventController();
+            break;
+        case 'user':
+            require_once('models/user.php');
+            $controller = new UserController();
+            break;
+        case 'organization':
+            require_once('models/organization.php');
+            $controller = new OrganizationController();
+            break;
     }
 
-    $controller->{ $action }();
+    $controller->{$action}();
 }
 
-$controllers = array('static' => ['landing', 'error']);
+$controllers = array('static' => ['landing', 'error'], 'event' => ['search_events'], 'user' => ['register', 'login'], 'organization' => []);
 
 // check that the requested controller and action are both allowed
 // if someone tries to access something else
@@ -31,3 +39,4 @@ if (array_key_exists($controller, $controllers)) {
 } else {
     call('static', 'error');
 }
+?>

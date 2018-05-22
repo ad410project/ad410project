@@ -61,5 +61,5 @@ foreach ($json_output as $k => $v) {
 <script>
     var locations = <?php echo json_encode($geo_locals) ?>;
 </script>
-<script src="scripts/main.js"></script>
+<script src="../scripts/main.js"></script>
 

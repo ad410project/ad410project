@@ -1,5 +1,6 @@
 <?php
-class StaticController{
+class StaticController {
+
     public function landing() {
         require_once('views/static/landing.php');
     }

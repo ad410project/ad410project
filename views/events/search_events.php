@@ -22,9 +22,9 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 
-    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="../styles/styles.css">
 
-    <script src="scripts/main.js"></script>
+    <script src="../scripts/main.js"></script>
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCf6m35Pbc-BmCZzxrlUlCWmMpHOrWyMms&callback=initMap">
     </script>
