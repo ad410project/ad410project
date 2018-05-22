@@ -9,27 +9,27 @@
 ?>
 
 
-<!DOCTYPE html>
-<html xmlns:float="http://www.w3.org/1999/xhtml">
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:float="http://www.w3.org/1999/xhtml">-->
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+<!--    <meta charset="utf-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1">-->
+<!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">-->
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- Popper JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>-->
     <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+<!--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>-->
 
-    <link rel="stylesheet" href="styles/styles.css">
+<!--    <link rel="stylesheet" href="../styles/styles.css">-->
 
-    <script src="scripts/main.js"></script>
+    <script src="../scripts/main.js"></script>
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCf6m35Pbc-BmCZzxrlUlCWmMpHOrWyMms&callback=initMap">
     </script>
 </head>
-<body>
+<!--<body>-->
 <div class="container">
     <h3>Search Events</h3>
     <br>
@@ -80,6 +80,6 @@
     </section>
 </div>
 
-</body>
-</html>
+<!--</body>-->
+<!--</html>-->
 

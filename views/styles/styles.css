@@ -193,6 +193,13 @@ footer ul {
 #carousel{
     background-color: darkgrey;
 }
+#carousel .carousel-item{
+    height: 300px;
+}
+#carousel .carousel-item img{
+    min-width: 100%;
+    height: 300px;
+}
 span.carousel-control-next-icon{
     background-color: red;
 }

@@ -6,7 +6,7 @@
                 <a class="nav-link" href="?controller=static&action=registration">Sign Up</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Login</a>
+                <a href="#" class="nav-link" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</a>
             </li>
         </ul>
     </nav>
