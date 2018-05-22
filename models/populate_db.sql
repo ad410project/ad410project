@@ -113,6 +113,12 @@ INSERT INTO ChildEvents VALUES
 INSERT INTO `Types` VALUES
 (DEFAULT, 'Day Camp'),
 (DEFAULT, 'Summer Camp'),
+(DEFAULT, 'Overnight Camp'),
+(DEFAULT, 'Half Day'),
+(DEFAULT, 'Full Day'),
+(DEFAULT, 'One Week'),
+(DEFAULT, 'Two Week'),
+(DEFAULT, 'Full Summer'),
 (DEFAULT, 'Other');
 
 -- Event Types Linking Table

@@ -1,27 +1,5 @@
-#Author August Kading
-#DATE 5/11/18
-#AD410
-#Please note that any of these queries could be turned into a view or procedure upon request!
-
-
-#A query that tells how many users are in each city
-
-SELECT count(city) UserNumber, city  
-FROM addresses
-GROUP BY city; 
- 
-    
-#A query that shows userid and phone numbers
-
-SELECT userid, phoneNumber
-FROM users;
- 
- 
-#A query that shows userid and emails
-
-SELECT userid, email
-FROM users;
-
+#The following is a list of potentially useful queries that may later be turned
+#into stored procedures. These should not be used by other teams at this point.
 
 #A query that shows events types and locations
 
@@ -84,8 +62,41 @@ FROM children;
 SELECT CONCAT(children.firstName, " ", children.lastName) AS Name, emergencyContactNum, email, phoneNumber
 FROM children 
 	JOIN users
-		ON children.userId = users.userId
+		ON children.userId = users.userId;
 
 
+-- Select child name based on being born after a certain date
+SELECT firstname, lastname FROM children
+WHERE childDob > "2008-01-01";
 
 
+-- Select names for new users.
+SELECT firstName, lastName FROM users
+JOIN usersincommunity ON users.userID = usersincommunity.userID
+WHERE userType = "new";
+
+
+-- Select addresses listed in Seattle
+SELECT * FROM addresses 
+WHERE city = "Seattle";
+
+
+-- Search limiting by event Id
+SELECT * FROM events 
+WHERE eventId > 2;
+
+
+-- Search for event whose event name starts with C
+SELECT * FROM events
+WHERE eventNAME LIKE "C%";
+
+
+-- Get the first and last name was a child with a useID less than 3, and an allergy that starts with K
+SELECT firstName, lastName FROM children
+WHERE userId < 3 AND childAllergies LIKE "K%";
+
+
+-- Get the first and last name of a parent(s) (user in this database) who has a child with first name Steve
+SELECT users.firstName, users.lastName FROM users
+JOIN children ON users.userID = children.userID
+WHERE children.firstName = "Steve";
