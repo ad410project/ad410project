@@ -1,3 +1,8 @@
+<?php
+//error_reporting(E_ALL);
+//ini_set('display_errors', 1);
+?>
+
 <h3>Registration Form</h3>
 
 <form name="registrationForm" onsubmit="return validateForm()" method="post">
@@ -22,7 +27,7 @@
             <label for="phoneNumber">Phone Number</label>
             <input type="tel" class="form-control" id="phoneNumber" placeholder="Enter 10 digit phone number" name="phoneNumber" required
                    pattern="[0-9]{3}[0-9]{3}[0-9]{4}"
-                    size="10">
+                   size="10">
         </div>
 
 
@@ -62,7 +67,7 @@
 
     </div>
 
-    <button type="submit" class="btn btn-info btn-rounded"">Register</button>
+    <button type="submit"  class="btn btn-info btn-rounded" name="register_btn">Register</button>
 </form>
 
 <br>

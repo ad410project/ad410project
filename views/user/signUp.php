@@ -21,7 +21,7 @@
 
 <div id="id01" class="modal">
     <!--action_page.php is the php file which will perform user validation when the 'submit' button is clicked -->
-    <form class="modal-content animate" action="/action_page.php">
+    <form class="modal-content animate" <!--action="/action_page.php"-->>
         <div class="img-container">
             <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
             <div><img src="./views/images/Fun_Logo1.png" alt="Logo" class="logo"></div>
@@ -44,7 +44,7 @@
             <label for="psw"><b>Password</b></label>
             <input type="password" placeholder="Enter Password" name="psw" required>
 
-            <button type="submit">Login</button>
+            <button type="submit" name="login_btn">Login</button>
             <label>
                 <input type="checkbox" checked="checked" name="remember"> Remember me
             </label>
