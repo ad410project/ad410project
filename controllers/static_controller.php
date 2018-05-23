@@ -9,6 +9,9 @@ class StaticController{
     }
 
     public function registration() {
+        if (isset($_POST['register_btn'])) {
+            user::addUser();
+        }
         require_once('views/static/registration.php');
     }
 

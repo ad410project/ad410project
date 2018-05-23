@@ -5,6 +5,7 @@ function call($controller, $action) {
 
     switch($controller) {
         case 'static':
+            require_once('models/users.php');
             $controller = new StaticController();
             break;
         case 'dynamic':
@@ -16,7 +17,7 @@ function call($controller, $action) {
     $controller->{ $action }();
 }
 
-$controllers = array('static' => ['landing', 'error', 'registration', 'searchEvents']);
+$controllers = array('static' => ['landing', 'error', 'registration', 'searchEvents'], 'dynamic' => ['home', 'error']);
 
 // check that the requested controller and action are both allowed
 // if someone tries to access something else

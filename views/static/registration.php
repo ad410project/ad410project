@@ -62,7 +62,7 @@
 
     </div>
 
-    <button type="submit" class="btn btn-info btn-rounded"">Register</button>
+    <button type="submit" class="btn btn-info btn-rounded" name="register_btn">Register</button>
 </form>
 
 <br>
