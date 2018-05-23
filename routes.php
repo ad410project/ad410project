@@ -7,10 +7,10 @@ function call($controller, $action) {
         case 'static':
             $controller = new StaticController();
             break;
-//        case 'books':
+        case 'dynamic':
 //            require_once('model/model.php');
-//            $controller = new BooksController();
-//            break;
+            $controller = new DynamicController();
+            break;
     }
 
     $controller->{ $action }();
