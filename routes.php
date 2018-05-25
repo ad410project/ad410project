@@ -16,7 +16,7 @@ function call($controller, $action) {
     $controller->{ $action }();
 }
 
-$controllers = array('static' => ['landing', 'error', 'registration', 'searchEvents']);
+$controllers = array('static' => ['landing', 'error', 'registration', 'profile', 'login', 'logout', 'searchEvents']);
 
 // check that the requested controller and action are both allowed
 // if someone tries to access something else
