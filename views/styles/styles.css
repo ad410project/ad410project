@@ -12,7 +12,7 @@ input[type=text], input[type=password] {
 
 /* Set a style for all buttons */
 button {
-    background-color: #FE6949;
+    background-color: #FA7B3F;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -29,7 +29,7 @@ button:hover {
 .cancel-btn {
     width: auto;
     padding: 10px 18px;
-    background-color: #f44336;
+    background-color: #FA7B3F;
 }
 
 /* Center the image and position the close button */
@@ -46,8 +46,8 @@ img.avatar {
 }
 
 img.logo {
-    width: 150px;
-    height: 150px;
+    width: 200px;
+    height: 200px;
     position: absolute;
     left: 0;
     top: -20px;
@@ -82,7 +82,7 @@ span.psw {
 
 /* Modal Content/Box */
 .modal-content {
-    background-color: #FAFC2F;
+    background-color: #07E161;
     margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
     border: 1px solid #888;
     width: 50%; /* Could be more or less, depending on screen size */
@@ -100,7 +100,7 @@ span.psw {
 
 .close:hover,
 .close:focus {
-    color: red;
+    color: green;
     cursor: pointer;
 }
 
@@ -211,7 +211,7 @@ a.navbar-brand{
 }
 
 body {
-    background-color: snow;
+    background-color: #07E161;
 }
 
 /*Removed by Francesco
@@ -236,3 +236,11 @@ body {
     background-color: grey;
 }
 
+.nav {
+    background-color: #FA7B3F !important;
+}
+
+.nav>li>a {
+    background-color: #FA7B3F !important;
+    color: #fff;
+}

@@ -10,9 +10,9 @@ class StaticController {
         require_once('views/static/error.php');
     }
 
-    public function registration() {
+    /*public function registration() {
         require_once('views/static/registration.php');
-    }
+    }*/
 
     public function profile() {
         require_once('views/static/profile.php');
