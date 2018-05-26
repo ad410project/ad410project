@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    <nav class="navbar sticky-top navbar-expand-sm bg-warning justify-content-end">
+    <nav class="navbar fixed-top navbar-expand-sm bg-warning justify-content-end">
         <div><img src="./views/images/KamparoosLogo.png" alt="Logo" class="logo"></div>
         <ul class="navbar-nav">
             <li class="nav-item">
