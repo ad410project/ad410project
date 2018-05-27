@@ -4,11 +4,22 @@
  * User: luv.sharma
  * Date: 2/19/18
  * Time: 4:42 PM
- 
+ */
 
 define ('DB_USER', "root");
 define ('DB_PASSWORD', "root");
 define ('DB_DATABASE', "ad_320");
+define ('DB_HOST', "localhost");
+define ('DB_PORT', 3306);
+
+?>
+
+
+<?php
+/*
+define ('DB_USER', "praticum");
+define ('DB_PASSWORD', "NetiMeki@99");
+define ('DB_DATABASE', "WebPracticumWeb2");
 define ('DB_HOST', "localhost");
 define ('DB_PORT', 3306);
  * 
@@ -16,13 +27,4 @@ define ('DB_PORT', 3306);
 
 ?>
 
-<?php
-
-define ('DB_USER', "praticum");
-define ('DB_PASSWORD', "NetiMeki@99");
-define ('DB_DATABASE', "WebPracticumWeb2");
-define ('DB_HOST', "localhost");
-define ('DB_PORT', 3306);
-
-?>
 
