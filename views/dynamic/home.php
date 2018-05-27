@@ -5,6 +5,14 @@
  * Date: 5/19/2018
  * Time: 11:00 AM
  */
+
+$today = new DateTime();
+$today->format('Y-m-d H:i:s');
+$twoMonths = new DateInterval("P2M" );
+$inTwoMonths = date_add($today,$twoMonths );
+
+$myEvents = event::getEventsByDateRange($today,$inTwoMonths);//Returns an array of events that will happen in the next two months
+
 ?>
 <!DOCTYPE html>
 <html xmlns:float="http://www.w3.org/1999/xhtml">
@@ -76,7 +84,7 @@
             <div id="map" class="container tab-pane active"></div>
             <!-- require php script here to load variables but don't display on page -->
             <div id="list" class="container tab-pane fade" style="height: 0; width: 0">
-                <?php require('../search_events_curlAPI.php'); ?>
+
             </div>
             <div id="calendar" class="container tab-pane fade align-top">
                 <iframe src="https://calendar.google.com/calendar/embed?showTitle=0&amp;height=400&amp;wkst=1&amp;
@@ -98,9 +106,11 @@
                     <a class="dropdown-item" href="#">Kid 4</a>
                 </div></li>
                 <?php
+                    $eventCard = "%s";
+
                     for($i = 0; $i < 5; $i++)
                     {
-                        print "<li class=\"list-group-item\">Some text</li>";
+                        printf($eventCard, $myEvents[$i]::getName());
                     }
                 ?>
         </ul>

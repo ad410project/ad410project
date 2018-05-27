@@ -9,6 +9,7 @@ function call($controller, $action) {
             $controller = new StaticController();
             break;
         case 'dynamic':
+            require_once('models/event.php');
 //            require_once('model/model.php');
             $controller = new DynamicController();
             break;

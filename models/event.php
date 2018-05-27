@@ -69,9 +69,37 @@ class event
         //return events with keyword in name or description
     }
 
+    /*
+     * IN:
+     * $startDate a start date for the range in DATETIME format
+     * $endDate an end date for the range in DATETIME format
+     *
+     * OUT:
+     * an array of event type objects
+     */
     public static function getEventsByDateRange($startDate, $endDate)
     {
-        //return events that fall within the date range
+       $db = Db::getInstance();
+       $events = [];
+
+       $Query = 'CALL getEventsInDateRange(:start,:end)';
+
+       if($stmt = $db->prepare($Query)) {
+
+           $stmt->bind_param($startDate, $endDate);
+
+           $stmt->execute();
+
+           $stmt->bind_result($id, $orgId, $name, $desc, $price, $minAge, $maxAge, $eventDate, $regOpen, $regClosed);
+
+           for ($i = 0; $stmt->fetch(); $i++) {
+               $events[$i] = new event($id, $orgId, $name, $desc, $price, $minAge, $maxAge, $eventDate, $regOpen, $regClosed);
+           }
+           return $events;
+       }
+       else {
+           return false;
+       }
     }
 
     public static function getEventsByAgeRange($minAge, $maxAge)
