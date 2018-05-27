@@ -1,8 +1,19 @@
 -- *****USER CLASS PROCEDURES***** --
 
+-- DROP COMMANDS --
+DROP PROCEDURE IF EXISTS `addUser`;
+DROP PROCEDURE IF EXISTS `editUser`;
+DROP PROCEDURE IF EXISTS `editUserAddress`;
+DROP PROCEDURE IF EXISTS `deleteUser`;
+DROP PROCEDURE IF EXISTS `getUserById`;
+
 delimiter //
 
--- Add new user with type "Registered", blank address
+/*addUser(userEmail, userPassword)
+	Adds a new user to the database. Creates a new address entry
+	for the user and adds to linking table. As this only takes in
+	userEmail and userPassword, PROCEDURE editUser and editUserAddress
+	will need to be called to add additional info.*/
 CREATE PROCEDURE addUser(IN userEmail VARCHAR(45), IN userPassword VARCHAR(45))
 BEGIN
 START TRANSACTION;
@@ -20,7 +31,8 @@ INSERT INTO UserAddresses VALUES
 COMMIT;
 END//
 
--- Update User Profile
+/*editUser(userEmail, userPassword, firstName, lastName, phoneNumber, notificationState, userType)
+	Updates all user profile information based on input data.*/
 CREATE PROCEDURE editUser(
 IN userEmail VARCHAR(45),
 IN userPassword VARCHAR(45),
@@ -41,7 +53,8 @@ UPDATE Users SET
 WHERE userEmail = email;
 END//
 
---Update User Address
+/*editUserAddress(userEmail, addressLine1, addressLine2, city, state, postalCode)
+	Updates all userAddress information.*/
 CREATE PROCEDURE editUserAddress(
 IN userEmail VARCHAR(45),
 IN addressLine1 VARCHAR(45),
@@ -56,21 +69,33 @@ JOIN Users USING (userId)
 SET
   `addressLine1` = addressLine1,
   `addressLine2` = addressLine2,
-  `city` VARCHAR(45) = city,
-  `state` VARCHAR(45) = state,
-  `postalCode` VARCHAR(6) = postalCode,
+  `city` = city,
+  `state`  = state,
+  `postalCode` = postalCode
 WHERE email = userEmail;
 END//
 
--- Remove user from the database (currently this orphans some data)
+/*deleteUser(userEmail)
+	Removes the user from the userProfile section. Also removes related data from
+	UserAddresses and Addresses tables.*/
 CREATE PROCEDURE deleteUser(
 IN userEmail VARCHAR(45))
 BEGIN
-DELETE FROM users
+
+START TRANSACTION;
+
+DELETE FROM Users
+WHERE userEmail = email;
+
+DELETE FROM Addresses
+WHERE `addressId` = (SELECT addressId FROM UserAddresses WHERE userEmail = email);
+
+DELETE FROM UserAddresses
 WHERE userEmail = email;
 END//
 
--- Get all user info about a specific user
+/*getUserById(userEmail)
+	Returns a list of users with a given e-mail address, which serves as their unique ID.*/
 CREATE PROCEDURE getUserById(IN userEmail VARCHAR(45))
 BEGIN
 SELECT * FROM users
