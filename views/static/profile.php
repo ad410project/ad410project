@@ -1,5 +1,7 @@
 <?php
-require ('config.php');
+require('connection.php');
+$link = Db::getInstance();
+
 // Initialize the session
 session_start();
 // If session variable is not set it will redirect to login page

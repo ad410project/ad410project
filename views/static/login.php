@@ -1,7 +1,11 @@
 <?php
 //Start the Session
-session_start();
-require('config.php');
+//session_start();
+
+require('connection.php');
+
+$link = Db::getInstance();
+
 //3. If the form is submitted or not.
 //3.1 If the form is submitted
 if (!isset($_SESSION['emailAddress'])) {
@@ -20,7 +24,7 @@ if (!isset($_SESSION['emailAddress'])) {
         header('Location: ?controller=static&action=profile');
     } else {
 //3.1.3 If the login credentials doesn't match, he will be shown with an error message.
-        //echo "Invalid Login Credentials." . $link->error;
+        ///echo "Invalid Login Credentials." . $link->error;
     }
 }
 

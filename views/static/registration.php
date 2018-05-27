@@ -1,6 +1,7 @@
 <?php
 //require('C:\xampp\htdocs\ad410project\connection.php');
-require ('config.php');
+require('connection.php');
+$link = Db::getInstance();
 /*
   $db = Database::getInstance();
   $mysqli = $db->getConnection();
