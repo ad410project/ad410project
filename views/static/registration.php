@@ -38,7 +38,6 @@
             </select>
         </div>
 
-
         <div class="form-group col-md-4">
             <label for="password">Password</label>
             <input type="password" class="form-control" id="password" placeholder="Enter password" name="password" required>

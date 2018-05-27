@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    <nav class="navbar fixed-bottom navbar-expand-sm bg-light justify-content-center">
+    <nav class="navbar fixed-bottom navbar-expand-sm bg-warning justify-content-center">
         <ul class="navbar-nav">
             <li class="nav-item">
                 <a class="nav-link" href="#">Contact Us</a>
