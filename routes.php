@@ -5,11 +5,11 @@ function call($controller, $action) {
 
     switch($controller) {
         case 'static':
-//            require_once('models/users.php');
+            require_once('models/users.php');
             $controller = new StaticController();
             break;
         case 'dynamic':
-            require_once('./models/users1.php');
+            require_once('./models/users.php');
             $controller = new DynamicController();
             break;
     }

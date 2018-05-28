@@ -105,7 +105,7 @@ class  user{
 		$db = Db::getInstance();
 
 		$query = 'DELETE FROM users WHERE user_id = ?';
-		return ($this->db->query($query));
+		return ($this->$db->query($query));
 	}
 
 	public function getUserById($user_id){
@@ -117,4 +117,3 @@ class  user{
 		return ($this->db->query($req));
 	}
 }
-?>

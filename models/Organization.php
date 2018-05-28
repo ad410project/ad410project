@@ -236,7 +236,7 @@
 
             $req->execute();
         }
-        /* 
+        /*
         * Get all events based on organization id 
         *
         * @param Integer        $organization_id Organization ID Ex: <to be defined>
@@ -246,7 +246,7 @@
             $db = Db::getInstance();
              
             // Prepare the query
-            $stmt = $db->prepare("SELECT * FROM Table_Name WHERE column_name = ?")) {
+            $stmt = $db->prepare("SELECT * FROM Table_Name WHERE column_name = ?"); {
 
             // we make sure $organization_id is an integer
             $organization_id = intval($organization_id);
@@ -266,12 +266,16 @@
             /* fetch values */
             while ($stmt->fetch()) {
                 $list[]=new Events($tbd);
-            }
+                }
 
             /* close statement */
             $stmt->close();
 
             return $list;
+            }
         }
     }
-?>
+
+}
+
+

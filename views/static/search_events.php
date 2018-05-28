@@ -24,7 +24,7 @@
 
 <!--    <link rel="stylesheet" href="../styles/styles.css">-->
 
-    <script src="../scripts/main.js"></script>
+    <script type="application/javascript" src="../scripts/main.js"></script>
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCf6m35Pbc-BmCZzxrlUlCWmMpHOrWyMms&callback=initMap">
     </script>
