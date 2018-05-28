@@ -89,6 +89,10 @@
 
 
  */
+ 
+ 
+
+DELIMITER //
 
 
 
@@ -96,7 +100,7 @@
     -- {
         -- return $this->location;
     -- }
-CREATE PROCEDURE getLocation(IN location VARCHAR)
+CREATE PROCEDURE getLocation(IN location VARCHAR(45))
 BEGIN
 SELECT * FROM Events
 JOIN EventAddresses ON Events.eventId = EventAddresses.eventId
@@ -140,7 +144,7 @@ END//
         -- return $this->categories;
     -- }
 
-CREATE PROCEDURE getCategories (IN eventCategories VARCHAR)
+CREATE PROCEDURE getCategories (IN eventCategories VARCHAR(45))
 BEGIN
 SELECT * FROM Categories
 WHERE categoryName = eventCategories;
@@ -154,7 +158,7 @@ END//
         -- return $this->type;
     -- }
 	
-CREATE PROCEDURE getType (IN type VARCHAR)
+CREATE PROCEDURE getType (IN type VARCHAR(45))
 BEGIN
 SELECT * FROM types
 WHERE typeName = type;
@@ -198,7 +202,7 @@ END//
         -- return $this->name;
     -- }
 
-CREATE PROCEDURE getName(IN currentName VARCHAR)
+CREATE PROCEDURE getName(IN currentName VARCHAR(45))
 BEGIN
 SELECT * FROM events
 WHERE eventName = currentName ;
@@ -299,7 +303,7 @@ END//
         -- //return events matching category
     -- }
 
-CREATE PROCEDURE getEventsByCategory(IN currentCategoryName VARCHAR)
+CREATE PROCEDURE getEventsByCategory(IN currentCategoryName VARCHAR(45))
 BEGIN
 SELECT eventName FROM Events
 JOIN EventCategories ON Events.eventId = EventCategories.eventId
@@ -316,7 +320,7 @@ END//
         -- //return events matching type
     -- }
 
-CREATE PROCEDURE getEventsByType(IN currentType VARCHAR)
+CREATE PROCEDURE getEventsByType(IN currentType VARCHAR(45))
 BEGIN
 SELECT typeName FROM Types
 WHERE 
@@ -329,7 +333,7 @@ END//
         -- //return events with keyword in name or description
     -- }
 
-CREATE PROCEDURE getEventsByKeyword(IN currentKeyword VARCHAR)
+CREATE PROCEDURE getEventsByKeyword(IN currentKeyword VARCHAR(45))
 BEGIN
 SELECT eventName FROM Events
 WHERE eventName LIKE '% currentKeyword %';
@@ -343,7 +347,7 @@ END//
         -- //return events for the age range
     -- }
 
-CREATE PROCEDURE getEventsByAgeRange(IN currentMinAge, currentMaxAge INT)
+CREATE PROCEDURE getEventsByAgeRange(IN currentMinAge INT, currentMaxAge INT)
 BEGIN
 SELECT eventName FROM Events
 WHERE minAge <= currentMinAge  AND maxAge >= currentMaxAge;
@@ -357,7 +361,7 @@ END//
         -- //return events for the price range
     -- }
 
-CREATE PROCEDURE getEventsByPriceRange(IN currentMinPrice, currentMaxPrice INT)
+CREATE PROCEDURE getEventsByPriceRange(IN currentMinPrice INT, currentMaxPrice INT)
 BEGIN
 SELECT eventName FROM Events
 WHERE eventPrice >= currentMinPrice AND eventPrice <= currentMaxPrice; 
@@ -371,7 +375,7 @@ END//
         -- //return events within a range of the location
     -- }
 
-CREATE PROCEDURE getEventsByPostalCode(IN currentCode VARCHAR)
+CREATE PROCEDURE getEventsByPostalCode(IN currentCode VARCHAR(45))
 BEGIN
 SELECT eventName FROM Events
 JOIN Organizations ON Events.organizationId = Organizations.organizationId
@@ -381,7 +385,7 @@ END//
    
 
 
-	
+DELIMITER ;
 	
 	
 
