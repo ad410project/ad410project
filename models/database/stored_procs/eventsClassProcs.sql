@@ -348,7 +348,7 @@ END//
 CREATE PROCEDURE getEventsByType(IN currentType VARCHAR(45))
 BEGIN
 SELECT typeName FROM Types
-WHERE 
+WHERE typeName  LIKE '% currentType %';
 END//
 
 
