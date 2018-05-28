@@ -108,11 +108,17 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Organizations` (
   `organizationDescription` TEXT NULL DEFAULT NULL,
   `phoneNumber` INT(11) NULL DEFAULT NULL,
   `organizationWebsite` VARCHAR(45) NULL DEFAULT NULL,
+  `userId` INT(11) NOT NULL, 
   PRIMARY KEY (`organizationId`),
   INDEX `fk_Organizations_Addresses1_idx` (`addressId` ASC),
   CONSTRAINT `fk_Communities_Addresses1`
     FOREIGN KEY (`addressId`)
     REFERENCES `mydb`.`Addresses` (`addressId`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+    CONSTRAINT `fk_Organizations_userId_id`
+    FOREIGN KEY (`userId`)
+    REFERENCES `mydb`.`Users` (`userId`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -135,6 +141,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Events` (
   `eventDate` DATETIME NULL DEFAULT NULL,
   `registrationOpen` DATETIME NULL DEFAULT NULL,
   `registrationClose` DATETIME NULL DEFAULT NULL,
+  `enddate` DATETIME NULL DEFAULT NULL,
   PRIMARY KEY (`eventId`),
   INDEX `fk_Events_Organizations1_idx` (`organizationId` ASC),
   CONSTRAINT `fk_Events_Communities1`

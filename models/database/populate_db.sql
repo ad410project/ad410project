@@ -44,20 +44,20 @@ INSERT INTO Addresses VALUES
 -- Orgs Table
 INSERT INTO Organizations VALUES
 	(DEFAULT, 11, 'CampQuest NorthWest', 'Camp Quest is a residential summer camp focused on fun, friends, and freethought for kids ages 8-17' ,
-		NULL, 'https://campquestnorthwest.org/'),
+		NULL, 'https://campquestnorthwest.org/', 1),
 	(DEFAULT, 12, 'Camp Fire Central Puget Sound', 'Camp Fire Central Puget Sound ignites a passion for nature, a commitment to service and a drive to succeed in 6,000 children and teens every year. Since 1915',
-		2064618550 , 'https://campfireseattle.org/contact-us/');
+		2064618550 , 'https://campfireseattle.org/contact-us/', 2);
  
  -- Events Table
  INSERT INTO `Events` VALUES
-	(DEFAULT, 2, 'Woodland Park Day Camp', 'Our day camp is located at Lower Woodland, the entrance at N 50th St and Woodland Park Ave N',NULL, NULL,NULL,NULL,NULL,NULL),
+	(DEFAULT, 2, 'Woodland Park Day Camp', 'Our day camp is located at Lower Woodland, the entrance at N 50th St and Woodland Park Ave N',NULL, NULL,NULL,NULL,NULL,NULL, NULL),
     (DEFAULT, 2, ' Carkeek Park Day Camp', 'Carkeek enjoys 220 acres of forest, wetlands, meadow, and beach. Our day camp uses the upper meadow as a base for all operations throughout the week, giving the campers a chance to explore Carkeek’s various ecosystems',
-		240.00, 5, 13, 20170717, NULL, NULL),
+		240.00, 5, 13, 20170717, NULL, NULL, NULL),
 	(DEFAULT, 1, 'Flying Spaghetti Western: June Session', 'Programming and activities will be the same at both camp sessions', 
-		700.00, 8, 17, 20180717, 20180428, 20180629),
+		700.00, 8, 17, 20180717, 20180428, 20180629, NULL),
 	(DEFAULT, 1, 'Flying Spaghetti Western: August Session', 'Programming and activities will be the same at both camp sessions', 
-		700.00, 8, 17, 20180717, 20180428, 20180629),
-	(DEFAULT, 2, 'Camp Sealth: Session 1', 'Short week', 340.00, 6, 14, NULL, NULL, NULL);
+		700.00, 8, 17, 20180717, 20180428, 20180629, NULL),
+	(DEFAULT, 2, 'Camp Sealth: Session 1', 'Short week', 340.00, 6, 14, NULL, NULL, NULL, NULL);
  
  -- UserAdresses Table 
 INSERT INTO UserAddresses VALUES
@@ -113,12 +113,6 @@ INSERT INTO ChildEvents VALUES
 INSERT INTO `Types` VALUES
 (DEFAULT, 'Day Camp'),
 (DEFAULT, 'Summer Camp'),
-(DEFAULT, 'Overnight Camp'),
-(DEFAULT, 'Half Day'),
-(DEFAULT, 'Full Day'),
-(DEFAULT, 'One Week'),
-(DEFAULT, 'Two Week'),
-(DEFAULT, 'Full Summer'),
 (DEFAULT, 'Other');
 
 -- Event Types Linking Table

@@ -19,18 +19,17 @@ DELETE organizationid, addressid, organizationName, organizationDescription, pho
 FROM organizations
 WHERE organizationid = organizationIdpd;
 
-END
+END//
 
 
 CREATE PROCEDURE `getOrginizationUsers` (IN orginizationIdpu int)
 
 BEGIN
 
-SELECT 
+SELECT *
 FROM organizations
 WHERE organizationid = organizationIdpu;
 
-END
+END//
 
-
-
+delimiter ;
