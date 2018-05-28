@@ -30,7 +30,9 @@
     </script>
 </head>
 <!--<body>-->
-<div class="container">
+<div class="container" id="container">
+    <br>
+    <br>
     <h3>Search Events</h3>
     <br>
     <section id="tabs_section">
@@ -60,10 +62,10 @@
             <div class="input-group">
                 <input type="text" class="form-control" placeholder="Search for...">
                 <span class="input-group-btn">
-                <button class="btn btn-secondary" type="button">Go!</button>
+                <button class="btn btn-lg btn-danger" type="button">Go!</button>
                 </span>
                 <div class="dropdown">
-                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                    <button type="button" class="btn btn-lg btn-primary dropdown-toggle" data-toggle="dropdown">
                         Filter
                     </button>
                     <div class="dropdown-menu">

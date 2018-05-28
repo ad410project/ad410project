@@ -1,14 +1,13 @@
-<div id="main_container" class="container-fluid">
-    <div id="body" class="container">
+<div id="main_container" class="container">
         <p>Stuff about how great the application is.</p>
         <div id="carousel" class="carousel slide" data-ride="carousel">
 
             <!-- Indicators -->
-            <ul class="carousel-indicators">
+            <ol class="carousel-indicators">
                 <li data-target="#carousel" data-slide-to="0" class="active"></li>
                 <li data-target="#carousel" data-slide-to="1"></li>
                 <li data-target="#carousel" data-slide-to="2"></li>
-            </ul>
+            </ol>
 
             <!-- The slideshow -->
             <div class="carousel-inner">
@@ -34,7 +33,6 @@
                     </div>
                 </div>
             </div>
-
             <!-- Left and right controls -->
             <a class="carousel-control-prev" href="#carousel" data-slide="prev">
                 <span class="carousel-control-prev-icon"></span>
@@ -44,6 +42,4 @@
             </a>
 
         </div>
-    </div>
-    <a href="?controller=static&action=searchEvents" id="searchEvents">Search Events</a>
 </div>
