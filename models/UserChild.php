@@ -28,7 +28,7 @@ class UserChild
     }
 
     // The Constructor
-    private function __construct($child_id ,$user_id, $child_name, $child_age) {
+    private function __construct($child_id ,$user_id, $first_name, $last_name, $child_Dob,$childAllergies,$emergencyContactNum) {
 
         $this->connection = new mysqli($this->host, $this->username,
             $this->password, $this->database,$this->port);
@@ -41,19 +41,22 @@ class UserChild
 
         $this->user_id=$user_id;
         $this->child_id = $child_id;
-        $this->child_name=$child_name;
-        $this->child_age=$child_age;
+        $this->first_name=$first_name;
+        $this->last_name=$last_name;
+        $this->child_Dob=$child_Dob;
+        $this->childAllergies=$childAllergies;
+        $this->emergencyContactNum=$emergencyContactNum;
     }
 
-    public function addChild($child_id, $child_name, $user_id, $child_age){
+    public function addChild($child_id ,$user_id, $first_name, $last_name, $child_Dob,$childAllergies,$emergencyContactNum){
         //add child to the database
         $db = Database::getInstance();
 
         // Prepare the query
-        $stmt = $db->prepare('INSERT INTO table_name (childId, childName, userId, childAge)
+        $stmt = $db->prepare('INSERT INTO Children (childId, userId, firstName, lastName, childDob,childAllergies, emergencyContactNum)
                VALUES (?, ?, ?, ?)');
 
-        $stmt->bind_param($child_id, $child_name, $user_id, $child_age);
+        $stmt->bind_param($child_id ,$user_id, $first_name, $last_name, $child_Dob,$childAllergies,$emergencyContactNum);
 
         $stmt->execute();
 
@@ -65,7 +68,7 @@ class UserChild
         $db = Database::getInstance();
 
         // Prepare the query
-        $stmt = $db->prepare('DELETE FROM table_name WHERE organization_id = ?');
+        $stmt = $db->prepare('DELETE FROM Children WHERE child_id = ?');
 
         $stmt->bind_param($child_id);
 
@@ -74,16 +77,16 @@ class UserChild
         $stmt->close();
     }
 
-    public static function editChild($child_id, $child_name, $user_id, $child_age){
+    public static function editChild($child_id ,$user_id, $first_name, $last_name, $child_Dob,$childAllergies,$emergencyContactNum){
 		//edit child in the database
 
         $db = Database::getInstance();
         // Prepare the query
-        $stmt = $db->prepare('UPDATE table_name
-        SET  childName= ?, userId=?,childAge=?
+        $stmt = $db->prepare('UPDATE Children
+        SET  userId=?, frist_name= ?, last_name=?, child_Dob=?, childAllergies = ?, emergencyContactNum=?
         WHERE childId = ?;');
 
-        $stmt->bind_param($child_name, $user_id, $child_age,$child_id);
+        $stmt->bind_param($user_id, $first_name, $last_name, $child_Dob,$childAllergies,$emergencyContactNum);
 
         $stmt->execute();
 
@@ -95,21 +98,20 @@ class UserChild
 
         $db = Database::getInstance();
         // Prepare the query
-        $stmt = $db->prepare('SELECT childId, childName, userId, childAge FROM table_name
+        $stmt = $db->prepare('SELECT childId, userId, firstName, lastName, childDob,childAllergies, emergencyContactNum FROM Children
         WHERE childId = ?');
 
         $stmt->bind_param('s',$child_id);
 
         $stmt->execute();
 
-        $stmt->bind_result($col1,$col2,$col3,$col4);
+        $stmt->bind_result($col1,$col2,$col3,$col4,$col5, $col6, $col7, $col8);
 
         $stmt->fetch();
 
         $stmt->close();
 
-        return new UserChild($col1,$col2,$col3,$col4);
+        return new UserChild($col1,$col2,$col3,$col4, $col5, $col6, $col7, $col8);
     }
-
 
 }
