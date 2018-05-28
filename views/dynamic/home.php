@@ -76,7 +76,7 @@
             <div id="map" class="container tab-pane active"></div>
             <!-- require php script here to load variables but don't display on page -->
             <div id="list" class="container tab-pane fade" style="height: 0; width: 0">
-                <?php require('../search_events_curlAPI.php'); ?>
+                <?php require('views/static/search_events_curlAPI.php'); ?>
             </div>
             <div id="calendar" class="container tab-pane fade align-top">
                 <iframe src="https://calendar.google.com/calendar/embed?showTitle=0&amp;height=400&amp;wkst=1&amp;
@@ -105,13 +105,13 @@
                 ?>
         </ul>
     </div>
-    <section id="bottom-nav_section">
-        <div class="d-flex justify-content-center fixed-bottom">
-            <div class="p-2 my-flex-item"><a href="">Contact us</a></div>
-            <div class="p-2 my-flex-item"><a href="">Terms of use</a></div>
-            <div class="p-2 my-flex-item"><a href="">FAQs</a></div>
-        </div>
-    </section>
+<!--    <section id="bottom-nav_section">-->
+<!--        <div class="d-flex justify-content-center fixed-bottom">-->
+<!--            <div class="p-2 my-flex-item"><a href="">Contact us</a></div>-->
+<!--            <div class="p-2 my-flex-item"><a href="">Terms of use</a></div>-->
+<!--            <div class="p-2 my-flex-item"><a href="">FAQs</a></div>-->
+<!--        </div>-->
+<!--    </section>-->
 </div>
 </body>
 </html>

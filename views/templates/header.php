@@ -8,6 +8,9 @@
             <li class="nav-item">
                 <a href="#" class="nav-link" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="?controller=dynamic&action=home">Home</a>
+            </li>
         </ul>
     </nav>
 </div>

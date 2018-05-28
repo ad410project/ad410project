@@ -47,3 +47,10 @@
     </div>
     <a href="?controller=static&action=searchEvents" id="searchEvents">Search Events</a>
 </div>
+<script>
+    $('.carousel').carousel({
+        interval: 2000,
+        pause: "hover",
+        wrap: true
+    })
+</script>
