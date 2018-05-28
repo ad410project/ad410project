@@ -4,10 +4,9 @@ class event
 
     private $eventId;
     private $organizationId;
-    private $creatorId;
     private $name;
     private $description;
-    private $location;
+    private $address;
     private $startDate;
     private $endDate;
     private $categories;
@@ -18,15 +17,14 @@ class event
     private $registrationOpen;
     private $registrationClose;
 
-    public function __construct($eventId, $creatorId, $name, $description, $location, $startDate, $endDate,
+    public function __construct($eventId, $name, $description, $address, $startDate, $endDate,
                                 $organizationId, $categories, $type, $price, $minAge, $maxAge,
                                 $registrationOpen, $registrationClose)
     {
         $this->eventId = $eventId;
-        $this->creatorId = $creatorId;
         $this->name = $name;
         $this->description = $description;
-        $this->location = $location;
+        $this->address = $address;
         $this->startDate = $startDate;
         $this->endDate = $endDate;
         $this->organizationId = $organizationId;
@@ -41,62 +39,181 @@ class event
 
     public static function addEvent($event)
     {
+        //get instance of db
+        $db = Db::getInstance();
+
         //add event to database
     }
 
     public static function deleteEvent($eventId)
     {
+        //get instance of db
+        $db = Db::getInstance();
+
         //delete the event
+    }
+
+    public static function getAllEvents()
+    {
+        //get instance of db
+        $db = Db::getInstance();
+
+        $result = $db->query('CALL getEvents()');
+
+        $db->close();
+
+        return $result;
+    }
+
+    public static function getEventById($eventId)
+    {
+        //get instance of db
+        $db = Db::getInstance();
+
+        //bind the in parameters
+        $stmt = $db->prepare("SET @myEventId = ?");
+        $stmt->bind_param('i', $eventId);
+        $stmt->execute();
+
+        //execute the procedure
+        $result = $db->query('CALL getEvent(@myEventId)');
+
+        $db->close();
+
+        return $result;
     }
 
     public static function getEventsByUserId($userId)
     {
+        //get instance of db
+        $db = Db::getInstance();
+
         //return events for the user ID
+    }
+
+    public static function getEventsByChildId($childId)
+    {
+        //get instance of db
+        $db = Db::getInstance();
+
+        //bind the in parameters
+        $stmt = $db->prepare("SET @myChildId = ?");
+        $stmt->bind_param('i', $childId);
+        $stmt->execute();
+
+        //execute the procedure
+        $result = $db->query('CALL getChildEvents(@myChildId)');
+
+        $db->close();
+
+        return $result;
     }
 
     public static function getEventsByCategory($category)
     {
-        //return events matching category
+        //get instance of db
+        $db = Db::getInstance();
+
+        //bind the in parameters
+        $stmt = $db->prepare("SET @myCategoryId = ?");
+        $stmt->bind_param('i', $category);
+        $stmt->execute();
+
+        //execute the procedure
+        $result = $db->query('CALL getCategoryEvent(@myCategoryId)');
+
+        $db->close();
+
+        return $result;
     }
 
+    //return events matching type
     public static function getEventsByType($type)
     {
-        //return events matching type
+        //get instance of db
+        $db = Db::getInstance();
+
+        //bind the in parameters
+        $stmt = $db->prepare("SET @myTypeId = ?");
+        $stmt->bind_param('i', $type);
+        $stmt->execute();
+
+        //execute the procedure
+        $result = $db->query('CALL getTypeEvent(@myTypeId)');
+
+        $db->close();
+
+        return $result;
     }
 
     public static function getEventsByKeyword($keyword)
     {
+        //get instance of db
+        $db = Db::getInstance();
+
         //return events with keyword in name or description
     }
 
     public static function getEventsByDateRange($startDate, $endDate)
     {
-        //return events that fall within the date range
+        //get instance of db
+        $db = Db::getInstance();
+
+        //bind the in parameters
+        $stmt = $db->prepare("SET @startTime = ?");
+        $stmt->bind_param('i', $startDate);
+        $stmt->execute();
+
+        $stmt = $db->prepare("SET @endTime = ?");
+        $stmt->bind_param('i', $endDate);
+        $stmt->execute();
+
+        //execute the procedure
+        $result = $db->query('CALL getEventsInDateRange(@startTime, @endTime)');
+
+        $db->close();
+
+        return $result;
     }
 
     public static function getEventsByAgeRange($minAge, $maxAge)
     {
+        //get instance of db
+        $db = Db::getInstance();
+
         //return events for the age range
     }
 
     public static function getEventsByPriceRange($minPrice, $maxPrice)
     {
+        //get instance of db
+        $db = Db::getInstance();
+
         //return events for the price range
     }
 
     public static function getEventsByLocation($location, $distance)
     {
+        //get instance of db
+        $db = Db::getInstance();
+
         //return events within a range of the location
     }
 
     public static function editEventField($eventId, $fieldToChange, $changeToThis)
     {
+        //get instance of db
+        $db = Db::getInstance();
+
         //edit event characteristics, might replace with multiple methods in the
         //form of setEventName, setEventDescription, setEventLocation, etc.
     }
 
     public static function addCategory($eventId, $category)
     {
+        //get instance of db
+        $db = Db::getInstance();
+
         //add a category to the event in the database
 
         //categories, types, and addresses likely need their own
@@ -105,6 +222,9 @@ class event
 
     public static function removeCategory($eventId, $category)
     {
+        //get instance of db
+        $db = Db::getInstance();
+
         //remove a category from the event in the database
 
         //categories, types, and addresses likely need their own
@@ -113,6 +233,9 @@ class event
 
     public static function addType($eventId, $type)
     {
+        //get instance of db
+        $db = Db::getInstance();
+
         //add a type to the event in the database
 
         //categories, types, and addresses likely need their own
@@ -121,6 +244,9 @@ class event
 
     public static function removeType($eventId, $type)
     {
+        //get instance of db
+        $db = Db::getInstance();
+
         //remove a type from the event in the database
 
         //categories, types, and addresses likely need their own
@@ -129,6 +255,9 @@ class event
 
     public static function addAddress($eventId, $address)
     {
+        //get instance of db
+        $db = Db::getInstance();
+
         //add an address to the event in the database
 
         //categories, types, and addresses likely need their own
@@ -137,6 +266,9 @@ class event
 
     public static function removeAddress($eventId, $address)
     {
+        //get instance of db
+        $db = Db::getInstance();
+
         //remove an address from the event in the database
 
         //categories, types, and addresses likely need their own
@@ -158,9 +290,9 @@ class event
         return $this->description;
     }
 
-    public function getLocation()
+    public function getAddress()
     {
-        return $this->location;
+        return $this->address;
     }
 
     public function getStartDate(){
