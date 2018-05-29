@@ -3,7 +3,6 @@
 //session_start();
 
 $link = Db::getInstance();
-$isSuccessfulLogin = true;
 
 //3. If the form is submitted or not.
 //3.1 If the form is submitted
@@ -20,43 +19,25 @@ if (!isset($_SESSION['emailAddress'])) {
     if ($count == 1) {
         $_SESSION['emailAddress'] = $emailAddress;
         $emailAddress = $_POST['emailAddress'];
-        $isSuccessfulLogin = true;
-        header('Location: ?controller=dynamic&action=home');
+        header("location: ?controller=dynamic&action=home");
     } else {
-        $isSuccessfulLogin = false;
+        // There's an issue with login credentials
     }
 }
 
 ?>
 
-    <form class="form-signin" method="POST">
+<form class="form-signin" method="POST">
 
-        <div class="container">
-            <label for="uname"><b>Username</b></label>
-            <input type="text" placeholder="Enter Username" name="emailAddress" required>
+    <div class="container">
+        <label for="uname"><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" name="emailAddress" required>
 
-            <label for="psw"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" name="password" required>
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="password" required>
 
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+    </div>
 
-            <label>
-                <input type="checkbox" checked="checked" name="remember"> Remember me
-            </label>
-
-
-            <label>
-                TEST
-            </label>
-
-            <?php
-            if (!$isSuccessfulLogin) {
-            ?>
-                <label> <?php echo 'Invalid login credentials.' ?> </label>
-            <?php
-            }
-            ?>
-        </div>
-
-    </form>
+</form>
 
