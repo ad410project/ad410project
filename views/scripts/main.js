@@ -6,13 +6,6 @@ function validateForm() {
         return false;
     }
 
-    var numOfKids = document.forms["registrationForm"]["numOfKids"].value;
-    if (numOfKids == null || numOfKids === '') {
-        alert("Please select number of kids");
-        return false;
-    }
-
-
     var confirmPassword = document.forms["registrationForm"]["confirmPassword"].value;
     if (confirmPassword !== password) {
         alert("Passwords must match.");

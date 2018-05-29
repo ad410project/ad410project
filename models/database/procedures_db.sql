@@ -1,6 +1,8 @@
+-- DO NOT RUN --
+
 -- Think of this file of an extension of the create db script run it once on your schema to use these!
 
-
+/*
 delimiter //
 -- basic getters for all tables
 CREATE PROCEDURE getChildren ()
@@ -109,35 +111,4 @@ SELECT * FROM events
 WHERE eventDate BETWEEN startTime AND endTime;
 END//
 
--- Register user
-CREATE PROCEDURE Register(IN userEmail VARCHAR(45), IN userPassword VARCHAR(45))
-BEGIN
-INSERT INTO Users VALUES
-(DEFAULT, userEmail, userPassword, DEFAULT, DEFAULT, DEFAULT, 0, 
-(SELECT userTypeId FROM userType WHERE userTypeName = 'Registered'));
-END//
-
--- Update User Profile
-CREATE PROCEDURE UpdateUserProfile(
-IN userEmail VARCHAR(45),
-IN userPassword VARCHAR(45),
-IN firstName VARCHAR(45),
-IN lastName VARCHAR(45),
-IN phoneNumber VARCHAR(10),
-IN notificationState TINYINT(4),
-IN userType VARCHAR(45))
-BEGIN
-UPDATE Users SET
-  `email` = userEmail,
-  `password` = userPassword,
-  `firstName` = firstName,
-  `lastName` = lastName,
-  `phoneNumber` = phoneNumber,
-  `notificationState` = notificationState,
-  `userTypeId` = (SELECT userTypeId FROM userType WHERE userTypeName = userType) 
-WHERE userEmail = email;
-END//
-  
--- Update/Create User Address
-
-delimiter ;
+delimiter ;*/
