@@ -60,33 +60,19 @@ if (isset($_POST['emailAddress']) && isset($_POST['password'])) {
 
         <div class="form-group col-md-6">
             <label for="phoneNumber">Phone Number</label>
-            <input type="tel" class="form-control" id="phoneNumber" placeholder="Enter 10 digit phone number" name="phoneNumber" required
+            <input type="tel" class="form-control" id="phoneNumber" placeholder="Enter 10 digit phone number" name="phone" required
                    pattern="[0-9]{3}[0-9]{3}[0-9]{4}"
                    size="10">
         </div>
 
-
-        <div class="form-group col-md-12">
-            <label for="numOfKids">Number of Kids </label>
-            <select name="numOfKids" id="numOfKids">
-                <option value="">Select...</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </select>
-        </div>
-
-
         <div class="form-group col-md-4">
             <label for="password">Password</label>
-            <input type="password" class="form-control" id="password" placeholder="Enter password" name="password" required>
+            <input type="password" class="form-control" id="password" placeholder="Enter password" name="password_1" required>
         </div>
 
         <div class="form-group col-md-4">
             <label for="confirmPassword">Confirm Password</label>
-            <input type="password" class="form-control" id="confirmPassword" placeholder="Re-enter password" name="confirmPassword" required>
+            <input type="password" class="form-control" id="confirmPassword" placeholder="Re-enter password" name="password_2" required>
         </div>
 
         <div class="form-group col-md-12">
