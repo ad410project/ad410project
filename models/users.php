@@ -63,6 +63,7 @@ class  user{
         $query = "SELECT * FROM users WHERE username='$username' AND password='$password' LIMIT 1";
         $results = mysqli_query($db, $query);
         if (mysqli_num_rows($results) == 1) { // user found
+            header("location: ?controller=dynamic&action=home");
         } else {
             echo "Wrong username/password combination" . '<br>';
         }

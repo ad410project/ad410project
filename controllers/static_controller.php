@@ -20,6 +20,9 @@ class StaticController{
     }
 
     public function login() {
+        if (isset($_POST['register_btn'])) {
+            user::login();
+        }
         require_once('views/static/login.php');
     }
 
