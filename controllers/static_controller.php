@@ -19,6 +19,10 @@ class StaticController{
         require_once('views/static/search_events.php');
     }
 
+    public function login() {
+        require_once('views/static/login.php');
+    }
+
 }
 
 ?>
