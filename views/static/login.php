@@ -1,6 +1,6 @@
-<br>
-<br>
-<br>
+<div class="container">
+    <br>
+    <br>
 <h1>Log In</h1>
 <form class="form-signin" method="POST">
     <div class="container" id="container">
@@ -12,6 +12,6 @@
 
         <button class="btn btn-lg btn-primary btn-block" type="submit" name="login_btn">Login</button>
     </div>
-
 </form>
+</div>
 

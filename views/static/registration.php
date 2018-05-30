@@ -2,8 +2,8 @@
 <h3>Registration Form</h3>
 <form name="registrationForm" onsubmit="return validateForm()" method="post">
     <br>
-    <h1>Register</h1>
 <div class = "container">
+    <h1>Register</h1>
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="firstName">First Name</label>
