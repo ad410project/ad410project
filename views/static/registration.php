@@ -1,7 +1,9 @@
+
 <h3>Registration Form</h3>
-
 <form name="registrationForm" onsubmit="return validateForm()" method="post">
-
+    <br>
+<div class = "container">
+    <h1>Register</h1>
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="firstName">First Name</label>
@@ -45,10 +47,12 @@
             </select>
         </div>
 
-
+        <button type="submit" class="register-btn">Register</button>
     </div>
-
-    <button type="submit" class="btn btn-info btn-rounded" name="register_btn">Register</button>
+</div>
+    <div class="container signin">
+        <p>Already have an account? <a href="#">Log in</a>.</p>
+    </div>
 </form>
 
 <br>
