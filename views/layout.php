@@ -16,7 +16,7 @@
 <!--    CSS Section-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
           integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-    <link rel="stylesheet" href="../views/styles/styles.css">
+    <link rel="stylesheet" href="views/styles/styles.css">
 
 
 </head>
@@ -24,15 +24,15 @@
 <?php
 require_once "templates/header.php";
 require_once "templates/footer.php";
-require_once "../routes.php";
+require_once "routes.php";
 ?>
 <div id="id01" class="modal">
     <!--action_page.php is the php file which will perform user validation when the 'submit' button is clicked -->
     <form class="modal-content animate" action="/action_page.php">
         <div class="img-container">
             <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-            <div><img src="../views/images/Fun_Logo1.png" alt="Logo" class="logo"></div>
-            <img src="../views/images/img_avatar2.png" alt="Avatar" class="avatar">
+            <div><img src="views/images/Fun_Logo1.png" alt="Logo" class="logo"></div>
+            <img src="views/images/img_avatar2.png" alt="Avatar" class="avatar">
 
             <div>
                 <!-- Add icon library from font-awesome -->

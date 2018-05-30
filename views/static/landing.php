@@ -12,21 +12,21 @@
             <!-- The slideshow -->
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="../images/kids_kites.png" alt="Los Angeles">
+                    <img src="views/images/kids_kites.png" alt="Los Angeles">
                     <div class="carousel-caption">
                         <h3>Los Angeles</h3>
                         <p>We had such a great time in LA!</p>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="../images/kids_playing.png" alt="Chicago">
+                    <img src="views/images/kids_playing.png" alt="Chicago">
                     <div class="carousel-caption">
                         <h3>Chicago</h3>
                         <p>We had such great pizza in CHI!</p>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="../images/kids_swing.png" alt="New York">
+                    <img src="views/images/kids_swing.png" alt="New York">
                     <div class="carousel-caption">
                         <h3>New York</h3>
                         <p>It is too crowded!</p>
