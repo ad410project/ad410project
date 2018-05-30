@@ -57,12 +57,13 @@ class  user{
     {
         $db = Db::getInstance();
         // grab from values
-        $username = mysqli_real_escape_string($db, trim(($_POST['user-name'])));
-        $password = mysqli_real_escape_string($db, trim(($_POST['psw'])));
+        $email = mysqli_real_escape_string($db, trim(($_POST['email'])));
+        $password = mysqli_real_escape_string($db, trim(($_POST['password'])));
         $password = md5($password);
-        $query = "SELECT * FROM users WHERE username='$username' AND password='$password' LIMIT 1";
+        $query = "SELECT * FROM users WHERE email='$email' AND password='$password' LIMIT 1";
         $results = mysqli_query($db, $query);
         if (mysqli_num_rows($results) == 1) { // user found
+            header("location: ?controller=dynamic&action=home");
         } else {
             echo "Wrong username/password combination" . '<br>';
         }

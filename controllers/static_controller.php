@@ -19,6 +19,13 @@ class StaticController{
         require_once('views/static/search_events.php');
     }
 
+    public function login() {
+        if (isset($_POST['login_btn'])) {
+            user::login();
+        }
+        require_once('views/static/login.php');
+    }
+
 }
 
 ?>
