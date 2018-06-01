@@ -1,9 +1,9 @@
-
-<h3>Registration Form</h3>
 <form name="registrationForm" onsubmit="return validateForm()" method="post">
-    <br>
 <div class = "container">
-    <h1>Register</h1>
+    <div id="img">
+        <img id="avatar" src="views/images/img_avatar2.png"/>
+        <h1>Register</h1>
+    </div>
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="firstName">First Name</label>

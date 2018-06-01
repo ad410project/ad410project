@@ -1,7 +1,8 @@
 <div class="container">
-    <br>
-    <br>
-<h1>Log In</h1>
+    <div id="img">
+        <img id="avatar" src="views/images/img_avatar2.png"/>
+        <h1>Log In</h1>
+    </div>
 <form class="form-signin" method="POST">
     <div class="container" id="container">
         <label for="uname"><b>Username</b></label>
