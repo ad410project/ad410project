@@ -1,4 +1,15 @@
 <?php
+// Initialize the session
+session_start();
+
+// If session variable is not set it will redirect to login page
+if (!isset($_SESSION['emailAddress'])) {
+    header("location: ?controller=static&action=login");
+    exit;
+}
+?>
+
+<?php
 /**
  * Created by PhpStorm.
  * User: Harry
