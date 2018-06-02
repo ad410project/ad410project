@@ -54,6 +54,3 @@
         <p>Already have an account? <a href="#">Log in</a>.</p>
     </div>
 </form>
-
-<br>
-<br>
