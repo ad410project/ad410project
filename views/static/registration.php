@@ -1,10 +1,45 @@
+<?php
+require_once('connection.php');
+$link = Db::getInstance();
+
+// If the values are posted, insert them into the database.
+if (isset($_POST['emailAddress']) && isset($_POST['password_1'])) {
+    $firstName = $_POST['firstName'];
+    $lastName = $_POST['lastName'];
+    $emailAddress = $_POST['emailAddress'];
+    $phoneNumber = $_POST['phoneNumber'];
+    $numOfKids = $_POST['numOfKids'];
+    $userRole = $_POST['userRole'];
+    $password = $_POST['password_1'];
+
+    $query = "SELECT * FROM Users WHERE email='$emailAddress'";
+    $result = $link->query($query);
+    $count = mysqli_num_rows($result);
+//3.1.2 If the posted values are equal to the database values, then session will be created for the user.
+    if ($count == 0) {
+        $query = "INSERT INTO Users(email, password, firstName, lastName, phoneNumber, notificationState, UserTypeId) VALUES ('$emailAddress', '$password', '$firstName', '$lastName', '$phoneNumber', 1, 1)";
+        $result = $link->query($query);
+        if ($result) {
+            //$smsg = "User Created Successfully.";
+            header('Location: ?controller=static&action=login');
+        } else {
+            echo "User Registration Failed" . $link->error;
+        }
+    }else{
+        echo 'nothing';
+    }
+}else{
+    echo 'not set bbo';
+}
+?>
+
 <form name="registrationForm" onsubmit="return validateForm()" method="post">
     <div class="container">
         <div id="img">
             <img id="avatar" src="views/images/img_avatar2.png"/>
             <h1>Register</h1>
-        </div>
-        <div class="form-row">
+        </div>  
+    <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="firstName">First Name</label>
                 <input type="text" class="form-control" id="firstName" placeholder="Enter first name" name="firstName"
