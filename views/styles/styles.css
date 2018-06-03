@@ -439,3 +439,8 @@ body {
 .container.button{
     background-color: green;
 }
+
+.terms {
+    font-size: smaller;
+    font-family: Arial, Helvetica, sans-serif;
+}
