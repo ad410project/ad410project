@@ -30,6 +30,10 @@ class StaticController {
         require_once('views/static/logout.php');
     }
 
+    public function terms() {
+        require_once('views/static/terms.php');
+    }
+
 }
 
 ?>
