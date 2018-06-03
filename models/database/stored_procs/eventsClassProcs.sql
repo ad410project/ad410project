@@ -1,96 +1,4 @@
- 
- 	
-/*     public function getEndDate(){
-        return $this->endDate;
-    }
- */
-	
 
-    /* public static function getEventsByDateRange($startDate, $endDate)
-    {
-        //return events that fall within the date range
-    }
-
-
-
-
- public static function addEvent($event)
-    {
-        //add event to database
-    }
-
-
-
-    public static function deleteEvent($eventId)
-    {
-        //delete the event
-
-    }
-
-
- public static function editEventField($eventId, $fieldToChange, $changeToThis)
-    {
-        //edit event characteristics, might replace with multiple methods in the
-        //form of setEventName, setEventDescription, setEventLocation, etc.
-    }
-	
-
-    public static function addCategory($eventId, $category)
-    {
-        //add a category to the event in the database
-
-        //categories, types, and addresses likely need their own
-        //methods for changes since they can have multiple entries
-    }
-
-	
-    public static function removeCategory($eventId, $category)
-    {
-        //remove a category from the event in the database
-
-        //categories, types, and addresses likely need their own
-        //methods for changes since they can have multiple entries
-    }
-	
-
-    public static function addType($eventId, $type)
-    {
-        //add a type to the event in the database
-
-        //categories, types, and addresses likely need their own
-        //methods for changes since they can have multiple entries
-    }
-	
-
-    public static function removeType($eventId, $type)
-    {
-        //remove a type from the event in the database
-
-        //categories, types, and addresses likely need their own
-        //methods for changes since they can have multiple entries
-    }
-
-    public static function addAddress($eventId, $address)
-    {
-	
-        //add an address to the event in the database
-
-        //categories, types, and addresses likely need their own
-        //methods for changes since they can have multiple entries
-    }
-
-    public static function removeAddress($eventId, $address)
-    {
-        //remove an address from the event in the database
-
-        //categories, types, and addresses likely need their own
-        //methods for changes since they can have multiple entries
-    }
-
-
- */
- 
- 
  
  
  -- DROP COMMANDS --
@@ -101,6 +9,8 @@ DROP PROCEDURE IF EXISTS `getCategories`;
 DROP PROCEDURE IF EXISTS `getType`;
 DROP PROCEDURE IF EXISTS `getPrice`;
 DROP PROCEDURE IF EXISTS `getName`;
+DROP PROCEDURE IF EXISTS `addEvent`;
+DROP PROCEDURE IF EXISTS `deleteEvent`;
 DROP PROCEDURE IF EXISTS `getEventId`;
 DROP PROCEDURE IF EXISTS `getDescription`;
 DROP PROCEDURE IF EXISTS `getMinAge`;
@@ -114,39 +24,59 @@ DROP PROCEDURE IF EXISTS `getEventsByKeyword`;
 DROP PROCEDURE IF EXISTS `getEventsByAgeRange`;
 DROP PROCEDURE IF EXISTS `getEventsByPriceRange`;
 DROP PROCEDURE IF EXISTS `getEventsByPostalCode`;
- 
- 
+DROP PROCEDURE IF EXISTS `getEventsByDateRange`;
+DROP PROCEDURE IF EXISTS `addCategory`;
+DROP PROCEDURE IF EXISTS `removeCategory`;
+DROP PROCEDURE IF EXISTS `addAddress`;
+DROP PROCEDURE IF EXISTS `removeAddress`;
+DROP PROCEDURE IF EXISTS `addType`; 
+DROP PROCEDURE IF EXISTS `removeType`; 
+
 
 DELIMITER //
 
 
 
-    -- public function getLocation()
-    -- {
-        -- return $this->location;
-    -- }
-CREATE PROCEDURE getLocation(IN location VARCHAR(45))
-BEGIN
+
+
+ 
+    -- -- -- public function getLocation()
+    -- -- -- {
+        -- -- -- return $this->location;
+    -- -- -- }
+ CREATE PROCEDURE getLocation(IN location VARCHAR(45))
+ BEGIN
 SELECT * FROM Events
 JOIN EventAddresses ON Events.eventId = EventAddresses.eventId
-JOIN Addresses on EventAddresses.addressId = Addresses.addressId
+ JOIN Addresses on EventAddresses.addressId = Addresses.addressId
 WHERE Addresses.city = location;
-END//
+ END//
 	
 	
 	
 	
-    -- public function getStartDate(){
-        -- return $this->startDate;
-    -- }
+    -- -- -- public function getStartDate(){
+        -- -- -- return $this->startDate;
+    -- -- -- }
 	
 CREATE PROCEDURE getStartDate(IN startDate DATETIME)
 BEGIN
-SELECT * FROM Events
-WHERE eventDate = startDate; 
+ SELECT * FROM Events
+ WHERE eventDate = startDate; 
 END//
 	
-	
+
+
+     -- -- public function getEndDate(){
+        -- -- return $this->endDate;
+    -- -- }
+ -- --
+
+CREATE PROCEDURE getEndDate(IN currentEndDate DATETIME)
+BEGIN
+SELECT * FROM Events
+WHERE endDate = currentEndDate; 
+END//	
 
 
 	
@@ -337,6 +267,204 @@ ORDER BY categoryName;
 END//
 
 
+
+-- public static function removeAddress($eventId, $address)
+    -- {
+        -- //remove an address from the event in the database
+
+        -- //categories, types, and addresses likely need their own
+        -- //methods for changes since they can have multiple entries
+    -- }
+
+
+CREATE PROCEDURE removeAddress(IN currentEventId INT, currentAddressId INT, currentAddressLine1 VARCHAR(45), currentAddressLine2 VARCHAR(45), currentCity VARCHAR(45), currentState VARCHAR(45), currentPostalCode VARCHAR(45))
+BEGIN
+START TRANSACTION;
+
+DELETE FROM UserAddresses
+WHERE currentAddressId = addressId;
+
+DELETE FROM Addresses
+WHERE currentAddressId = addressId;
+
+
+END//	
+		
+	
+	
+	
+
+
+  -- public static function addAddress($eventId, $address)
+    -- {
+	
+        -- //add an address to the event in the database
+
+        -- //categories, types, and addresses likely need their own
+        -- //methods for changes since they can have multiple entries
+    -- }
+
+
+CREATE PROCEDURE addAddress(IN currentEventId INT, addressId INT, addressLine1 VARCHAR(45), addressLine2 VARCHAR(45), city VARCHAR(45), `state` VARCHAR(45), postalCode VARCHAR(45))
+BEGIN
+START TRANSACTION;
+
+INSERT INTO Addresses VALUES
+(addressId, addressLine1,addressLine2,city,`state`,postalCode);
+
+COMMIT;
+END//
+	
+
+
+
+  -- public static function addType($eventId, $type)
+    -- {
+        -- //add a type to the event in the database
+
+        -- //categories, types, and addresses likely need their own
+        -- //methods for changes since they can have multiple entries
+    -- }
+
+
+CREATE PROCEDURE addType(IN currentEventId INT, currentTypeName VARCHAR(45))
+BEGIN
+START TRANSACTION;
+
+INSERT INTO eventTypes VALUES
+(typeId, DEFAULT);
+
+INSERT INTO Types VALUES
+(DEFAULT,typeName);
+
+COMMIT;
+END//
+	
+
+
+  -- public static function removeType($eventId, $type)
+    -- {
+        -- //remove a type from the event in the database
+
+        -- //categories, types, and addresses likely need their own
+        -- //methods for changes since they can have multiple entries
+    -- }
+
+CREATE PROCEDURE removeType(IN currentEventId INT, currentTypeName VARCHAR(45))
+BEGIN
+START TRANSACTION;
+
+DELETE FROM eventTypes
+WHERE currentEventId = eventId;
+
+DELETE FROM Types
+WHERE currentTypeName = typeName;
+
+
+END//	
+	
+	
+	
+	
+	
+    -- public static function removeCategory($eventId, $category)
+    -- {
+        -- //remove a category from the event in the database
+
+        -- //categories, types, and addresses likely need their own
+        -- //methods for changes since they can have multiple entries
+    -- }
+
+
+CREATE PROCEDURE removeCategory(IN currentCategoryId INT, currentCategoryName VARCHAR(45))
+BEGIN
+START TRANSACTION;
+
+DELETE FROM eventCategories
+WHERE currentCategoryId = categoryId;
+
+DELETE FROM Categories
+WHERE categoryName = eventId;
+
+
+END//
+	
+
+
+
+  -- public static function addCategory($eventId, $category)
+    -- {
+        -- //add a category to the event in the database
+
+        -- //categories, types, and addresses likely need their own
+        -- //methods for changes since they can have multiple entries
+    -- }
+
+CREATE PROCEDURE addCategory(IN currentEventId INT, currentCategoryName VARCHAR(45))
+BEGIN
+START TRANSACTION;
+
+INSERT INTO eventCategories VALUES
+(DEFAULT,eventId);
+
+INSERT INTO Categories VALUES
+(DEFAULT,categoryName);
+
+COMMIT;
+END//
+	
+	
+	
+
+
+   -- public static function deleteEvent($eventId)
+    -- {
+        -- //delete the event
+
+    -- }
+
+CREATE PROCEDURE deleteEvent(IN currentEventId INT)
+BEGIN
+START TRANSACTION;
+
+DELETE FROM Events 
+WHERE currentEventId = eventId;
+
+
+END//
+	
+	
+
+
+
+ -- public static function addEvent($event)
+    -- {
+        -- //add event to database
+    -- }
+
+
+CREATE PROCEDURE addEvent(IN eventName VARCHAR(45))
+BEGIN
+START TRANSACTION;
+
+INSERT INTO Events VALUES
+(DEFAULT, DEFAULT,eventName,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT);
+
+COMMIT;
+END//
+	
+	
+
+    -- -- public static function getEventsByDateRange($startDate, $endDate)
+    -- -- {
+        -- -- //return events that fall within the date range
+    -- -- }
+
+ CREATE PROCEDURE getEventsByDateRange(IN currentEventDate DATETIME, currentEndDate DATETIME)	
+ BEGIN
+SELECT eventName FROM Events	
+WHERE eventDate >= currentEventDate  AND endDate <= currentEndDate;
+END//	
 
 
 
