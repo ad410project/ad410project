@@ -37,7 +37,7 @@ foreach ($json_output as $k => $v) {
                 $sDate = $v[$i]->activityRecurrences[0]->activityStartDate;
                 $eDate = $v[$i]->activityRecurrences[0]->activityEndDate;
                 $e = substr($eDate, 0, 10);
-                $s= substr($sDate, 0, 10);
+                $s = substr($sDate, 0, 10);
                 $s_date = new DateTime($s);
                 $e_date = new DateTime($e);
                 $start_date = $s_date->format('M d Y');
@@ -49,20 +49,13 @@ foreach ($json_output as $k => $v) {
                 // print $name.", ".$address."<br><br>";
                 $lat = $v[$i]->place->geoPoint->lat;
                 $lng = $v[$i]->place->geoPoint->lon;
-                $geo_locals[] = [$name,$description, $street, $city, $start_date,$end_date,$type];
+                $geo_locals[] = [$name, $description, $street, $city, $start_date, $end_date, $type];
                 //print $geo_local."<br>";
             } catch (Exception $e) {
                 print $e->getMessage();
             }
 
         }
-        /*               foreach ($geo_locals as $locale) {
-                            foreach($locale as $city){
-                            echo $city." ";}
-                            echo "<br>";
-                        }*/
-
-
     }
 
 
@@ -73,20 +66,22 @@ foreach ($json_output as $k => $v) {
     <div class="col-sm-12">
         <div class="carousel-container">
             <ul>
-                <?php for($i = 0; $i < count($geo_locals); $i++) :?>
+                <?php for ($i = 0; $i < count($geo_locals); $i++) : ?>
                     <li>
                         <div class="card">
                             <!--                        <img class="card-img-top img-fluid" src="http://placehold.it/318x180" alt="Card image cap">-->
                             <div class="card-block">
                                 <p class="card-title"><?php echo $geo_locals[$i][0] ?></p>
-                                <p class="card-text"><?php echo $geo_locals[$i][4]." - ".$geo_locals[$i][5]?></p>
-                                <p class="card-text"><?php echo $geo_locals[$i][2].", ". $geo_locals[$i][3]?>, WA</p>
+                                <p class="card-text"><?php echo $geo_locals[$i][4] . " - " . $geo_locals[$i][5] ?></p>
+                                <p class="card-text"><?php echo $geo_locals[$i][2] . ", " . $geo_locals[$i][3] ?>,
+                                    WA</p>
                                 <div class="card-button">
-                                    <a href="#" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">More Info</a>
+                                    <a href="#myModal" data-id="<?php echo $i ?>"
+                                       class="open-AddBookDialog2 btn btn-info btn-sm" data-toggle="modal">More Info</a>
                                 </div>
                             </div>
                         </div>
-                    </li>  <?php endfor;?>
+                    </li>  <?php endfor; ?>
             </ul>
         </div>
     </div>
@@ -99,7 +94,7 @@ foreach ($json_output as $k => $v) {
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
-                Address, map....
+                <p id="description2"></p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
@@ -107,3 +102,12 @@ foreach ($json_output as $k => $v) {
         </div>
     </div>
 </div>
+<script>
+    $(document).on("click", ".open-AddBookDialog2", function () {
+        var local2 = <?php echo json_encode($geo_locals) ?>;
+        var myBookId2 = $(this).data('id');
+        var value2 = local2[myBookId2][1];
+        $(".modal-body #description2").html(value2);
+        $('#addBookDialog2').modal('show');
+    });
+</script>
