@@ -416,4 +416,12 @@ body {
         display: block;
         visibility: visible;
     }
+
+    .carousel-control-next, .carousel-control-prev {
+        width: .9%;
+    }
+}
+
+.card-text, .register {
+    font-size: small;
 }

@@ -19,6 +19,10 @@
     <link rel="stylesheet" href="views/styles/styles.css">
 
 
+    <!-- JQuery -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/jqueryui-editable/css/jqueryui-editable.css" rel="stylesheet"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/jqueryui-editable/js/jqueryui-editable.min.js"></script>
+
 </head>
 <body>
 <?php
