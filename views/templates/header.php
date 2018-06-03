@@ -15,9 +15,6 @@
                 echo '<li class="nav-item"><a class="nav-link" href="?controller=static&action=login">Login</a></li>';
             }
             ?>
-            <li class="nav-item">
-                <a class="nav-link" href="?controller=static&action=searchEvents">Search Events</a>
-            </li>
         </ul>
     </nav>
 </div>
