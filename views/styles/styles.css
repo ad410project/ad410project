@@ -319,6 +319,7 @@ span.carousel-control-prev-icon{
 }
 .btn-transparent:hover {
     background-color: #2D6077 !important;
+    animation: pulsate 1s ease-out infinite;
 }
 
 .btn-rounded {
@@ -337,6 +338,13 @@ span.carousel-control-prev-icon{
     -webkit-animation-duration: 1.5s;
     animation-duration: 1.5s;
 }
+
+@-webkit-keyframes pulsate {
+    0%   { box-shadow: 0 0 0 #F1F1F1; }
+    50%  { box-shadow: 0 0 17px #F1F1F1; }
+    100% { box-shadow: 0 0 0 #F1F1F1; }
+}
+
 
 @-webkit-keyframes fadeInRight {
     from {

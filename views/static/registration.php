@@ -25,10 +25,10 @@ if (isset($_POST['emailAddress']) && isset($_POST['password_1'])) {
         } else {
             echo "User Registration Failed" . $link->error;
         }
-    }else{
+    } else {
         echo 'nothing';
     }
-}else{
+} else {
     echo 'not set bbo';
 }
 ?>
@@ -61,7 +61,7 @@ if (isset($_POST['emailAddress']) && isset($_POST['password_1'])) {
             <div class="form-group col-md-6">
                 <label for="phoneNumber">Phone Number</label>
                 <input type="tel" class="form-control" id="phoneNumber" placeholder="Enter 10 digit phone number"
-                       name="phone" required
+                       name="phoneNumber" required
                        pattern="[0-9]{3}[0-9]{3}[0-9]{4}"
                        size="10">
             </div>
