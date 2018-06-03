@@ -19,7 +19,12 @@
     <link rel="stylesheet" href="views/styles/styles.css">
 
 
-    <!-- JQuery -->
+    <!-- For Editable fields -->
+    <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/js/bootstrap.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap-combined.min.css"></script>
+    <script src="http://vitalets.github.io/x-editable/assets/x-editable/bootstrap-editable/css/bootstrap-editable.css"></script>
+    <script src="http://vitalets.github.io/x-editable/assets/x-editable/bootstrap-editable/js/bootstrap-editable.js"></script>
+    <script src="http://vitalets.github.io/x-editable/assets/mockjax/jquery.mockjax.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/jqueryui-editable/css/jqueryui-editable.css" rel="stylesheet"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/jqueryui-editable/js/jqueryui-editable.min.js"></script>
 
