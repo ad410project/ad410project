@@ -30,6 +30,10 @@ class StaticController {
         require_once('views/static/logout.php');
     }
 
+    public function contact() {
+        require_once('views/static/contact.php');
+    }
+
 }
 
 ?>
