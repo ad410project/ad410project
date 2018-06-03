@@ -52,7 +52,23 @@ deleteorganizations
 
 getorganizationsusers
 
+addType
+
+removeType
+
 addUser
+
+addAddress
+
+removeAddress
+
+addCategory
+
+removeCategory
+
+addEvent
+
+deleteEvent
 
 editUser
 
@@ -61,3 +77,8 @@ editUserAddress
 deleteUser
 
 getUserById
+
+getEventsByDateRange
+
+
+
