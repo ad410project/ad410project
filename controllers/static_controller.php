@@ -15,7 +15,7 @@ class StaticController {
     }
 
     public function searchEvents() {
-        require_once('views/static/search_events.php');
+        require_once('views/static/search_events_public.php');
     }
 
     public function login() {
