@@ -1,5 +1,10 @@
 <?php
 
+require_once('connection.php');
+$link = Db::getInstance();
+$sql = "SELECT * FROM Events"; // TODO: there should be a query to get events by user, for now selecting all events.
+$allEvents = $link->query($sql);
+
 //Prints output from WEB service (http://developer.active.com/docs/read/Activity_APIs)
 
 $api_key = "rjq7yk9u6bmm6fs5zhyx6dd2";
@@ -97,11 +102,61 @@ $results = $json_output->results;
     </div>
 
     <div class="org_events">
-        <h1> My Events </h1>
 
-        <div>
-            <a href="#" id="username">user name</a>
-        </div>
+        <br>
+        <h4> My Events </h4>
+        <a href="?controller=dynamic&action=addEvent"> Add new event </a>
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>Event Name</th>
+                <th>Description</th>
+                <th>Date</th>
+                <th></th>
+                <th></th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <?php foreach ($allEvents as $event) : ?>
+                <tr class="delete_mem<?php echo $event['id'];?>">
+
+                    <td><?php echo $event['eventName']; ?></td>
+                    <td><?php echo $event['eventDescription']; ?></td>
+
+                    <td><?php
+                        if (!empty($event['eventDate'])) {
+                            $parsedEventDate = date('Y-m-d', strtotime($event['eventDate']));
+                        }
+                        echo $parsedEventDate; ?></td>
+
+                    <td>
+                        <form action="organization_events.php" method="post">
+                            <input type="hidden" name="action"
+                                   value="edit_events">
+
+                            <input type="hidden" name="eventId"
+                                   value="<?php echo $event['eventId']; ?>">
+
+                            <button type="submit" class="btn btn-primary" id="<?php echo $event['eventId'];?>">Edit</button>
+                        </form>
+                    </td>
+
+                    <td>
+                        <form action="organization_events.php" method="post">
+                            <input type="hidden" name="action"
+                                   value="delete_events">
+
+                            <input type="hidden" name="eventId"
+                                   value="<?php echo $event['eventId']; ?>">
+
+                            <button type="submit" class="btn btn-danger" id="<?php echo $event['eventId'];?>">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
     </div>
 
 
