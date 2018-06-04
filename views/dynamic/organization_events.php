@@ -16,10 +16,10 @@ if ($action == 'delete_event') {
 }
 
 //Prints output from WEB service (http://developer.active.com/docs/read/Activity_APIs)
-
+$current_date = date('Y-m-d');
 $api_key = "rjq7yk9u6bmm6fs5zhyx6dd2";
 $ch = curl_init();
-$url = "http://api.amp.active.com/v2/search?kids=true&category=event&start_date=2018-06-12..&near=Seattle,WA,US&radius=50&sort=date_asc&per_page=50&api_key=" . $api_key;
+$url = "http://api.amp.active.com/v2/search?kids=true&category=event&start_date=" . $current_date . "..&near=Seattle,WA,US&radius=50&sort=date_asc&per_page=50&api_key=" . $api_key;
 
 //Set the URL that you want to GET by using the CURLOPT_URL option.
 curl_setopt($ch, CURLOPT_URL, $url);
