@@ -42,6 +42,7 @@ endforeach;
 <br>
 <br>
 
+<!-- TODO: add action once the form is submitted-->
 <form name="editEventsForm" action="#" method="post">
 
     <div class="container">

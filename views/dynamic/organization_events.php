@@ -2,14 +2,14 @@
 
 require_once('connection.php');
 $link = Db::getInstance();
-$sql = "SELECT * FROM Events"; // TODO: there should be a query to get events by user, for now selecting all events.
+$sql = "SELECT * FROM Events"; // TODO: there should be a query to get events by user, for now selecting all events, need to be a backend call.
 $allEvents = $link->query($sql);
 
 $action = filter_input(INPUT_POST, 'action');
 if ($action == 'delete_event') {
     $eventId = filter_input(INPUT_POST, 'eventId', FILTER_VALIDATE_INT);
     if ($eventId != NULL) {
-        $query = "DELETE FROM Events WHERE eventId = $eventId"; // TODO
+        $query = "DELETE FROM Events WHERE eventId = $eventId"; // TODO: this needs to be a backend call
         $deletionResult = $link->query($query);
         $allEvents = $link->query($sql);
     }
@@ -86,6 +86,7 @@ $results = $json_output->results;
                                         </div>
                                         <div class="card-footer">
                                             <button> Add to my event</button>
+                                            <!-- TODO: Add function to add this event into events database-->
                                         </div>
                                     </div>
                                 </div>

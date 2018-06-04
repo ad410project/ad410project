@@ -3,6 +3,7 @@
 <br>
 <br>
 
+<!-- TODO: add action once the form is submitted-->
 <form name="addEventsForm" action="#" method="post">
 
     <div class="container">
