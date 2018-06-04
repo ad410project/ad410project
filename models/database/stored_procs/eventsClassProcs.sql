@@ -277,12 +277,12 @@ END//
     -- }
 
 
-CREATE PROCEDURE removeAddress(IN currentEventId INT, currentAddressId INT, currentAddressLine1 VARCHAR(45), currentAddressLine2 VARCHAR(45), currentCity VARCHAR(45), currentState VARCHAR(45), currentPostalCode VARCHAR(45))
+CREATE PROCEDURE removeAddress(IN currentEventId INT, currentAddressId INT)
 BEGIN
 START TRANSACTION;
 
-DELETE FROM UserAddresses
-WHERE currentAddressId = addressId;
+DELETE FROM EventAddresses
+WHERE currentEventId = eventId;
 
 DELETE FROM Addresses
 WHERE currentAddressId = addressId;
