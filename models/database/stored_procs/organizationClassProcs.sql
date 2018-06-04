@@ -1,6 +1,12 @@
+-- DROP COMMANDS --
+DROP PROCEDURE IF EXISTS `getOrganization`;
+DROP PROCEDURE IF EXISTS `deleteOrganization`;
+DROP PROCEDURE IF EXISTS `getOrganizationUsers`;
+DROP PROCEDURE IF EXISTS `addOrganizationUser`;
+
 DELIMITER //
 
-CREATE PROCEDURE `getOrginization` (IN orginizationIdp int)
+CREATE PROCEDURE `getOrganization` (IN orginizationIdp int)
 
 BEGIN
 SELECT organizationName
@@ -9,20 +15,19 @@ WHERE organizationid = organizationIdp;
 
 END//
 
-#deletes an organization and all related details based off organizationId
+#deletes an organization and a user from the organizationId
 
-CREATE PROCEDURE `deleteOrginization` (IN orginizationIdpd int)
+CREATE PROCEDURE `deleteOrganization` (IN organizationIdd int(11), UserId int(11))
 
 BEGIN
 
-DELETE organizationid, addressid, organizationName, organizationDescription, phoneNumber, organizationWebsite
-FROM organizations
-WHERE organizationid = organizationIdpd;
+DELETE FROM organizations
+WHERE organizationid = organizationIdd;
 
 END//
 
 
-CREATE PROCEDURE `getOrginizationUsers` (IN orginizationIdpu int)
+CREATE PROCEDURE `getOrganizationUsers` (IN orginizationIdpu int(11))
 
 BEGIN
 
@@ -32,4 +37,15 @@ WHERE organizationid = organizationIdpu;
 
 END//
 
-delimiter ;
+
+CREATE PROCEDURE `addOrganizationUser` (IN orginizationIdpu int(11), addressId int(11), organizationName varchar(45), 
+organizationDescription text, phoneNumber int(11), ogranizationWebsite varchar(45), userId int(11))
+
+BEGIN
+
+INSERT INTO organizations VALUES
+(organizationIdpu, addressId, organizationName, organizationDescription, phoneNumber, organizationWebsite, userIdaddressIdaddressIdorganizationsorganizations);
+
+END//
+
+DELIMITER;
