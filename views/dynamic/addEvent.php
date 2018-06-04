@@ -53,7 +53,10 @@
             </div>
         </div>
 
+        <button type="button" class="btn btn-light btn-rounded" onclick="window.history.back();" > Go Back </button>
         <button type="submit" class="btn btn-info btn-rounded">Add to my Event list</button>
+
+        <br><br><br>
     </div> <!-- end of div container -->
 
 </form>
