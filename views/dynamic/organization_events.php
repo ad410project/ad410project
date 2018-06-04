@@ -83,10 +83,10 @@ $results = $json_output->results;
                                             <?php
                                                 if ($onlineRegistration)
                                                 { ?>
-                                                    <p class="card-text register"> <a href="<?php echo $registrationUrlAdr; ?>"> Register </a> </p>
+                                                    <p class="card-text register"> <a href="<?php echo $registrationUrlAdr; ?>" target="_blank"> Register </a> </p>
                                                 <?php
                                                 } else { ?>
-                                                    <p class="card-text register"> Online Registration Not Available  <a href="<?php echo $registrationUrlAdr; ?>"> More Info </a></p>
+                                                    <p class="card-text register"> Online Registration Not Available  <a href="<?php echo $registrationUrlAdr; ?>" target="_blank"> More Info </a></p>
                                                 <?php
                                                 }
                                             ?>
