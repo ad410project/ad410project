@@ -52,8 +52,18 @@ $results = $json_output->results;
                             $topicTaxonomy = $v->assetTopics[0]->topic->topicTaxonomy;
                             $registrationUrlAdr = $v->registrationUrlAdr;
                             $addressUrl = $v->urlAdr;
+
                             $activityStartDate = $v->activityStartDate;
                             $activityEndDate = $v->activityEndDate;
+
+                            $parsedStartDate =  substr($activityStartDate, 0, 10);
+                            $parsedEndDate = substr($activityEndDate, 0, 10);
+
+                            $sDate = new DateTime($parsedStartDate);
+                            $eDate = new DateTime($parsedEndDate);
+                            $start_date = $sDate->format('M d Y');
+                            $end_date = $eDate->format('M d Y');
+
                             $placeName = $v->place->placeName;
                             $onlineRegistration = $v->assetLegacyData->onlineRegistration;
                             $description = $v->assetComponents[0]->assetName;
@@ -83,6 +93,7 @@ $results = $json_output->results;
 
                                             <p class="card-text"> <?php echo $description; ?> </p>
                                             <p class="card-text"> Place: <?php echo $placeName; ?> </p>
+                                            <p class="card-text"> Dates: <?php echo $start_date; ?> - <?php echo $end_date; ?></p>
                                         </div>
                                         <div class="card-footer">
                                             <button> Add to my event</button>
