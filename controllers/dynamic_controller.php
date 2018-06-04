@@ -13,6 +13,11 @@
     }
 
     public function addEvent() {
-          require_once('views/dynamic/addEvent.php');}
+          require_once('views/dynamic/addEvent.php');
+    }
+
+    public function editEvent() {
+          require_once('views/dynamic/editEvent.php');
+    }
   }
 ?>

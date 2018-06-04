@@ -5,6 +5,16 @@ $link = Db::getInstance();
 $sql = "SELECT * FROM Events"; // TODO: there should be a query to get events by user, for now selecting all events.
 $allEvents = $link->query($sql);
 
+$action = filter_input(INPUT_POST, 'action');
+if ($action == 'delete_event') {
+    $eventId = filter_input(INPUT_POST, 'eventId', FILTER_VALIDATE_INT);
+    if ($eventId != NULL) {
+        $query = "DELETE FROM Events WHERE eventId = $eventId"; // TODO
+        $deletionResult = $link->query($query);
+        $allEvents = $link->query($sql);
+    }
+}
+
 //Prints output from WEB service (http://developer.active.com/docs/read/Activity_APIs)
 
 $api_key = "rjq7yk9u6bmm6fs5zhyx6dd2";
@@ -131,21 +141,21 @@ $results = $json_output->results;
                         echo $parsedEventDate; ?></td>
 
                     <td>
-                        <form action="organization_events.php" method="post">
+                        <form action="?controller=dynamic&action=editEvent" method="POST">
                             <input type="hidden" name="action"
                                    value="edit_events">
 
                             <input type="hidden" name="eventId"
                                    value="<?php echo $event['eventId']; ?>">
 
-                            <button type="submit" class="btn btn-primary" id="<?php echo $event['eventId'];?>">Edit</button>
+                            <button type="submit" class="btn btn-primary" name="edit_event_btn" id="<?php echo $event['eventId'];?>">Edit</button>
                         </form>
                     </td>
 
                     <td>
-                        <form action="organization_events.php" method="post">
+                        <form action="?controller=dynamic&action=organization_events" method="post">
                             <input type="hidden" name="action"
-                                   value="delete_events">
+                                   value="delete_event">
 
                             <input type="hidden" name="eventId"
                                    value="<?php echo $event['eventId']; ?>">
