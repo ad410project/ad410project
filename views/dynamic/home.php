@@ -20,7 +20,7 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 
-    <link rel="stylesheet" href="../styles/styles.css">
+<!--    <link rel="stylesheet" href="../styles/styles.css">-->
 
     <script type="application/javascript" src="../scripts/main.js"></script>
     <script async defer

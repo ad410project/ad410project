@@ -9,7 +9,6 @@ class StaticController {
     public function error() {
         require_once('views/static/error.php');
     }
-
 }
 
 ?>

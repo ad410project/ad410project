@@ -69,7 +69,7 @@
                 header('Location: ?controller=dynamic&action=profile');
             } else {
 //3.1.3 If the login credentials doesn't match, he will be shown with an error message.
-                //echo "Invalid Login Credentials." . $link->error;
+                echo "Invalid Login Credentials." . $link->error;
             }
         }
         require_once('views/dynamic/login.php');

@@ -48,7 +48,6 @@
                 <select name="userRole" id="userRole" required>
                     <option value="">Select...</option>
                     <option value="user">Individual User</option>
-                    <option value="admin">Admin</option>
                     <option value="organization">Organization</option>
                 </select>
             </div>
