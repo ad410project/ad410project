@@ -52,12 +52,12 @@ SET
 WHERE childId = childIdIn;
 END//
 
-/*findChild(userIdIn)
-	Returns a list of all children associated with a given userId*/
-CREATE PROCEDURE findChild(IN userIdIn INT)
+/*findChild(userEmailIn)
+	Returns a list of all children associated with a given userEmail*/
+CREATE PROCEDURE findChild(IN userEmailIn INT)
 BEGIN
 SELECT * FROM children
-WHERE userId = userIdIn;
+WHERE userEmail = userEmailIn;
 END//
 
 delimiter ;
