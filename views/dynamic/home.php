@@ -6,8 +6,8 @@
  * Time: 11:00 AM
  */
 ?>
-<!DOCTYPE html>
-<html xmlns:float="http://www.w3.org/1999/xhtml">
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:float="http://www.w3.org/1999/xhtml">-->
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
@@ -20,7 +20,7 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 
-    <link rel="stylesheet" href="../styles/styles.css">
+<!--    <link rel="stylesheet" href="../styles/styles.css">-->
 
     <script type="application/javascript" src="../scripts/main.js"></script>
     <script async defer
@@ -76,7 +76,7 @@
             <div id="map" class="container tab-pane active"></div>
             <!-- require php script here to load variables but don't display on page -->
             <div id="list" class="container tab-pane fade" style="height: 0; width: 0">
-                <?php require('../search_events_curlAPI.php'); ?>
+                <?php require('views/dynamic/search_events_curlAPI.php'); ?>
             </div>
             <div id="calendar" class="container tab-pane fade align-top">
                 <iframe src="https://calendar.google.com/calendar/embed?showTitle=0&amp;height=400&amp;wkst=1&amp;
@@ -114,4 +114,4 @@
     </section>
 </div>
 </body>
-</html>
+<!--</html>-->
