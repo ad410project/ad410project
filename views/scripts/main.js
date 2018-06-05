@@ -212,10 +212,7 @@ function sendValuesToPHP()
         }
     })
 }
-$('ul').owlCarousel({
-    items: 5,
-    addClassActive: true
-});
+
 
 function swap_search_distance(){
     var distance = document.getElementById("distance_search_content");
@@ -230,4 +227,6 @@ function swap_search_date(){
     distance.style.display = "none";
     date.style.display = "block";
 }
+
+
 
