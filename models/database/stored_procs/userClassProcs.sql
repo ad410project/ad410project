@@ -20,14 +20,14 @@ BEGIN
 START TRANSACTION;
 
 INSERT INTO Users VALUES
-(userEmail, userPassword, DEFAULT, DEFAULT, DEFAULT, 0, 
+(DEFAULT, userEmail, userPassword, DEFAULT, DEFAULT, DEFAULT, 0, 
 (SELECT userTypeId FROM userType WHERE userTypeName = 'Registered'));
 
 INSERT INTO Addresses VALUES
 (DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT);
 
 INSERT INTO UserAddresses VALUES
-(userEmail, LAST_INSERT_ID());
+((SELECT userId FROM Users WHERE userEmail = email), LAST_INSERT_ID());
 
 COMMIT;
 END//

@@ -10,16 +10,16 @@ INSERT INTO UserType VALUES
 
  -- Filling Users Table
  INSERT INTO Users VALUES
-	('notornados@yahoo.com', 'Ka-El', 'Jonathan', 'Kent', NULL, 0, 2), 
-    ('morethanbutler@wayne.com', 'ihatebats', 'Alfred', 'Pennyworth', 4255551212, 0, 2), 
-    ('howard@starkindustries.com', 'jarvis', 'Howard', 'Stark', 4254444444, 0, 1),
-    ('jackkirby@prodigy.com', 'theCreator', 'Jack', 'Kirby', NULL, 0, 2),			
-    ('jack@reddevilgym.com', 'Battlin', 'Jack', 'Murdock', 6066665555, 0, 3),			
-    ('margret_carter@aol.com', 'knownValue', 'Margert', 'Carter', NULL, 0, 4),		
-    ('lynda1@aol.com', 'Hippolyta', 'Lynda', 'Carter', 3609871234, 0, 2), 			
-    ('ms_marvel@yahoo.com', 'Avengers', 'Carol',  'Danvers', NULL, 0, 2), 			
-    ('lucas_carl@gmail.com', 'Always-Forward', 'Carl', 'Lucas', 4255558888, 0, 1),		
-    ('may_be_not@gmail.com', 'responsiblity>power', 'May', 'Parker', 2065557980, 0, 2); 
+	(DEFAULT, 'notornados@yahoo.com', 'Ka-El', 'Jonathan', 'Kent', NULL, 0, 2), 
+    (DEFAULT, 'morethanbutler@wayne.com', 'ihatebats', 'Alfred', 'Pennyworth', 4255551212, 0, 2), 
+    (DEFAULT, 'howard@starkindustries.com', 'jarvis', 'Howard', 'Stark', 4254444444, 0, 1),
+    (DEFAULT, 'jackkirby@prodigy.com', 'theCreator', 'Jack', 'Kirby', NULL, 0, 2),			
+    (DEFAULT, 'jack@reddevilgym.com', 'Battlin', 'Jack', 'Murdock', 6066665555, 0, 3),			
+    (DEFAULT, 'margret_carter@aol.com', 'knownValue', 'Margert', 'Carter', NULL, 0, 4),		
+    (DEFAULT, 'lynda1@aol.com', 'Hippolyta', 'Lynda', 'Carter', 3609871234, 0, 2), 			
+    (DEFAULT, 'ms_marvel@yahoo.com', 'Avengers', 'Carol',  'Danvers', NULL, 0, 2), 			
+    (DEFAULT, 'lucas_carl@gmail.com', 'Always-Forward', 'Carl', 'Lucas', 4255558888, 0, 1),		
+    (DEFAULT, 'may_be_not@gmail.com', 'responsiblity>power', 'May', 'Parker', 2065557980, 0, 2); 
     
 -- Adderess Table
 INSERT INTO Addresses VALUES
@@ -61,16 +61,16 @@ INSERT INTO Organizations VALUES
  
  -- UserAdresses Table 
 INSERT INTO UserAddresses VALUES
-	('notornados@yahoo.com',1),
-    ('morethanbutler@wayne.com',2),
-    ('howard@starkindustries.com',3),
-    ('jackkirby@prodigy.com',4),
-    ('jack@reddevilgym.com',5),
-    ('margret_carter@aol.com',6),
-    ('lynda1@aol.com',7),
-    ('ms_marvel@yahoo.com',8),
-    ('lucas_carl@gmail.com',9),
-    ('may_be_not@gmail.com',10);
+	(1,1),
+    (2,2),
+    (3,3),
+    (4,4),
+    (5,5),
+    (6,6),
+    (7,7),
+    (8,8),
+    (9,9),
+    (10,10);
     
 -- EventAdress Tables
 INSERT INTO EventAddresses VALUES
@@ -81,16 +81,16 @@ INSERT INTO EventAddresses VALUES
      
 -- Children Table
 INSERT INTO Children VALUES
-	(DEFAULT, 'notornados@yahoo.com', 'Clark', 'Kent', 20060628, 'Kyptonite', NULL),
-    (DEFAULT, 'morethanbutler@wayne.com', 'Bruce', 'Wayne', 20050615, 'Clowns', 425551212),
-    (DEFAULT, 'howard@starkindustries.com', 'Tony', 'Stark', 20080502, 'Weak Heart', 4254444444),
-    (DEFAULT, 'jackkirby@prodigy.com', 'Steve', 'Rogers', 20110622, 'Ice', NULL),
-    (DEFAULT, 'jack@reddevilgym.com','Matt', 'Murdock', 20030214, 'Asthma', 6066665555),
-    (DEFAULT, 'margret_carter@aol.com', 'Peggy', 'Carter', 20110623, NULL, 3609871234),
-    (DEFAULT, 'lynda1@aol.com', 'Diana', 'Prince', 20140602, NULL, NULL),
-    (DEFAULT, 'ms_marvel@yahoo.com', 'Jessica', 'Jones', 20070804, NULL, NULL),
-    (DEFAULT, 'lucas_carl@gmail.com', 'Luke', 'Cage', 20090909, NULL, 4255558888),
-    (DEFAULT, 'may_be_not@gmail.com', 'Peter', 'Parker', 20020503, NULL, 2065557980);
+	(DEFAULT, 1, 'Clark', 'Kent', 20060628, 'Kyptonite', NULL),
+    (DEFAULT, 2, 'Bruce', 'Wayne', 20050615, 'Clowns', 425551212),
+    (DEFAULT, 3, 'Tony', 'Stark', 20080502, 'Weak Heart', 4254444444),
+    (DEFAULT, 4, 'Steve', 'Rogers', 20110622, 'Ice', NULL),
+    (DEFAULT, 5,'Matt', 'Murdock', 20030214, 'Asthma', 6066665555),
+    (DEFAULT,6, 'Peggy', 'Carter', 20110623, NULL, 3609871234),
+    (DEFAULT,7, 'Diana', 'Prince', 20140602, NULL, NULL),
+    (DEFAULT,8, 'Jessica', 'Jones', 20070804, NULL, NULL),
+    (DEFAULT,9, 'Luke', 'Cage', 20090909, NULL, 4255558888),
+    (DEFAULT,10, 'Peter', 'Parker', 20020503, NULL, 2065557980);
     
 -- Child Event Linking Table
 INSERT INTO ChildEvents VALUES
