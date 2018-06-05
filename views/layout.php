@@ -21,7 +21,6 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link rel="stylesheet" href="views/styles/styles.css">
 
-
 </head>
 <body>
 <?php

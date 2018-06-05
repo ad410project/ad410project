@@ -89,5 +89,17 @@
     public function contact() {
         require_once('views/dynamic/contact.php');
     }
+
+    public function organization_events() {
+        require_once('views/dynamic/organization_events.php');
+    }
+
+    public function addEvent() {
+          require_once('views/dynamic/addEvent.php');
+    }
+
+    public function editEvent() {
+          require_once('views/dynamic/editEvent.php');
+    }
   }
 ?>
