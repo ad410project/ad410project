@@ -44,7 +44,7 @@ $results = $json_output->results;
         <h1 class="text-center mb-3">Events</h1>
 
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner row w-100 mx-auto">
+            <div class="carousel-inner-org row w-100 mx-auto">
 
                 <?php
                     foreach ($results as $k => $v) {
@@ -102,15 +102,11 @@ $results = $json_output->results;
                                     </div>
                                 </div>
 
-
-
                             <?php
 
                     } // end for-each
                 ?>
-
-
-            </div> <!--  end carousel-inner row w-100 mx-auto -->
+            </div> <!--  end carousel-inner-org row w-100 mx-auto -->
 
             <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -120,11 +116,10 @@ $results = $json_output->results;
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="sr-only">Next</span>
             </a>
-        </div>
-    </div>
+        </div> <!-- end myCarousel -->
+    </div> <!-- end container-fluid -->
 
     <div class="org_events">
-
         <br>
         <h4> My Events </h4>
         <a href="?controller=dynamic&action=addEvent"> Add new event </a>
@@ -179,7 +174,7 @@ $results = $json_output->results;
             <?php endforeach; ?>
             </tbody>
         </table>
-    </div>
+        <br><br>
+    </div> <!-- end div org_events-->
 
-
-</div>
+</div> <!-- end container-->
