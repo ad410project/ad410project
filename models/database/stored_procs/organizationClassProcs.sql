@@ -6,7 +6,7 @@ DROP PROCEDURE IF EXISTS `addOrganizationUser`;
 
 DELIMITER //
 
-CREATE PROCEDURE `getOrganization` (IN orginizationIdp int)
+CREATE PROCEDURE `getOrganization` (IN orginizationIdp int(11))
 
 BEGIN
 SELECT organizationName
@@ -17,7 +17,7 @@ END//
 
 #deletes an organization and a user from the organizationId
 
-CREATE PROCEDURE `deleteOrganization` (IN organizationIdd int(11), UserId int(11))
+CREATE PROCEDURE `deleteOrganization` (IN organizationIdd int(11))
 
 BEGIN
 
