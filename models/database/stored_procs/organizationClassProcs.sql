@@ -48,4 +48,4 @@ INSERT INTO organizations VALUES
 
 END//
 
-DELIMITER;
+DELIMITER ;
