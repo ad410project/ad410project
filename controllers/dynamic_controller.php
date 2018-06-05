@@ -85,5 +85,9 @@
         header('Location: ?controller=static&action=landing');
 //        require_once('views/dynamic/logout.php');
     }
+
+    public function contact() {
+        require_once('views/dynamic/contact.php');
+    }
   }
 ?>
