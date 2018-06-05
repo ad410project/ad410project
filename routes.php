@@ -9,7 +9,7 @@ function call($controller, $action) {
             $controller = new StaticController();
             break;
         case 'dynamic':
-//            require_once('model/model.php');
+            require_once('models/users.php');
             $controller = new DynamicController();
             break;
     }
@@ -17,8 +17,7 @@ function call($controller, $action) {
     $controller->{ $action }();
 }
 
-$controllers = array('static' => ['landing', 'error', 'registration', 'login', 'profile', 'logout', 'searchEvents', 'contact', 'terms'], 'dynamic' => ['home', 'error', 'organization_events', 'addEvent', 'editEvent']);
-
+$controllers = array('static' => ['landing', 'error', 'terms'], 'dynamic' => ['home', 'error', 'registration', 'login',  'searchEvents', 'logout', 'profile', 'contact','organization_events', 'addEvent', 'editEvent']);
 
 // check that the requested controller and action are both allowed
 // if someone tries to access something else
