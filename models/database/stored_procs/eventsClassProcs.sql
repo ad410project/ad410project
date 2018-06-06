@@ -443,15 +443,48 @@ END//
     -- }
 
 
-CREATE PROCEDURE addEvent(IN eventName VARCHAR(45))
+CREATE PROCEDURE addEvent(IN currentEventId INT, currentOrganizationId INT, currentEventName VARCHAR(45), currentEventDescription TEXT, currentEventPrice INT, currentMinAge INT, currentMaxAge INT, currentEventDate DATETIME, currentRegistrationOpen DATETIME, currentRegistrationClose DATETIME)
+
 BEGIN
 START TRANSACTION;
 
 INSERT INTO Events VALUES
-(DEFAULT, DEFAULT,eventName,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT);
+(currentEventId, currentOrganizationId,currentEventName,currentEventDescription,currentEventPrice,currentMinAge,currentMaxAge,currentEventDate,currentRegistrationOpen,currentRegistrationClose);
 
 COMMIT;
 END//
+
+
+
+CREATE PROCEDURE editEvent
+IN currentEventId INT(11),
+IN currentOrganizionId INT(11),
+IN currentEventName VARCHAR(45),
+IN currentEventDescription TEXT,
+IN currentEventPrice INT,
+IN currentMinAge INT,
+IN currentMaxAge INT,
+IN currentEventDate DATETIME,
+IN currentRegistrationOpen DATETIME,
+IN currentRegistrationClose DATETIME,
+BEGIN
+UPDATE Events SET
+  `eventId` = currentEventId,
+  `organizionId` = currentOrganizionId,
+  `eventName` = currentEventName,
+  `eventDescription` = currentEventDescription,
+  `eventPrice` = currentEventPrice,
+  `minAge` = currentMinAge,
+   `maxAge` = currentMaxAge,
+    `eventDate` = currentEventDate,
+	 `registrationOpen` = currentRegistrationOpen,
+	  `registrationClose` = currentRegistrationClose,
+  `eventTypeId` = (SELECT eventTypeId FROM eventType WHERE eventTypeName = eventType) 
+WHERE eventId = currentEventId;
+END//
+
+
+
 	
 	
 
