@@ -37,8 +37,8 @@ $json_output = json_decode($data);
 $results = $json_output->results;
 ?>
 
-
-<div class="container">
+<link rel="stylesheet" href="views/styles/org-carousel.css">
+<div id="main_container" class="jumbotron-fluid">
 
     <div class="container-fluid">
         <h1 class="text-center mb-3">Events</h1>
@@ -117,12 +117,12 @@ $results = $json_output->results;
                 <span class="sr-only">Next</span>
             </a>
         </div> <!-- end myCarousel -->
-    </div> <!-- end container-fluid -->
+
 
     <div class="org_events">
         <br>
         <h4> My Events </h4>
-        <a href="?controller=dynamic&action=addEvent"> Add new event </a>
+        <a href="?controller=dynamic&action=addEvent"> <i class="fas fa-calendar-alt"></i> Add Events</a>
         <table class="table table-hover">
             <thead>
             <tr>
