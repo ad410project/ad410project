@@ -8,6 +8,11 @@
 
 session_start();
 
+if (!isset($_SESSION['emailAddress'])) {
+    header("location: ?controller=static&action=login");
+    exit;
+}
+
 if(isset($_SESSION['emailAddress']) && !isset($_POST['emailAddress'])) {
     $userInfo = array_values(getUser());
 }
@@ -23,7 +28,7 @@ if(isset($_POST['emailAddress']))
 
 function getUser()
 {
-    require_once "../../connection.php";
+    //require_once "../../connection.php";
 
     $mysqli = null;
     static $id;
@@ -181,8 +186,8 @@ function addKid($kidValues)
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 
-    <link rel="stylesheet" href="../styles/styles.css">
-    <script type="application/javascript" src="../scripts/main.js"></script>
+    <!--<link rel="stylesheet" href="../styles/styles.css"> -->
+
 
 </head>
 <body>
@@ -260,7 +265,7 @@ function addKid($kidValues)
         <!-- <form method="post" action="userProfile.php"> -->
         <button type="submit" class="col-md-12 btn btn-secondary" name="btnUpdateProfile" onsubmit="">Update</button>
     </form>
-
+<!--
     <section id="bottom-nav_section">
         <div class="d-flex justify-content-center fixed-bottom">
             <div class="p-2 my-flex-item"><a href="">Contact us</a></div>
@@ -268,9 +273,7 @@ function addKid($kidValues)
             <div class="p-2 my-flex-item"><a href="">FAQs</a></div>
         </div>
     </section>
-
-
-    <!--</div> <!-- end row2 -->
+-->
 </div>
 </body>
 </html>
