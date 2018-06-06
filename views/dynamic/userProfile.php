@@ -8,11 +8,9 @@
 
 session_start();
 
-if(isset($_SESSION['email']) && !isset($_POST['email']))
-{
+if(isset($_SESSION['email']) && !isset($_POST['email'])) {
     $userInfo = array_values(getUser());
 }
-
 
 if(isset($_POST['email']))
 {
