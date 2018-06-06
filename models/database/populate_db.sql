@@ -50,14 +50,14 @@ INSERT INTO Organizations VALUES
  
  -- Events Table
  INSERT INTO `Events` VALUES
-	(DEFAULT, 2, 'Woodland Park Day Camp', 'Our day camp is located at Lower Woodland, the entrance at N 50th St and Woodland Park Ave N',NULL, NULL,NULL,NULL,NULL,NULL, NULL),
+	(DEFAULT, 2, 'Woodland Park Day Camp', 'Our day camp is located at Lower Woodland, the entrance at N 50th St and Woodland Park Ave N',NULL, NULL,NULL,NULL,NULL,NULL, NULL,145,186),
     (DEFAULT, 2, ' Carkeek Park Day Camp', 'Carkeek enjoys 220 acres of forest, wetlands, meadow, and beach. Our day camp uses the upper meadow as a base for all operations throughout the week, giving the campers a chance to explore Carkeek’s various ecosystems',
-		240.00, 5, 13, 20170717, NULL, NULL, NULL),
+		240.00, 5, 13, 20170717, NULL, NULL, NULL,38,2888),
 	(DEFAULT, 1, 'Flying Spaghetti Western: June Session', 'Programming and activities will be the same at both camp sessions', 
-		700.00, 8, 17, 20180717, 20180428, 20180629, NULL),
+		700.00, 8, 17, 20180717, 20180428, 20180629, NULL,264,904),
 	(DEFAULT, 1, 'Flying Spaghetti Western: August Session', 'Programming and activities will be the same at both camp sessions', 
-		700.00, 8, 17, 20180717, 20180428, 20180629, NULL),
-	(DEFAULT, 2, 'Camp Sealth: Session 1', 'Short week', 340.00, 6, 14, NULL, NULL, NULL, NULL);
+		700.00, 8, 17, 20180717, 20180428, 20180629, NULL,11,1221),
+	(DEFAULT, 2, 'Camp Sealth: Session 1', 'Short week', 340.00, 6, 14, NULL, NULL, NULL, NULL,66,1604);
  
  -- UserAdresses Table 
 INSERT INTO UserAddresses VALUES
@@ -94,63 +94,25 @@ INSERT INTO Children VALUES
     
 -- Child Event Linking Table
 INSERT INTO ChildEvents VALUES
-(1,3),
-(2,2),
-(2,3),
-(3,1),
-(3,3),
-(4,1),
-(5,4),
-(5,5),
-(6,4),
-(7,2),
-(8,3),
-(9,1),
-(10,2),
-(10,3);
-
--- Types Table
-INSERT INTO `Types` VALUES
-(DEFAULT, 'Day Camp'),
-(DEFAULT, 'Summer Camp'),
-(DEFAULT, 'Overnight Camp'),
-(DEFAULT, 'Half Day'),
-(DEFAULT, 'Full Day'),
-(DEFAULT, 'One Week'),
-(DEFAULT, 'Two Week'),
-(DEFAULT, 'Full Summer'),
-(DEFAULT, 'Other');
-
--- Event Types Linking Table
-INSERT INTO EventTypes VALUES
-(2,1),
-(1,2),
-(1,3),
-(3,4),
-(2,5);
-
--- Categories Table
-INSERT INTO Categories VALUES
-(DEFAULT, 'Academics'),
-(DEFAULT, 'Animals & Farms'),
-(DEFAULT, 'Arts & Crafts'),
-(DEFAULT, 'Language & Culture'),
-(DEFAULT, 'Multi-Activity Day Camp'),
-(DEFAULT, 'Nature & Environment'),
-(DEFAULT, 'Overnight Camp'),
-(DEFAULT, 'Performing Arts'),
-(DEFAULT, 'Religious Programs'),
-(DEFAULT, 'Science & Technology'),
-(DEFAULT, 'Special Needs'),
-(DEFAULT, 'Sports & Fitness');
-
--- Event Categories Linking Table
-INSERT INTO EventCategories VALUES
-(8,1),
-(6,2),
-(3,3),
-(2,4),
-(1,5),
-(7,3),
-(6,2),
-(6,5);
+(NULL,3,3),
+(NULL,2,1),
+(NULL,3,1),
+(NULL,1,2),
+(NULL,3,2),
+(NULL,1,1),
+(NULL,4,1),
+(NULL,5,1),
+(NULL,3,6),
+(NULL,2,7),
+(NULL,3,8),
+(NULL,1,10),
+(NULL,3,9),
+(NULL,1,8),
+(NULL,4,6),
+(NULL,5,2),
+(6,4,3),
+(7,2,4),
+(8,3,5),
+(9,1,6),
+(10,2,10),
+(10,3,10);
