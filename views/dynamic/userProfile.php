@@ -8,15 +8,15 @@
 
 session_start();
 
-if(isset($_SESSION['email']) && !isset($_POST['email'])) {
+if(isset($_SESSION['emailAddress']) && !isset($_POST['emailAddress'])) {
     $userInfo = array_values(getUser());
 }
 
-if(isset($_POST['email']))
+if(isset($_POST['emailAddress']))
 {
-    if(!isset($_SESSION['email']))
+    if(!isset($_SESSION['emailAddress']))
     {
-        $_SESSION['email'] = $_POST['email'];
+        $_SESSION['emailAddress'] = $_POST['emailAddress'];
     }
     $userInfo = array_values(getUser());
 }
@@ -45,7 +45,7 @@ function getUser()
 
     try {
         //for now _SESSION or _POST provides email address
-        $userEmail = $_SESSION['email'];
+        $userEmail = $_SESSION['emailAddress'];
 
         //connect, get all info about a specific user
         $mysqli = Db::getInstance();
