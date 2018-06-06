@@ -1,271 +1,359 @@
 <?php
     class Organization {
         
-        public $organization_id; // Organization ID Ex: <to be defined>
-        public $name;            // Name            Ex: The Summer Camp Group
-        public $phone;           // Phone Number    Ex: 123-456-7891
-        public $email;           // Email           Ex: test@example.com
-        public $url;             // Website URL     Ex: www.example.com
-        public $admin_id;        // Admin User ID   Ex: <to be defined>
-        public $addressStreet;   // Street address  Ex: 1600 Amphitheatre Pkwy.
-        public $addressCity;     // City            Ex: Mountain View
-        public $addressState;    // State           Ex: CA
-        public $addressZipCode;  // Postal Zipcode  Ex: 94043
-        public $addressCountry;  // Country         Ex: USA
+        private $orgId;           // ID Ex: <to be defined>
+        private $orgName;         // Name            Ex: The Summer Camp Group
+        private $orgPhoneNumber;  // Phone Number    Ex: 123-456-7891
+        private $orgDescription;  // Description     Ex: 'Summer Kids Camp etc.'
+        private $orgWebsite;      // Website URL     Ex: www.example.com
+        private $orgAdminId;      // Admin User ID   Ex: <to be defined>
+        private $addressId        // Address ID      Ex. 17 - within the database
+        private $addressLine1;    // Address Line 1  Ex: 1600 Amphitheatre Pkwy.
+        private $addressLine2;    // Address Line 2  Ex: Unit 2
+        private $addressCity;     // City            Ex: Mountain View
+        private $addressState;    // State           Ex: CA
+        private $addressZipCode;  // Postal Zipcode  Ex: 94043
         
         /* 
         * Construct an Organization 
         *
-        * @param Integer        $organization_id Organization ID              Ex: <to be defined>
-        * @param String         $name            Organization Name            Ex: The Summer Camp Group
-        * @param String         $phone           Organization Phone Number    Ex: 123-456-7891
-        * @param String         $email           Organization Email           Ex: test@example.com
-        * @param String         $url             Organization Website URL     Ex: www.example.com
-        * @param Integer        $admin_id        Organization Admin User ID   Ex: <to be defined>
-        * @param String         $addressStreet   Organization Street address  Ex: 1600 Amphitheatre Pkwy.
+        * @param Integer        $orgId           Organization ID              Ex: <to be defined>
+        * @param String         $orgName         Organization Name            Ex: The Summer Camp Group
+        * @param Integer        $orgPhone        Organization Phone Number    Ex: 123-456-7891
+        * @param String         $orgDescription  Organization Description     Ex: test@example.com
+        * @param String         $orgWebsite      Organization Website URL     Ex: www.example.com
+        * @param Integer        $orgAdminId      Organization Admin User ID   Ex: <to be defined>
+        * @param Integer        $addressId       Organization Address ID      Ex. 2
+        * @param String         $addressLine1    Organization Street address  Ex: 1600 Amphitheatre Pkwy.
         * @param String         $addressCity     Organization State           Ex: CA
         * @param String         $addressState    Organization City            Ex: Mountain View
         * @param Integer        $addressZipCode  Organization Postal Zipcode  Ex: 94043
-        * @param String         $addressCountry  Organization Country         Ex: USA
         */
-        public function __construct($organization_id, $name, $phone, $email, $url, $admin_id, $addressStreet, 
-            $addressCity, $addressState, $addressZipCode, $addressCountry ) {
+        public function __construct($orgId, $orgName, $orgPhone, $orgDescription, $orgWebsite, $admin_id, 
+            $addressLine1, $addressLine2, $addressCity, $addressState, $addressZipCode) {
             
-            $this->organization_id  = $organization_id; 
-            $this->name             = $name;            
-            $this->phone            = $phone;
-            $this->email            = $email;
-            $this->url              = $url;
+            $this->orgId            = $orgId; 
+            $this->orgName          = $orgName;            
+            $this->orgPhone         = $orgPhone;
+            $this->orgDescription   = $orgDescription;
+            $this->orgWebsite       = $orgWebsite;
             $this->admin_id         = $admin_id;
-            $this->addressStreet	= $addressStreet; 
+            $this->addressId        = $addressId;
+            $this->addressLine1	    = $addressLine1; 
+            $this->addressLine2	    = $addressLine2;
             $this->addressCity	    = $addressCity; 
             $this->addressState     = $addressState;   
             $this->addressZipCode   = $addressZipCode;      
-            $this->addressCountry   = $addressCountry;	
-
         }
         /* 
-        * Add an Organization to the Database 
+        * Add an Organization to the Database with the following attributes
         *
-        * @param String         $name            Organization Name            Ex: The Summer Camp Group
-        * @param String         $phone           Organization Phone Number    Ex: 123-456-7891
-        * @param String         $email           Organization Email           Ex: test@example.com
-        * @param String         $url             Organization Website URL     Ex: www.example.com
-        * @param Integer        $admin_id        Organization Admin User ID   Ex: <to be defined>
-        * @param String         $addressStreet   Organization Street address  Ex: 1600 Amphitheatre Pkwy.
+        * @param Integer        $orgId           Organization ID              Ex: <to be defined>
+        * @param String         $orgName         Organization Name            Ex: The Summer Camp Group
+        * @param Integer        $orgPhone        Organization Phone Number    Ex: 123-456-7891
+        * @param String         $orgDescription  Organization Description     Ex: test@example.com
+        * @param String         $orgWebsite      Organization Website URL     Ex: www.example.com
+        * @param Integer        $orgAdminId      Organization Admin User ID   Ex: <to be defined>
+        * @param Integer        $addressId       Organization Address ID      Ex. 2
+        * @param String         $addressLine1    Organization Street address  Ex: 1600 Amphitheatre Pkwy.
         * @param String         $addressCity     Organization State           Ex: CA
         * @param String         $addressState    Organization City            Ex: Mountain View
-        * @param Integer        $addressZipCode  Organization Postal Zipcode  Ex: 94043
-        * @param String         $addressCountry  Organization Country         Ex: USA
+        * @param String         $addressZipCode  Organization Postal Zipcode  Ex: 94043
         *
         */
-        public static function addOrganization($organization_id, $name, $phone, $email, $url, $admin_id, 
-            $addressStreet, $addressCity, $addressState, $addressZipCode, $addressCountry) {      
+        public static function addOrganization($orgId, $orgName, $orgDescription, $orgPhone, $orgWebsite, $admin_id, 
+            $addressLine1, $addressLine2, $addressCity, $addressState, $addressZipCode) {      
                 
             $db = Db::getInstance();
-    
-            // Prepare the query 
-            $req = $db->prepare('INSERT INTO TABLE_NAME name, phone, email, url, admin_id, addressStreet, addressCity,
-                addressState, addressZipCode, addressCountry 
-                VALUES ?, ?, ?, ?, ?, ?, ?, ?, ?, ?');
-        
 
-            // Bind parameters
-            $req->bind_param('ssssssssss', $name, $phone, $email, $url, $admin_id, $addressStreet, 
-            $addressCity, $addressState, $addressZipCode, $addressCountry);
+            // Prepare query to create address record
+            $req = $db->prepare('INSERT INTO addresses VALUES DEFAULT, ?, ?, ?, ?, ?;');
+
+            // Bind parameters for address
+            $req->bind_param('sssss', $addressLine1, $addressLine2 $addressCity, $addressState, $addressZipCode);
 
             $req->execute();
+
+            // Prepare query to obtain the newly added address ID
+            $req = $db->prepare('SELECT addressID 
+                                    FROM addresses 
+                                    WHERE addressLine1 = ?
+                                        AND addressLine2 = ?
+                                        AND city = ?
+                                        AND state = ?
+                                        AND postalCode = ?;');
+
+            // Bind parameters for address
+            $req->bind_param('sssss', $addressLine1, $addressLine2 $addressCity, $addressState, $addressZipCode);
+
+            $req->execute();
+            
+            $req->bind_result($addressId);
+
+            // Prepare query to insert new organization in the database
+            $req = $db->prepare('INSERT INTO organizations VALUES (DEFAULT, ?, ?, ?, ?, ?, ?);');
+       
+            // Bind parameters for address
+            $req->bind_param('issisi', $addressId, $orgName, $orgDescription, $orgPhone, $orgWebsite, $admin_id);
+            
+            // Prepare query to obtain the newly added organization ID
+            $req = $db->prepare('SELECT organizationId FROM organizations WHERE addressId = ?;');
+
+            // Bind parameters for address
+            $req->bind_param('i', $addressId);
+
+            $req->execute();
+            
+            $req->bind_result($orgId);
+
+            // Close Connection
+            $db->close();
+
+            if ($orgId) { 
+                return $orgId;
+            }
+            else {
+                return 'New Organization could not be created';
+            }
         }
         /* 
-        * Edit an Organization in the Database 
+        * Edit an Organization in the Database including the following attributes for an organization. 
         *
-        * @param Integer        $organization_id Organization ID              Ex: <to be defined>
-        * @param String         $name            Organization Name            Ex: The Summer Camp Group
-        * @param String         $phone           Organization Phone Number    Ex: 123-456-7891
-        * @param String         $email           Organization Email           Ex: test@example.com
-        * @param String         $url             Organization Website URL     Ex: www.example.com
-        * @param Integer        $admin_id        Organization Admin User ID   Ex: <to be defined>
-        * @param String         $addressStreet   Organization Street address  Ex: 1600 Amphitheatre Pkwy.
+        * @param Integer        $orgId           Organization ID              Ex: <to be defined>
+        * @param String         $orgName         Organization Name            Ex: The Summer Camp Group
+        * @param Integer        $orgPhone        Organization Phone Number    Ex: 123-456-7891
+        * @param String         $orgDescription  Organization Description     Ex: test@example.com
+        * @param String         $orgWebsite      Organization Website URL     Ex: www.example.com
+        * @param Integer        $orgAdminId      Organization Admin User ID   Ex: <to be defined>
+        * @param Integer        $addressId       Organization Address ID      Ex. 2
+        * @param String         $addressLine1    Organization Street address  Ex: 1600 Amphitheatre Pkwy.
         * @param String         $addressCity     Organization State           Ex: CA
         * @param String         $addressState    Organization City            Ex: Mountain View
-        * @param Integer        $addressZipCode  Organization Postal Zipcode  Ex: 94043
-        * @param String         $addressCountry  Organization Country         Ex: USA
+        * @param String         $addressZipCode  Organization Postal Zipcode  Ex: 94043
         *
         */
-        public static function editOrganization($organization_id, $name, $phone, $email, $url, $admin_id, $addressStreet, 
-            $addressCity, $addressState, $addressZipCode, $addressCountry) {
+        public static function editOrganization($orgId, $addressId, $orgName, $orgDescription, $orgPhone, $orgWebsite, $admin_id, 
+        $addressLine1, $addressLine2, $addressCity, $addressState, $addressZipCode) {
 
             $db = Db::getInstance();
-        
-            // Prepare the query 
-            $req = $db->prepare('UPDATE TABLE_NAME SET 
-                name = ?, 
-                phone = ?, 
-                email = ?,
-                url = ?,
-                admin_id = ?,
-                addressStreet = ?, 
-                addressCity = ?,
-                addressState = ?, 
-                addressZipCode = ?, 
-                addressCountry = ? WHERE id = ?');
-        
 
-            // with a valid organization id
-            $req->bind_param('sssssssssss', $name, $phone, $email, $url, $admin_id, $addressStreet, 
-            $addressCity, $addressState, $addressZipCode, $addressCountry, $organization_id);
+            // Prepare query to update address record
+            $req = $db->prepare('UPDATE addresses 
+                                    SET addressLine1=?, 
+                                        addressLine2=?, 
+                                        city=?, 
+                                        state=?, 
+                                        postalCode=?
+                                    WHERE addressId = ?;');
+
+            // Bind parameters for address update
+            $req->bind_param('sssssi', $addressLine1, $addressLine2 $addressCity, $addressState, $addressZipCode, $addressId);
 
             $req->execute();
+
+            // Prepare query to update organizations record
+            $req = $db->prepare('UPDATE organizations 
+                                    SET addressId=?, 
+                                        organizationName=?, 
+                                        organizationDescription=?, 
+                                        phoneNumber=?, 
+                                        organizationWebsite=?, 
+                                        userId=?
+                                    WHERE organizationId = ?;');
+
+            // Bind parameters for organization update
+            $req->bind_param('issisii', $addressId, $orgName, $orgDescription, $orgPhone, $orgWebsite, $admin_id, $orgId);
+
+            $req->execute();
+            
+            // Close Connection
+            $db->close();
+
+            return 'Organization Updated';
         }
         /* 
         * Get an Organization from the database 
         *
-        * @param Integer        $organization_id Organization ID Ex: <to be defined>
+        * @param Integer        $orgId Organization ID Ex: <to be defined>
         * 
         * @return Organization 
         */
-        public static function getOrganization($organization_id) {
+        public static function getOrganization($orgId) {
             
             $db = Db::getInstance();
             
-            // Prepare the query 
-            $req = $db->prepare('SELECT COLUMN_NAMES FROM TABLE_NAME WHERE id = ?');
+            // Prepare the query to get the organization 
+            $req = $db->prepare('SELECT organizationId, addressId, organizationName, organizationDescription, phoneNumber, organizationWebsite, userId 
+                                    FROM organizations 
+                                    WHERE organizationId = ?;');
         
-            // we make sure $organization_id is an integer
-            $organization_id = intval($organization_id);
+            // we make sure $orgId is an integer
+            $orgId = intval($orgId);
 
             // with a valid organization id
-            $req->bind_param('s', $organization_id);
+            $req->bind_param('i', $orgId);
             $req->execute();
 
             // bind variables to prepared statement
-            $req->bind_result($col1,$col2);
+            $req->bind_result($orgId, $addressId, $orgName, $orgDescription, $orgPhone, $orgWebsite, $admin_id);
 
             // fetch values
             $req->fetch();
 
-            return new Organization($col1,$col2);
+            // Prepare the query to get the address
+            $req = $db->prepare('SELECT addressLine1, addressLine2, city, state, postalCode
+                                    FROM addresses
+                                    WHERE addressId = ?;');
+
+            // we make sure $addressId is an integer
+            $addressId = intval($addressId);
+
+            // with a valid organization id
+            $req->bind_param('i', $addressId);
+            $req->execute();
+
+            // bind variables to prepared statement
+            $req->bind_result($addressLine1, $addressLine2, $addressCity, $addressState, $addressZipCode);
+
+            // fetch values
+            $req->fetch();
+
+            // Close Connection
+            $db->close();
+
+            return new Organization($orgId, $addressId, $orgName, $orgDescription, $orgPhone, $orgWebsite, $admin_id, 
+            $addressLine1, $addressLine2, $addressCity, $addressState, $addressZipCode);
         }
         /* 
-        * Remove an Organization from the database 
+        * Remove an Organization and it's address from the database 
         *
-        * @param Integer        $organization_id Organization ID Ex: <to be defined>
+        * @param Integer        $orgId Organization ID Ex: <to be defined>
         */
-        public static function deleteOrganization($organization_id) {
+        public static function deleteOrganization($orgId) {
             
             $db = Db::getInstance();
         
-            // Prepare the query 
-            $req = $db->prepare('DELETE FROM TABLE_NAME WHERE organization_id = ?');
+            // Prepare the query to get the address ID
+            $req = $db->prepare('SELECT addressId 
+                                    FROM organizations 
+                                    WHERE organizationId = ?;');
         
-            // with a valid organization id
-            $req->bind_param('s',  $organization_id);
+            // we make sure $orgId is an integer
+            $orgId = intval($orgId);
 
+            // with a valid organization id
+            $req->bind_param('i', $orgId);
             $req->execute();
-        }
-        /* 
-        * Get an Organization Users from the database 
-        *
-        * @param Integer        $organization_id Organization ID Ex: <to be defined>
-        */
-        public static function getOrganizationUsers($organization_id) {
-        
-            $db = Db::getInstance();
-             
-            // Prepare the query
-            $stmt = $db->prepare("SELECT * FROM Table_Name WHERE column_name = ?")) {
 
-            // we make sure $organization_id is an integer
-            $organization_id = intval($organization_id);
+            // bind variables to prepared statement
+            $req->bind_result($addressId);
 
-            // with a valid organization id
-            $stmt->bind_param('s', $organization_id);
+            // fetch values
+            $req->fetch();
 
-            /* execute statement */
-            $stmt->execute();
+            if ($addressId = null) {
+                return "Invalid Organization ID";
+            } else {
+                // Prepare the query to delete the organization
+                $req = $db->prepare('DELETE FROM organizations WHERE organizationId = ?;');
 
-            /* bind result variables */
-            $stmt->bind_result($TBD);
+                // with a valid organization id
+                $req->bind_param('i', $orgId);
+                $req->execute();
+                
+                // Prepare the query to delete the address
+                $req = $db->prepare('DELETE FROM addresses WHERE addressId = ?;');
+            
+                // we make sure $addressId is an integer
+                $addressId = intval($addressId);
 
-            // Create the Array
-            $list = [];
+                // with a valid address id
+                $req->bind_param('i', $addressId);
+                $req->execute();
 
-            /* fetch values */
-            while ($stmt->fetch()) {
-                $list[]=new User($TBD);
+                // Close Connection
+                $db->close();
             }
-
-            /* close statement */
-            $stmt->close();
-
-            return $list;
         }
         /* 
-        * Add a user to an organization in the database 
+        * Update an organization's admin user id  in the database 
         *
-        * @param Integer        $organization_id Organization ID Ex: <to be defined>
+        * @param Integer        $orgId Organization ID Ex: <to be defined>
         * @param Integer        $user_id         User ID         Ex: <to be defined>
         * 
         */
-        public static function addOrganizationUser($organization_id, $user_id) {
+        public static function updateOrgAdmin($orgId, $user_id) {
+            // Verify integers
+            $orgId = intval($orgId);
+            $user_id = intval($user_id);
+
             $db = Db::getInstance();
         
-            // Prepare the query 
-            $req = $db->prepare('QUERY');
+            // Prepare the query to update the admin id
+            $req = $db->prepare('UPDATE organizations 
+                                    SET userID = ?
+                                    WHERE organizationId = ?;');
         
             // with a valid organization id
-            $req->bind_param('ss',  $organization_id, $user_id);
+            $req->bind_param('ii',  $user_id, $orgId );
 
             $req->execute();
-        }
-        /* 
-        * Remove a user from an organization in the database
-        *
-        * @param Integer        $organization_id Organization ID Ex: <to be defined>
-        * @param Integer        $user_id         User ID         Ex: <to be defined>
-        *
-        */
-        public static function deleteOrganizationUser($organization_id, $user_id) {
-            $db = Db::getInstance();
-        
-            // Prepare the query 
-            $req = $db->prepare('QUERY');
+
+            // Prepare the query check the update
+            $req = $db->prepare('SELECT userID WHERE organizationId = ?;');
         
             // with a valid organization id
-            $req->bind_param('ss',  $organization_id, $user_id);
+            $req->bind_param('i', $orgId );
 
             $req->execute();
+
+            // bind variables to prepared statement to get admin user ID
+            $req->bind_result($adminId);
+
+            // fetch values
+            $req->fetch();
+
+            // Close Connection
+            $db->close();
+
+            // Compare DB value with value originally submitted
+            if ($user_id != $adminId) {
+                return 'Organization Admin User Id Update Not Successful';
+            } else {
+                return 'Organization Admin User Id Update Successful'
+            }
+
         }
         /* 
         * Get all events based on organization id 
         *
-        * @param Integer        $organization_id Organization ID Ex: <to be defined>
+        * @param Integer        $orgId Organization ID Ex: <to be defined>
         */
-        public static function getOrganizationEvents($organization_id) {
+        public static function getOrganizationEvents($orgId) {
             
             $db = Db::getInstance();
              
             // Prepare the query
-            $stmt = $db->prepare("SELECT * FROM Table_Name WHERE column_name = ?")) {
+            $stmt = $db->prepare("SELECT eventId FROM events WHERE organizationId = ?;")) {
 
-            // we make sure $organization_id is an integer
-            $organization_id = intval($organization_id);
+            // we make sure $orgId is an integer
+            $orgId = intval($orgId);
 
             // with a valid organization id
-            $stmt->bind_param('s', $organization_id);
+            $stmt->bind_param('i', $orgId);
 
             /* execute statement */
             $stmt->execute();
 
             /* bind result variables */
-            $stmt->bind_result($TBD1,$TBD2);
+            $stmt->bind_result($eventId);
 
             // Create the Array
             $list = [];
 
             /* fetch values */
             while ($stmt->fetch()) {
-                $list[]=new Events($tbd);
+                $list[]=  $eventId;
             }
 
             /* close statement */
@@ -273,5 +361,65 @@
 
             return $list;
         }
+
+        public function getOrgId()
+        {
+            return $this->$orgId; 
+        }
+                    
+        public function getName()
+        {
+            return $this->$orgName; 
+        }
+                
+        public function getPhone()
+        {
+            return $this->phone; 
+        }
+                
+        public function getDescription()
+        {
+            return $this->orgDescription;   
+        }
+                    
+        public function getURL()
+        {
+            return $this->url;  
+        }
+        
+        public function getAdmin_id()
+        {
+            return $this->admin_id; 
+        }
+        
+        public function getAddressId()
+        {
+            return $this->addressId; 
+        }
+
+        public function getaddressLine1()
+        {
+            return $this->addressLine1; 
+        }
+        public function getaddressLine2()
+        {
+            return $this->addressLine2; 
+        }
+            
+        public function getAddressCity()
+        {
+            return $this->addressCity;      
+        }
+        
+        public function getAddressState()
+        {
+            return $this->addressState; 
+        }
+        
+        public function getAddressZipCode()
+        {
+            return $this->addressZipCode; 
+        }
+
     }
 ?>

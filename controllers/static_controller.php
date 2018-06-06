@@ -1,5 +1,7 @@
 <?php
-class StaticController{
+
+class StaticController {
+
     public function landing() {
         require_once('views/static/landing.php');
     }
@@ -8,24 +10,9 @@ class StaticController{
         require_once('views/static/error.php');
     }
 
-    public function registration() {
-        if (isset($_POST['register_btn'])) {
-            user::addUser();
-        }
-        require_once('views/static/registration.php');
+    public function terms() {
+        require_once('views/static/terms.php');
     }
-
-    public function searchEvents(){
-        require_once('views/static/search_events.php');
-    }
-
-    public function login() {
-        if (isset($_POST['login_btn'])) {
-            user::login();
-        }
-        require_once('views/static/login.php');
-    }
-
 }
 
 ?>

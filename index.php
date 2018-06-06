@@ -9,7 +9,6 @@ if (isset($_GET['controller']) && isset($_GET['action'])) {
     $controller = 'static';
     $action     = 'landing';
 }
-
 require_once('views/layout.php');
 ?>
 

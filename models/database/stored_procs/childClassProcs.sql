@@ -8,10 +8,10 @@ DROP PROCEDURE IF EXISTS `findChild`;
 
 delimiter //
 
-/*addChild(userEmail, firstName, lastName, childDob, childAllergies, emergencyContactNum)
-	Adds a new child to the database, linked with a given parent's email address.*/
+/*addChild(userId, firstName, lastName, childDob, childAllergies, emergencyContactNum)
+	Adds a new child to the database, linked with a given parent's user ID.*/
 CREATE PROCEDURE addChild
-(IN userEmail VARCHAR(45),
+(IN userId INT(11),
 IN firstName VARCHAR(45),
 IN lastName VARCHAR(45),
 IN childDob DATE,
@@ -19,7 +19,7 @@ IN childAllergies VARCHAR(45),
 IN emergencyContactNum VARCHAR(10))
 BEGIN
 INSERT INTO Children VALUES
-(DEFAULT, userEmail, firstName, lastName, 
+(DEFAULT, userId, firstName, lastName, 
 childDob, childAllergies, emergencyContactNum);
 END//
 

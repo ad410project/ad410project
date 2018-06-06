@@ -13,7 +13,7 @@ class UserChild
     public $user_id;
 
     // The Constructor
-    private function __construct($child_id ,$user_id, $first_name, $last_name, $child_Dob,$childAllergies,$emergencyContactNum) {
+    public function __construct($child_id ,$user_id, $first_name, $last_name, $child_Dob,$childAllergies,$emergencyContactNum) {
 
         $this->user_id=$user_id;
         $this->child_id = $child_id;
@@ -24,15 +24,15 @@ class UserChild
         $this->emergencyContactNum=$emergencyContactNum;
     }
 
-    public function addChild($child_id, $user_id, $first_name, $last_name, $child_Dob, $childAllergies, $emergencyContactNum){
+    public function addChild($user_id, $first_name, $last_name, $child_Dob, $childAllergies, $emergencyContactNum){
         //add child to the database
-        $db = Database::getInstance();
+        $db = Db::getInstance();
 
         // Prepare the query
         $stmt = $db->prepare('INSERT INTO Children (childId, userId, firstName, lastName, childDob, childAllergies, emergencyContactNum)
-               VALUES (?, ?, ?, ?)');
+               VALUES (DEFAULT ,?, ?, ?, ?,?,?)');
 
-        $stmt->bind_param('sssd',$child_id, $user_id, $first_name, $last_name, $child_Dob, $childAllergies, $emergencyContactNum);
+        $stmt->bind_param('issdss', $user_id, $first_name, $last_name, $child_Dob, $childAllergies, $emergencyContactNum);
 
         $stmt->execute();
 
@@ -54,7 +54,7 @@ class UserChild
     }
 
     public static function editChild($child_id,$user_id, $first_name, $last_name, $child_Dob,$childAllergies,$emergencyContactNum){
-		//edit child in the database
+        //edit child in the database
 
         $db = Database::getInstance();
         // Prepare the query
@@ -67,11 +67,11 @@ class UserChild
         $stmt->execute();
 
         $stmt->close();
-	}
+    }
 
-	//Get a Child by Id
+    //Get a Child by Id
     public static function getChild($child_id){
-    //find child in the database
+        //find child in the database
 
         $db = Database::getInstance();
         // Prepare the query

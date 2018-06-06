@@ -6,7 +6,11 @@ class event
     private $organizationId;
     private $name;
     private $description;
-    private $address;
+    private $addressLine1;
+    private $addressLine2;
+    private $city;
+    private $state;
+    private $postalCode;
     private $startDate;
     private $endDate;
     private $categories;
@@ -17,14 +21,18 @@ class event
     private $registrationOpen;
     private $registrationClose;
 
-    public function __construct($eventId, $name, $description, $address, $startDate, $endDate,
-                                $organizationId, $categories, $type, $price, $minAge, $maxAge,
-                                $registrationOpen, $registrationClose)
+    public function __construct($eventId, $name, $description, $addressLine1, $addressLine2, $city, $state,
+                                $postalCode, $startDate, $endDate, $organizationId, $categories, $type,
+                                $price, $minAge, $maxAge, $registrationOpen, $registrationClose)
     {
         $this->eventId = $eventId;
         $this->name = $name;
         $this->description = $description;
-        $this->address = $address;
+        $this->addressLine1 = $addressLine1;
+        $this->addressLine2 = $addressLine2;
+        $this->city = $city;
+        $this->state = $state;
+        $this->postalCode = $postalCode;
         $this->startDate = $startDate;
         $this->endDate = $endDate;
         $this->organizationId = $organizationId;
@@ -62,7 +70,7 @@ class event
 
         $db->close();
 
-        return $result;
+        return event::getEventArray($result);
     }
 
     public static function getEventById($eventId)
@@ -80,7 +88,8 @@ class event
 
         $db->close();
 
-        return $result;
+        return event::getEventArray($result);
+
     }
 
     public static function getEventsByUserId($userId)
@@ -88,7 +97,17 @@ class event
         //get instance of db
         $db = Db::getInstance();
 
-        //return events for the user ID
+        //bind the in parameters
+        $stmt = $db->prepare("SET @currentUserId = ?");
+        $stmt->bind_param('i', $userId);
+        $stmt->execute();
+
+        //execute the procedure
+        $result = $db->query('CALL getEventsByUserId(@currentUserId)');
+
+        $db->close();
+
+        return event::getEventArray($result);
     }
 
     public static function getEventsByChildId($childId)
@@ -106,7 +125,7 @@ class event
 
         $db->close();
 
-        return $result;
+        return event::getEventArray($result);
     }
 
     public static function getEventsByCategory($category)
@@ -124,7 +143,7 @@ class event
 
         $db->close();
 
-        return $result;
+        return event::getEventArray($result);
     }
 
     //return events matching type
@@ -143,7 +162,7 @@ class event
 
         $db->close();
 
-        return $result;
+        return event::getEventArray($result);
     }
 
     public static function getEventsByKeyword($keyword)
@@ -151,7 +170,17 @@ class event
         //get instance of db
         $db = Db::getInstance();
 
-        //return events with keyword in name or description
+        //bind the in parameters
+        $stmt = $db->prepare("SET @currentKeyword = ?");
+        $stmt->bind_param('s', $keyword);
+        $stmt->execute();
+
+        //execute the procedure
+        $result = $db->query('CALL getEventsByKeyword(@currentKeyword)');
+
+        $db->close();
+
+        return event::getEventArray($result);
     }
 
     public static function getEventsByDateRange($startDate, $endDate)
@@ -161,11 +190,11 @@ class event
 
         //bind the in parameters
         $stmt = $db->prepare("SET @startTime = ?");
-        $stmt->bind_param('i', $startDate);
+        $stmt->bind_param('s', $startDate);
         $stmt->execute();
 
         $stmt = $db->prepare("SET @endTime = ?");
-        $stmt->bind_param('i', $endDate);
+        $stmt->bind_param('s', $endDate);
         $stmt->execute();
 
         //execute the procedure
@@ -173,7 +202,7 @@ class event
 
         $db->close();
 
-        return $result;
+        return event::getEventArray($result);
     }
 
     public static function getEventsByAgeRange($minAge, $maxAge)
@@ -181,7 +210,21 @@ class event
         //get instance of db
         $db = Db::getInstance();
 
-        //return events for the age range
+        //bind the in parameters
+        $stmt = $db->prepare("SET @currentMinAge = ?");
+        $stmt->bind_param('i', $minAge);
+        $stmt->execute();
+
+        $stmt = $db->prepare("SET @currentMaxAge = ?");
+        $stmt->bind_param('i', $maxAge);
+        $stmt->execute();
+
+        //execute the procedure
+        $result = $db->query('CALL getEventsByAgeRange(@currentMinAge, @currentMaxAge)');
+
+        $db->close();
+
+        return event::getEventArray($result);
     }
 
     public static function getEventsByPriceRange($minPrice, $maxPrice)
@@ -189,15 +232,39 @@ class event
         //get instance of db
         $db = Db::getInstance();
 
-        //return events for the price range
+        //bind the in parameters
+        $stmt = $db->prepare("SET @currentMinPrice = ?");
+        $stmt->bind_param('i', $minPrice);
+        $stmt->execute();
+
+        $stmt = $db->prepare("SET @currentMaxPrice = ?");
+        $stmt->bind_param('i', $maxPrice);
+        $stmt->execute();
+
+        //execute the procedure
+        $result = $db->query('CALL getEventsByPriceRange(@currentMinPrice, @currentMaxPrice)');
+
+        $db->close();
+
+        return event::getEventArray($result);
     }
 
-    public static function getEventsByLocation($location, $distance)
+    public static function getEventsByPostalCode($postalCode)
     {
         //get instance of db
         $db = Db::getInstance();
 
-        //return events within a range of the location
+        //bind the in parameters
+        $stmt = $db->prepare("SET @currentCode = ?");
+        $stmt->bind_param('s', $postalCode);
+        $stmt->execute();
+
+        //execute the procedure
+        $result = $db->query('CALL getEventsByPostalCode(@currentCode)');
+
+        $db->close();
+
+        return event::getEventArray($result);
     }
 
     public static function editEventField($eventId, $fieldToChange, $changeToThis)
@@ -290,9 +357,30 @@ class event
         return $this->description;
     }
 
-    public function getAddress()
+    public function getAddressLine1()
     {
-        return $this->address;
+        return $this->addressLine1;
+    }
+
+    public function getAddressLine2()
+    {
+        return $this->addressLine2;
+    }
+
+    public function getCity()
+    {
+        return $this->city;
+    }
+
+
+    public function getState()
+    {
+        return $this->state;
+    }
+
+    public function getPostalCode()
+    {
+        return $this->postalCode;
     }
 
     public function getStartDate(){
@@ -341,5 +429,25 @@ class event
     public function getRegistrationClose()
     {
         return $this->registrationClose;
+    }
+
+    //helper function for getting an Event array from sql result
+    static function getEventArray($result) {
+        $array = [];
+
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc())
+            {
+                $categories[] = $row["categoryName"];
+                $types[] = $row["typeName"];
+
+                $array[] = new event($row["eventId"],$row["eventName"], $row["eventDescription"],
+                    $row["addressLine1"], $row["addressLine2"], $row["city"], $row["state"],
+                    $row["postalCode"], $row["eventDate"], $row["endDate"], $row["organizationId"],
+                    preg_split(",", $categories), preg_split(",", $types), $row["eventPrice"],
+                    $row["minAge"], $row["maxAge"], $row["registrationOpen"], $row["registrationClose"]);
+            }
+        }
+        return $array;
     }
 }
