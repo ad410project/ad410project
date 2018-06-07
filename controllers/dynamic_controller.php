@@ -76,7 +76,7 @@
     }
 
     public function profile() {
-        require_once('views/dynamic/profile.php');
+        require_once('views/dynamic/userProfile.php');
     }
 
     public function logout() {
