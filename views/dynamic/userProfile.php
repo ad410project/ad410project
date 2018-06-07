@@ -7,11 +7,12 @@
  */
 
 session_start();
-
+/*
 if (!isset($_SESSION['emailAddress'])) {
     header("location: ?controller=static&action=login");
     exit;
 }
+*/
 
 if(isset($_SESSION['emailAddress']) && !isset($_POST['emailAddress'])) {
     $userInfo = array_values(getUser());
