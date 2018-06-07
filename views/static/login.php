@@ -1,5 +1,4 @@
 <?php
-
 require_once('connection.php');
 $link = Db::getInstance();
 
@@ -9,13 +8,17 @@ if (!isset($_SESSION['emailAddress'])) {
 //3.1.1 Assigning posted values to variables.
     $emailAddress = $_POST['emailAddress'];
     $password = $_POST['password'];
-//3.1.2 Checking the values are existing in the database or not
-    $query = "SELECT * FROM Users WHERE email='$emailAddress' and password='$password'";
 
+    $options = array("cost" => 10);
+    $hashPassword = password_hash($password, PASSWORD_BCRYPT, $options);
+
+//3.1.2 Checking the values are existing in the database or not
+    $query = "SELECT * FROM Users WHERE email='$emailAddress'";
     $result = $link->query($query);
     $count = mysqli_num_rows($result);
+    
 //3.1.2 If the posted values are equal to the database values, then session will be created for the user.
-    if ($count == 1) {
+    if ($count == 1 && password_verify($password, $hashPassword)==$hashPassword) {
         $_SESSION['emailAddress'] = $emailAddress;
         $emailAddress = $_POST['emailAddress'];
         header('Location: ?controller=static&action=profile');
