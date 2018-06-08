@@ -3,8 +3,9 @@
 <br>
 
 <!-- Place holder for terms of use. Need to revise -->
-<div class="content">
-    <h3><b>Introduction</b></h3>
+<div id="#page-wrap">
+    <div id="inside">
+    <h4><b>Introduction</b></h4>
     <p class="terms">
         These Website Standard Terms And Conditions contained herein on this webpage, shall govern your use of this
         website, including all pages within this website (collectively referred to herein below as this “Website”).
@@ -29,7 +30,7 @@
     </p>
 
 
-    <h3><b>Your Content</b></h3>
+    <h4><b>Your Content</b></h4>
     <p class="terms">
         In these Website Standard Terms And Conditions, “Your Content” shall mean any audio, video, text, images or
         other material you choose to display on this Website. With respect to Your Content, by displaying it, you grant
@@ -47,7 +48,7 @@
 
     </p>
 
-    <h3><b>Entire Agreement</b></h3>
+    <h4><b>Entire Agreement</b></h4>
     <p class="terms">
         These Terms, including any legal notices and disclaimers contained on this Website, constitute the entire
         agreement between KAMPAROOS and you in relation to your use of this Website, and supersede all prior agreements
@@ -59,4 +60,8 @@
         submit to the non-exclusive jurisdiction of the state and federal courts located in Washington for the
         resolution of any disputes.
     </p>
+        <br>
+        <br>
+        <br>
+    </div>
 </div>
