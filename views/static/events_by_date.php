@@ -63,7 +63,6 @@ foreach ($json_output as $k => $v) {
 
 }
 ?>
-
 <div class="row">
     <div class="col-sm-12">
         <div class="carousel-container">
@@ -73,14 +72,12 @@ foreach ($json_output as $k => $v) {
                         <div class="card">
                             <!--                        <img class="card-img-top img-fluid" src="http://placehold.it/318x180" alt="Card image cap">-->
                             <div class="card-block">
-                                <input type="hidden" name="search_description"
-                                       value="<?php echo $geo_locals_date[$i][0] ?>"/>
                                 <p class="card-title"><?php echo $geo_locals_date[$i][0] ?></p>
                                 <p class="card-text"><?php echo $geo_locals_date[$i][4] . " - " . $geo_locals_date[$i][5] ?></p>
                                 <p class="card-text"><?php echo $geo_locals_date[$i][2] . ", " . $geo_locals_date[$i][3] ?>
                                     , WA</p>
-                                <div class="card-button">
-                                    <a href="#myModal1" data-id="<?php echo $i ?>"
+                                <div class="card-button" style="width: 100%">
+                                    <a style="width: 150px" href="#myModal1" data-id="<?php echo $i ?>"
                                        class="open-AddBookDialog1 btn btn-info btn-sm" data-toggle="modal">More Info</a>
                                 </div>
                             </div>
@@ -107,7 +104,6 @@ foreach ($json_output as $k => $v) {
     </div>
 </div>
 <script>
-
     $(document).on("click", ".open-AddBookDialog1", function () {
         var local = <?php echo json_encode($geo_locals_date) ?>;
         var myBookId = $(this).data('id');

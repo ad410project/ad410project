@@ -214,19 +214,7 @@ function sendValuesToPHP()
 }
 
 
-function swap_search_distance(){
-    var distance = document.getElementById("distance_search_content");
-    var date = document.getElementById("date_search_content");
-    distance.style.display = "block";
-    date.style.display = "none";
-}
 
-function swap_search_date(){
-    var distance = document.getElementById("distance_search_content");
-    var date = document.getElementById("date_search_content");
-    distance.style.display = "none";
-    date.style.display = "block";
-}
 
 
 

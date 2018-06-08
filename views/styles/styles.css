@@ -464,10 +464,10 @@ ul {
 .modal{
     align-items: center;
 }
+
+
 .card-block{
-    align-content: center;
-    width: 200px;
-    height: 250px;
+    align-content: left;
     background-color: #CAEBF2;
 }
 
@@ -497,17 +497,17 @@ li {
     transform: translate3d(0px, 0px, 0px) scale(1);
 }
 .owl-item.active {
-    transform: translate3d(0px, 0px, -10px) scale(1) rotateY(-55deg);
+    transform: translate3d(0px, 0px, -20px) scale(1) rotateY(-55deg);
 }
 .owl-item.active + .active {
-    transform: translate3d(0px, 0px, 10px) scale(1);
+    transform: translate3d(0px, 0px, 20px) scale(1);
 }
 .owl-item.active + .active + .active {
-    transform: translate3d(0px, 0px, 10px) scale(1);
+    transform: translate3d(0px, 0px, 20px) scale(1);
 }
 .owl-item.active + .active + .active + .active {
-    transform: translate3d(0px, 0px, 10px) scale(1);
+    transform: translate3d(0px, 0px, 20px) scale(1);
 }
 .owl-item.active + .active + .active + .active + .active {
-    transform: translate3d(0px, 0px, -10px) scale(1) rotateY(55deg);
+    transform: translate3d(0px, 0px, -20px) scale(1) rotateY(55deg);
 }
