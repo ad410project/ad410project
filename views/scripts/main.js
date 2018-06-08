@@ -88,7 +88,6 @@ function showMapHideCal() {
     map.style.display = 'block';
 }
 
-$(document).ready(function() {
 //userProfile form for editChild
 function displayEditChildForm()
 {
@@ -161,7 +160,6 @@ function displayEditChildForm()
 
     return container;
 }
-});
 
 function removeEditChildForm()
 {
