@@ -88,7 +88,6 @@ function showMapHideCal() {
     map.style.display = 'block';
 }
 
-
 //userProfile form for editChild
 function displayEditChildForm()
 {
