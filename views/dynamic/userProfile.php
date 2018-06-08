@@ -196,7 +196,6 @@ function addKid($kidValues)
                     Looks good!
                 </div>
                 <!-- </div> -->
-
                 <!-- <div class="form-group col-md-6"> -->
                 <label for="lastName">Last Name</label>
                 <input type="text" class="form-control form-control-sm" id="lName" placeholder="<?php print $userInfo[4] ?>" name="lastName" required>
