@@ -14,9 +14,12 @@
             <div class="form-group col-md-4">
                 <input type="text" class="form-control" id="eventName" placeholder="Enter event name" name="eventName" required>
             </div>
+        </div>
 
+        <div class="form-row">
             <div class="form-group col-md-6">
-                <input type="text" class="form-control" id="eventDescription" placeholder="Enter event description" name="eventDescription">
+                <textarea class="form-control" rows="5" id="eventDescription" placeholder="Enter event description"
+                          name="eventDescription"></textarea>
             </div>
         </div>
 

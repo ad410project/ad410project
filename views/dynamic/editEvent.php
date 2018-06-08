@@ -53,11 +53,13 @@ endforeach;
             <div class="form-group col-md-4">
                 <input type="text" class="form-control" id="eventName" placeholder="Enter event name" name="eventName" value="<? echo $getEventName?>" required>
             </div>
+        </div>
 
+        <div class="form-row">
             <div class="form-group col-md-6">
-                <input type="text" class="form-control" id="eventDescription" placeholder="Enter event description"
-                       name="eventDescription"
-                       value="<? echo $getEventDesc?>">
+                <textarea class="form-control" rows="5" id="eventDescription" placeholder="Enter event description"
+                          name="eventDescription"><? echo $getEventDesc?>
+                </textarea>
             </div>
         </div>
 
