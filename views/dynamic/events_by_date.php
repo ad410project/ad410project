@@ -57,58 +57,53 @@ foreach ($json_output as $k => $v) {
 
         }
 
-
     }
-
 
 }
 ?>
-<div class="row">
-    <div class="col-sm-12">
-        <div class="carousel-container">
-            <ul>
+
+<link rel="stylesheet" href="views/styles/org-carousel.css">
+
+<div class="container">
+    <div class="container-fluid">
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner row w-100 mx-auto">
+
                 <?php for ($i = 0; $i < count($geo_locals_date); $i++) : ?>
-                    <li>
+
+                <?php if ($i == 0) { ?>
+                       <div class="carousel-item col-md-4 active">
+                <?php } else {?>
+                        <div class="carousel-item col-md-4">
+                <?php } ?>
                         <div class="card">
-                            <!--                        <img class="card-img-top img-fluid" src="http://placehold.it/318x180" alt="Card image cap">-->
-                            <div class="card-block">
-                                <p class="card-title"><?php echo $geo_locals_date[$i][0] ?></p>
+                            <div class="card-body">
+                                <h4 class="card-title"><?php echo $geo_locals_date[$i][0] ?></h4>
                                 <p class="card-text"><?php echo $geo_locals_date[$i][4] . " - " . $geo_locals_date[$i][5] ?></p>
-                                <p class="card-text"><?php echo $geo_locals_date[$i][2] . ", " . $geo_locals_date[$i][3] ?>
-                                    , WA</p>
-                                <div class="card-button" style="width: 100%">
-                                    <a style="width: 150px" href="#myModal1" data-id="<?php echo $i ?>"
-                                       class="open-AddBookDialog1 btn btn-info btn-sm" data-toggle="modal">More Info</a>
+                                <p class="card-text"><?php echo $geo_locals_date[$i][2] . ", " . $geo_locals_date[$i][3] ?>, WA</p>
+                            </div>
+                            <div class="card-footer">
+                                <div class="card-button">
+                                    <a href="#">Add to my event</a>
                                 </div>
+                                <!-- TODO: Add function to add this event into events database-->
                             </div>
                         </div>
-                    </li>  <?php endfor; ?>
-            </ul>
+                    </div>
+
+                <?php endfor; ?>
+
+            </div>
+            <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
         </div>
     </div>
+
 </div>
-<div class="modal" id="myModal1">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Event Information</h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <p id="description"></p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-<script>
-    $(document).on("click", ".open-AddBookDialog1", function () {
-        var local = <?php echo json_encode($geo_locals_date) ?>;
-        var myBookId = $(this).data('id');
-        var value = local[myBookId][1];
-        $(".modal-body #description").html(value);
-        $('#AddBookDialog1').modal('show');
-    });
-</script>
+

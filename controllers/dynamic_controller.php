@@ -9,7 +9,7 @@
     }
 
     public function searchEvents() {
-        require_once('views/dynamic/search_events.php');
+        require_once('views/dynamic/search_events_public.php');
     }
 
     public function registration() {
@@ -90,8 +90,8 @@
         require_once('views/dynamic/contact.php');
     }
 
-    public function organization_events() {
-        require_once('views/dynamic/organization_events.php');
+    public function user_events() {
+        require_once('views/dynamic/user_events.php');
     }
 
     public function addEvent() {
