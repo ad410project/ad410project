@@ -90,8 +90,8 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Children` (
   CONSTRAINT `fk_Children_Users1`
     FOREIGN KEY (`userId`)
     REFERENCES `mydb`.`Users` (`userId`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
@@ -147,7 +147,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Events` (
   CONSTRAINT `fk_Events_Communities1`
     FOREIGN KEY (`organizationId`)
     REFERENCES `mydb`.`Organizations` (`organizationId`)
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
@@ -167,12 +167,12 @@ CREATE TABLE IF NOT EXISTS `mydb`.`ChildEvents` (
   CONSTRAINT `fk_Children_has_Events_Children1`
     FOREIGN KEY (`childId`)
     REFERENCES `mydb`.`Children` (`childId`)
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Children_has_Events_Events1`
     FOREIGN KEY (`eventId`)
     REFERENCES `mydb`.`Events` (`eventId`)
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
@@ -222,8 +222,8 @@ CREATE TABLE IF NOT EXISTS `mydb`.`UserAddresses` (
   CONSTRAINT `fk_Addresses_has_Users_Users1`
     FOREIGN KEY (`addressId`)
     REFERENCES `mydb`.`Users` (`userId`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
