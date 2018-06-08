@@ -171,17 +171,6 @@ function addKid($kidValues)
 ?>
 
 <div class="container">
-    <section id="top-nav_section">
-        <div class="d-flex justify-content-between">
-            <div class="p-2 my-flex-item">Welcome <?php print ' ' . $userInfo[1] ?></div>
-            <div class="p-2 my-flex-item">
-                <a href="#">
-                    <span class="glyphicons glyphicons-home">Home</span>
-                </a>
-            </div>
-            <div class="p-2 my-flex-item"><a href="">Logout</a></div>
-        </div>
-    </section>
     <br>
 
 
