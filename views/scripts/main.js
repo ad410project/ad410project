@@ -294,7 +294,7 @@ $("#myCarousel").on("slide.bs.carousel", function(e) {
     var itemsPerSlide = 3;
     var totalItems = $(".carousel-item").length;
 
-    if (idx >= totalItems - (itemsPerSlide - 1)) {
+    if (idx >= totalItems - (itemsPerSlide = 3)) {
         var it = itemsPerSlide - (totalItems - idx);
         for (var i = 0; i < it; i++) {
             // append slides to end
