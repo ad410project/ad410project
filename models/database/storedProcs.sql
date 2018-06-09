@@ -3,31 +3,22 @@
 -------------Loading stored procedures into the database--------------------
 Run each of the .sql files on the MySQL database server in order to populate
 the database with these procedures.
-
-
 --------------------------Using procedures in php----------------------------
-
 Note:  There has been no need to use OUTS in procedures thus far,
 should the need arise that will complicate things greatly, for now this
 will only cover how to use procedures with one IN parameter.
-
 1.Simply establish a variable as a query essentially, except you use the 
 CALL function to the call the procedure as it is named in the SQL database
-
 2.For example if we have the procedure:
-
 CREATE PROCEDURE `getOrginization` (IN orginizationIdp int)
 BEGIN
 SELECT organizationName
 FROM organizations
 WHERE organizationid = organizationIdp;
 END//
-
 in your PHP code you would type:
-
  $result = mysqli_query($connection, 
      "CALL getOrganization(1)") or die("Query fail: " . mysqli_error());
-
 3.The $result variable will now contain the results of
 the query contained within the stored procedure!
 */
@@ -546,12 +537,12 @@ END//
     -- }
 
 
-CREATE PROCEDURE addAddress(IN currentEventId INT, addressId INT, addressLine1 VARCHAR(45), addressLine2 VARCHAR(45), city VARCHAR(45), `state` VARCHAR(45), postalCode VARCHAR(45))
+CREATE PROCEDURE addAddress(IN currentEventId INT, addressLine1 VARCHAR(45), addressLine2 VARCHAR(45), city VARCHAR(45), `state` VARCHAR(45), postalCode VARCHAR(45))
 BEGIN
 START TRANSACTION;
 
 INSERT INTO Addresses VALUES
-(addressId, addressLine1,addressLine2,city,`state`,postalCode);
+(DEFAULT, addressLine1,addressLine2,city,`state`,postalCode);
 
 COMMIT;
 END//
@@ -661,6 +652,10 @@ START TRANSACTION;
 DELETE FROM Events 
 WHERE currentEventId = eventId;
 
+DELETE FROM EventAddresses
+WHERE currentEventId = eventId;
+
+
 
 END//
 
@@ -672,13 +667,13 @@ END//
     -- }
 
 
-CREATE PROCEDURE addEvent(IN currentEventId INT, currentOrganizationId INT, currentEventName VARCHAR(45), currentEventDescription TEXT, currentEventPrice INT, currentMinAge INT, currentMaxAge INT, currentEventDate DATETIME, currentRegistrationOpen DATETIME, currentRegistrationClose DATETIME)
+CREATE PROCEDURE addEvent(IN currentOrganizationId INT, currentEventName VARCHAR(45), currentEventDescription TEXT, currentEventPrice INT, currentMinAge INT, currentMaxAge INT, currentEventDate DATETIME, currentEndDate DATETIME, currentRegistrationOpen DATETIME, currentRegistrationClose DATETIME, currentEventType SET, currentEventCategory SET)
 
 BEGIN
 START TRANSACTION;
 
 INSERT INTO Events VALUES
-(currentEventId, currentOrganizationId,currentEventName,currentEventDescription,currentEventPrice,currentMinAge,currentMaxAge,currentEventDate,currentRegistrationOpen,currentRegistrationClose);
+(DEFAULT, currentOrganizationId,currentEventName,currentEventDescription,currentEventPrice,currentMinAge,currentMaxAge,currentEventDate,currentEndDate,currentRegistrationOpen,currentRegistrationClose,currentEventType,currentEventCategory);
 
 COMMIT;
 END//
@@ -695,7 +690,11 @@ IN currentMinAge INT,
 IN currentMaxAge INT,
 IN currentEventDate DATETIME,
 IN currentRegistrationOpen DATETIME,
-IN currentRegistrationClose DATETIME)
+IN currentRegistrationClose DATETIME,
+IN currentEndDate DATETIME,
+IN currentEventType SET,
+IN currentEventCategory SET
+)
 BEGIN
 UPDATE Events SET
   `eventId` = currentEventId,
@@ -708,6 +707,9 @@ UPDATE Events SET
     `eventDate` = currentEventDate,
 	 `registrationOpen` = currentRegistrationOpen,
 	  `registrationClose` = currentRegistrationClose,
+	  `endDate` = currentEndDate,
+	  `eventType` = currentEventType,
+	  `eventCategory` = currentEventCategory,
   `eventTypeId` = (SELECT eventTypeId FROM eventType WHERE eventTypeName = eventType) 
 WHERE eventId = currentEventId;
 END//
