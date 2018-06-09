@@ -63,6 +63,7 @@ DROP PROCEDURE IF EXISTS `getEventsByAgeRange`;
 DROP PROCEDURE IF EXISTS `getEventsByPriceRange`;
 DROP PROCEDURE IF EXISTS `getEventsByPostalCode`;
 DROP PROCEDURE IF EXISTS `getEventsByDateRange`;
+DROP PROCEDURE IF EXISTS `getEndDate`; 
 DROP PROCEDURE IF EXISTS `addCategory`;
 DROP PROCEDURE IF EXISTS `removeCategory`;
 DROP PROCEDURE IF EXISTS `addAddress`;
@@ -168,10 +169,11 @@ END//
 /*editUser(userEmail, userPassword, firstName, lastName, phoneNumber, notificationState, userType)
 	Updates all user profile information based on input data.*/
 CREATE PROCEDURE editUser(
-IN userEmail VARCHAR(45),
-IN userPassword VARCHAR(45),
+IN userId INT(11),
 IN firstName VARCHAR(45),
 IN lastName VARCHAR(45),
+IN userEmail VARCHAR(45),
+IN userPassword VARCHAR(45),
 IN phoneNumber VARCHAR(10),
 IN notificationState TINYINT(4),
 IN userType VARCHAR(45))
@@ -184,13 +186,13 @@ UPDATE Users SET
   `phoneNumber` = phoneNumber,
   `notificationState` = notificationState,
   `userTypeId` = (SELECT userTypeId FROM userType WHERE userTypeName = userType) 
-WHERE userEmail = email;
+WHERE `userId` = userId;
 END//
 
 /*editUserAddress(userEmail, addressLine1, addressLine2, city, state, postalCode)
 	Updates all userAddress information.*/
 CREATE PROCEDURE editUserAddress(
-IN userEmail VARCHAR(45),
+IN userId INT(11),
 IN addressLine1 VARCHAR(45),
 IN addressLine2 VARCHAR(45),
 IN city VARCHAR(45),
@@ -206,41 +208,42 @@ SET
   `city` = city,
   `state`  = state,
   `postalCode` = postalCode
-WHERE email = userEmail;
+WHERE `userId` = userId;
 END//
 
 /*deleteUser(userEmail)
 	Removes the user from the userProfile section. Also removes related data from
 	UserAddresses and Addresses tables.*/
 CREATE PROCEDURE deleteUser(
-IN userEmail VARCHAR(45))
+IN userId VARCHAR(45))
 BEGIN
 
 START TRANSACTION;
 
 DELETE FROM Users
-WHERE userEmail = email;
+WHERE `userId` = userId;
 
 DELETE FROM Addresses
-WHERE `addressId` = (SELECT addressId FROM UserAddresses WHERE userEmail = email);
+WHERE `addressId` = (SELECT addressId FROM UserAddresses WHERE `userId` = userId);
 
 DELETE FROM UserAddresses
-WHERE userEmail = email;
+WHERE `userId` = userId;
 END//
 
 /*getUserById(userEmail)
 	Returns a list of users with a given e-mail address, which serves as their unique ID.*/
 CREATE PROCEDURE getUserById(
-IN userEmail VARCHAR(45))
+IN userId VARCHAR(45))
 BEGIN
 SELECT * FROM users
-WHERE userEmail = users.userEmail;
+WHERE `userId` = userId;
 END//
 
 /*userLogin(userEmail)
 	Returns encrypted user password to check validity on backend.*/
 CREATE PROCEDURE userLogin(
-IN userEmail VARCHAR(45), IN userPassword VARCHAR(45))
+IN userEmail VARCHAR(45), 
+IN userPassword VARCHAR(45))
 BEGIN
 SELECT * FROM users
 WHERE email = userEmail AND password = userPassword;
@@ -682,7 +685,7 @@ END//
 
 
 
-CREATE PROCEDURE editEvent
+CREATE PROCEDURE editEvent(
 IN currentEventId INT(11),
 IN currentOrganizionId INT(11),
 IN currentEventName VARCHAR(45),
@@ -692,7 +695,7 @@ IN currentMinAge INT,
 IN currentMaxAge INT,
 IN currentEventDate DATETIME,
 IN currentRegistrationOpen DATETIME,
-IN currentRegistrationClose DATETIME,
+IN currentRegistrationClose DATETIME)
 BEGIN
 UPDATE Events SET
   `eventId` = currentEventId,
