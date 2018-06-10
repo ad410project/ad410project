@@ -8,7 +8,7 @@ $link = Db::getInstance();
 
 // If session variable is not set it will redirect to login page
 if (!isset($_SESSION['emailAddress'])) {
-    header("location: ?controller=dynamic&action=login");
+    header("location: ?controller=static&action=login");
     exit;
 } else {
     $emailAddress = $_SESSION['emailAddress'];

@@ -19,6 +19,7 @@ class  user{
 	    $this->phoneNumber  			= $phoneNumber;
 	    $this->notificationState 		= $notificationState;
 		$this->userTypeId				= $userTypeId;
+
 	}
 
 	// temporary registration function - auth team can add their code here
