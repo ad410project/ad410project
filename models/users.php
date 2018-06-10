@@ -1,27 +1,27 @@
 <?php 
 class  user{
-	public $userId;
-	public $firstName;
-	public $lastName;
-	public $email;
-	public $password;
-	public $phoneNumber;
-	public $notificationState;
-	public $userTypeId;
+    public $userId;
+    public $firstName;
+    public $lastName;
+    public $email;
+    public $password;
+    public $phoneNumber;
+    public $notificationState;
+    public $userTypeId;
 
-	public function __construct($userId, $firstName, $lastName, $email, $password, $phoneNumber, $notificationState, $userTypeId){
+    public function __construct($userId, $firstName, $lastName, $email, $password, $phoneNumber, $notificationState, $userTypeId){
 
-		$this->userId 					= $userId;
-	    $this->firstName 				= $firstName;
-	    $this->lastName 				= $lastName;
-	    $this->email					= $email;
-	    $this->password					= $password;
-	    $this->phoneNumber  			= $phoneNumber;
-	    $this->notificationState 		= $notificationState;
-		$this->userTypeId				= $userTypeId;
-	}
+        $this->userId                   = $userId;
+        $this->firstName                = $firstName;
+        $this->lastName                 = $lastName;
+        $this->email                    = $email;
+        $this->password                 = $password;
+        $this->phoneNumber              = $phoneNumber;
+        $this->notificationState        = $notificationState;
+        $this->userTypeId               = $userTypeId;
+    }
 
-	// temporary registration function - auth team can add their code here
+    // temporary registration function - auth team can add their code here
     public static function addUser()
     {
         $db = Db::getInstance();
@@ -47,7 +47,7 @@ class  user{
         }
         //Users table columns - userId, email, password, firstName, lastName, phoneNumber, notificationState, userTypeId
         $query = "INSERT INTO users (email, password, firstName, lastName, phoneNumber, notificationState, userTypeId) 
-					  VALUES('$email', '$password', '$first_name', '$last_name', '$phone', 0, $usertype_id)";
+                      VALUES('$email', '$password', '$first_name', '$last_name', '$phone', 0, $usertype_id)";
         $result = mysqli_query($db, $query) or die ("Could not add user to the DB." . mysqli_error());
         header("location: ?controller=dynamic&action=home");
     }
@@ -69,53 +69,75 @@ class  user{
         }
     }
 
-//	public function addUser($userId, $firstName, $lastName, $email, $password, $phoneNumber, $notificationState, $userTypeId){
+//  public function addUser($userId, $firstName, $lastName, $email, $password, $phoneNumber, $notificationState, $userTypeId){
 //
-//		//instance of db
-//		$db = Db::getInstance();
+//      //instance of db
+//      $db = Db::getInstance();
 //
-//		//add user to database
-//		$req = $db->prepare('INSERT INTO users (firstName, lastName, email, password, phoneNumber, notificationState, userTypeId
+//      //add user to database
+//      $req = $db->prepare('INSERT INTO users (firstName, lastName, email, password, phoneNumber, notificationState, userTypeId
 //                                                       VALUES ?, ?, ?, ?, ?, ?, ?)';
 //
 //        $req->bind_param($userId, $firstName, $lastName, $email, $password, $phoneNumber, $notificationState, $userTypeId);
 //        $req->execute();
-//	}
+//  }
 
-	public static function editUser($userId, $firstName, $lastName, $email, $password, $phoneNumber, $notificationState, $userTypeId){
+    public static function editUser($userId, $firstName, $lastName, $email, $password, $phoneNumber, $notificationState, $userTypeId, $addressLine1, $addressLine2, $addressCity, $addressState, $addressZipCode){
 
-		//instance of db
-		$db = Db::getInstance();
+        //instance of db
+        $db = Db::getInstance();
 
-		//edit user 
-        $req = $db->prepare('UPDATE TABLE_NAME SET 
-                firstName = ?,
-                lastName = ?,
-                email = ?,
-                password = ?,
-                phoneNumber = ?,
-                notificationState = ?,
-                userTypeId = ? WHERE id = ?');
+        //edit address
+        $req = $db->prepare('UPDATE addresses 
+                SET addressLine1 = ?,
+                    addressLine2 = ?,
+                    city = ?,
+                    state = ?,
+                    postalcode = ?,
+                WHERE addressId = ?;');
 
-        $req->bind_param('$userId, $firstName, $lastName, $email, $password, $phoneNumber, $notificationState, $userTypeId');
+        // Bind parameters for address update
+        $req->bind_param('sssssi', $addressLine1, $addressLine2 $addressCity, $addressState, $addressZipCode, $addressId);
+
         $req->execute();
-	}
 
-	public function deleteUser($user_id){
-		//instance of db
-		$db = Db::getInstance();
 
-		$query = 'DELETE FROM users WHERE user_id = ?';
-		return ($this->db->query($query));
-	}
+        // Prepare query to update organizations record
+        $req = $db->prepare('UPDATE users 
+                                SET addressId=?, 
+                                    firstName=?, 
+                                    lastName=?, 
+                                    email=?, 
+                                    password=?,
+                                    phoneNumber=?, 
+                                    notificationState=?
+                                    userId=?
+                                WHERE userId = ?;');
 
-	public function getUserById($user_id){
-		//instance of db
-		$db = Db::getInstance();
-		
-		// Prepare the query 
+        $req->bind_param('issisii', $userId, $firstName, $lastName, $email, $password, $phoneNumber, $notificationState, $userId);
+
+        $req->execute();
+        // Close Connection
+        $db->close();
+
+        return 'User Updated';
+    }
+
+    public function deleteUser($user_id){
+        //instance of db
+        $db = Db::getInstance();
+
+        $query = 'DELETE FROM users WHERE user_id = ?';
+        return ($this->db->query($query));
+    }
+
+    public function getUserById($user_id){
+        //instance of db
+        $db = Db::getInstance();
+        
+        // Prepare the query 
         $req = $db->prepare('SELECT column_name FROM table_name WHERE id = ?');
-		return ($this->db->query($req));
-	}
+        return ($this->db->query($req));
+    }
 }
 ?>
