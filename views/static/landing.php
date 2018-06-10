@@ -28,7 +28,7 @@
                 </div>
                 <div class="carousel-caption">
                     <h2 class="animated bounceInDown">Richmond Beach Saltwater Park</h2>
-                    <p class="animated fadeInUp">We spent the day searching for seashells It was fun!</p>
+                    <p class="animated fadeInUp">We spent the day searching for seashells. It was fun!</p>
                     <p class="animated fadeInUp"><a href="?controller=dynamic&action=searchEvents"
                                                     class="btn btn-transparent btn-rounded btn-large">Search Events</a>
                     </p>
@@ -40,7 +40,7 @@
                 </div>
                 <div class="carousel-caption">
                     <h2 class="animated fadeInRight">Green Lake Park</h2>
-                    <p class="animated fadeInRight">It is too crowded!</p>
+                    <p class="animated fadeInRight">The Park was warm and crowded. I've made a lot of new friends!</p>
                     <p class="animated fadeInRight"><a href="?controller=dynamic&action=searchEvents"
                                                        class="btn btn-transparent btn-rounded btn-large">Search
                             Events</a></p>
