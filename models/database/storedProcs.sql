@@ -65,8 +65,8 @@ DROP PROCEDURE IF EXISTS `removeType`;
 -- ORGANIZATION PROCS DROP COMMANDS --
 DROP PROCEDURE IF EXISTS `getOrganization`;
 DROP PROCEDURE IF EXISTS `deleteOrganization`;
-DROP PROCEDURE IF EXISTS `getOrganizationUsers`;
-DROP PROCEDURE IF EXISTS `addOrganizationUser`;
+DROP PROCEDURE IF EXISTS `addOrganization`;
+DROP PROCEDURE IF EXISTS `editOrganization`;
 
 -- USER PROCS DROP COMMANDS --
 DROP PROCEDURE IF EXISTS `addUser`;
@@ -218,6 +218,7 @@ WHERE addressId = (SELECT addressId FROM UserAddresses WHERE userIdIn = userId);
 DELETE FROM Users
 WHERE userIdIn = userId;
 
+COMMIT;
 END//
 
 /*getUserById(userEmail)
@@ -240,38 +241,117 @@ WHERE email = userEmail AND password = userPassword;
 END//
 
 -- ****************************************************ORGANIZATION CLASS PROCS****************************************************** --
-
-CREATE PROCEDURE `getOrganization` (IN orginizationIdp int(11))
-BEGIN
-SELECT organizationName
-FROM organizations
-WHERE organizationid = organizationIdp;
-END//
-
-#deletes an organization and a user from the organizationId
-
-CREATE PROCEDURE `deleteOrganization` (IN organizationIdd int(11))
-BEGIN
-DELETE FROM organizations
-WHERE organizationid = organizationIdd;
-END//
-
-
-CREATE PROCEDURE `getOrganizationUsers` (IN orginizationIdpu int(11))
+/*Gets all organization data*/
+CREATE PROCEDURE getOrganization(
+IN organizationIdIn int(11))
 BEGIN
 SELECT *
 FROM organizations
-WHERE organizationid = organizationIdpu;
+JOIN addresses USING (addressId)
+JOIN users USING (userId)
+WHERE organizationid = organizationIdIn;
 END//
 
-
-CREATE PROCEDURE `addOrganizationUser` (IN orginizationIdpu int(11), addressId int(11), organizationName varchar(45), 
-organizationDescription text, phoneNumber int(11), ogranizationWebsite varchar(45), userId int(11))
+/*Deletes organization by orgId. Also removes org address and user
+account associated with the organization*/
+CREATE PROCEDURE deleteOrganization
+(IN organizationIdIn INT(11))
 BEGIN
-INSERT INTO organizations VALUES
-(organizationIdpu, addressId, organizationName, organizationDescription, phoneNumber, organizationWebsite, userIdaddressIdaddressIdorganizationsorganizations);
+DECLARE userIdIn INT DEFAULT NULL;
+DECLARE addressIdIn INT DEFAULT NULL;
+
+START TRANSACTION;
+
+SET userIdIn = (SELECT userId FROM organizations WHERE organizationIdIn = organizationId);
+SET addressIdIn = (SELECT addressId FROM organizations WHERE organizationIdIn = organizationId);
+
+DELETE FROM addresses
+WHERE addressIdIn = addressId;
+
+DELETE FROM users
+WHERE userIdIn = userId;
+
+DELETE FROM organizations
+WHERE organizationId = organizationIdIn;
+
+COMMIT;
 END//
 
+
+/*addOrganization(orgName, orgDescription, phoneNumber, orgWebsite,
+org/userEmail, org/userPassword) - adds a new organization with basic
+information. Populates with a blank address, will need to editOrg to
+populate address*/
+CREATE PROCEDURE addOrganization
+(IN organizationName VARCHAR(45), 
+IN organizationDescription TEXT, 
+IN phoneNumber VARCHAR(10), 
+IN ogranizationWebsite VARCHAR(45), 
+IN userEmail VARCHAR(45),
+IN userPassword VARCHAR(45))
+BEGIN
+
+DECLARE addressIdIn INT DEFAULT NULL;
+DECLARE userIdIn INT DEFAULT NULL;
+
+START TRANSACTION;
+
+INSERT INTO Users VALUES
+(DEFAULT, userEmail, userPassword, DEFAULT, DEFAULT, DEFAULT, 0, 
+(SELECT userTypeId FROM userType WHERE userTypeName = 'Organization'));
+
+SET userIdIn = LAST_INSERT_ID();
+
+INSERT INTO Addresses VALUES
+(DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT);
+
+SET addressIdIn = LAST_INSERT_ID();
+
+INSERT INTO organizations VALUES
+(DEFAULT, addressIdIn, organizationName, organizationDescription, 
+phoneNumber, organizationWebsite, userIdIn);
+
+COMMIT;
+END//
+
+/*editOrganization - Edits all information related to organization,
+user attached to org, and address attached to org.*/
+CREATE PROCEDURE editOrganization(
+IN organizationIdIn INT(11),
+IN organizationName VARCHAR(45), 
+IN organizationDescription TEXT, 
+IN phoneNumber VARCHAR(10), 
+IN ogranizationWebsite VARCHAR(45), 
+IN userEmail VARCHAR(45),
+IN userPassword VARCHAR(45),
+IN addressLine1 VARCHAR(45),
+IN addressLine2 VARCHAR(45),
+IN city VARCHAR(45),
+IN state VARCHAR(45),
+IN postalCode VARCHAR(6),
+IN firstName VARCHAR(45),
+IN lastName VARCHAR(45))
+BEGIN
+UPDATE organizations 
+JOIN addresses USING (addressId)
+JOIN users USING (userId)
+SET
+  `organizationName` = organizationName,
+  `organizationdescription` = organizationDescription,
+  organizations.phoneNumber = phoneNumber,
+  `organizationWebsite` = organizationWebsite,
+  `addressLine1` = addressLine1,
+  `addressLine2` = addressLine2,
+  `city` = city,
+  `state`  = state,
+  `postalCode` = postalCode,
+  `email` = userEmail,
+  `password` = userPassword,
+  `firstName` = firstName,
+  `lastName` = lastName,
+  users.phoneNumber = phonenumber
+WHERE organizationIdIn = organizationId;
+END//
 
 -- ******************************************************EVENTS CLASS PROCS************************************************************ --
 
