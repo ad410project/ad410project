@@ -205,7 +205,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`EventAddresses` (
   CONSTRAINT `fk_Events_has_Addresses_Addresses1`
     FOREIGN KEY (`addressId`)
     REFERENCES `mydb`.`Addresses` (`addressId`)
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Events_has_Addresses_Events1`
     FOREIGN KEY (`eventId`)
