@@ -14,7 +14,7 @@ class event
     private $startDate;
     private $endDate;
     private $categories;
-    private $type;
+    private $types;
     private $price;
     private $minAge;
     private $maxAge;
@@ -22,7 +22,7 @@ class event
     private $registrationClose;
 
     public function __construct($eventId, $name, $description, $addressLine1, $addressLine2, $city, $state,
-                                $postalCode, $startDate, $endDate, $organizationId, $categories, $type,
+                                $postalCode, $startDate, $endDate, $organizationId, $categories, $types,
                                 $price, $minAge, $maxAge, $registrationOpen, $registrationClose)
     {
         $this->eventId = $eventId;
@@ -37,7 +37,7 @@ class event
         $this->endDate = $endDate;
         $this->organizationId = $organizationId;
         $this->categories = $categories;
-        $this->type = $type;
+        $this->types = $types;
         $this->price = $price;
         $this->minAge = $minAge;
         $this->maxAge = $maxAge;
@@ -45,12 +45,103 @@ class event
         $this->registrationClose = $registrationClose;
     }
 
+    //Add a new event by passing an event object
     public static function addEvent($event)
     {
         //get instance of db
         $db = Db::getInstance();
 
-        //add event to database
+        //bind the in parameters
+        $stmt = $db->prepare("SET @currentOrganizationId = ?");
+        $stmt->bind_param('i', $event->getOrganizationId());
+        $stmt->execute();
+
+        //bind the in parameters
+        $stmt = $db->prepare("SET @currentEventName = ?");
+        $stmt->bind_param('s', $event->getName());
+        $stmt->execute();
+
+        //bind the in parameters
+        $stmt = $db->prepare("SET @currentEventDescription = ?");
+        $stmt->bind_param('s', $event->getDescription());
+        $stmt->execute();
+
+        //bind the in parameters
+        $stmt = $db->prepare("SET @currentEventPrice = ?");
+        $stmt->bind_param('i', $event->getPrice());
+        $stmt->execute();
+
+        //bind the in parameters
+        $stmt = $db->prepare("SET @currentMinAge = ?");
+        $stmt->bind_param('i', $event->getMinAge());
+        $stmt->execute();
+
+        //bind the in parameters
+        $stmt = $db->prepare("SET @currentMaxAge = ?");
+        $stmt->bind_param('i', $event->getMaxAge());
+        $stmt->execute();
+
+        //bind the in parameters
+        $stmt = $db->prepare("SET @currentEventDate = ?");
+        $stmt->bind_param('s', $event->getStartDate());
+        $stmt->execute();
+
+        //bind the in parameters
+        $stmt = $db->prepare("SET @currentRegistrationOpen = ?");
+        $stmt->bind_param('s', $event->getRegistrationOpen());
+        $stmt->execute();
+
+        //bind the in parameters
+        $stmt = $db->prepare("SET @currentRegistrationClose = ?");
+        $stmt->bind_param('s', $event->getRegistrationClose());
+        $stmt->execute();
+
+        //bind the in parameters
+        $stmt = $db->prepare("SET @currentEndDate = ?");
+        $stmt->bind_param('s', $event->getEndDate());
+        $stmt->execute();
+
+        //bind the in parameters
+        $stmt = $db->prepare("SET @currentEventType = ?");
+        $stmt->bind_param('s', $event->getTypes());
+        $stmt->execute();
+
+        //bind the in parameters
+        $stmt = $db->prepare("SET @currentEventCategory = ?");
+        $stmt->bind_param('s', $event->getCategories());
+        $stmt->execute();
+
+        //bind the in parameters
+        $stmt = $db->prepare("SET @addressLine1 = ?");
+        $stmt->bind_param('s', $event->getAddressLine1());
+        $stmt->execute();
+
+        //bind the in parameters
+        $stmt = $db->prepare("SET @addressLine2 = ?");
+        $stmt->bind_param('s', $event->getAddressLine2());
+        $stmt->execute();
+
+        //bind the in parameters
+        $stmt = $db->prepare("SET @city = ?");
+        $stmt->bind_param('s', $event->getCity());
+        $stmt->execute();
+
+        //bind the in parameters
+        $stmt = $db->prepare("SET @state = ?");
+        $stmt->bind_param('s', $event->getState());
+        $stmt->execute();
+
+        //bind the in parameters
+        $stmt = $db->prepare("SET @postalCode = ?");
+        $stmt->bind_param('s', $event->getPostalCode());
+        $stmt->execute();
+
+        $db->query('CALL editEvent(@currentOrganizationId, @currentEventName, @currentEventDescription,
+            @currentEventPrice, @currentMinAge, @currentMaxAge, @currentEventDate, @currentRegistrationOpen,
+            @currentRegistrationClose, @currentEndDate, @currentEventType, @currentEventCategory,
+            @addressLine1, @addressLine2, @city, @state, @postalCode)');
+
+        $db->close();
     }
 
     public static function deleteEvent($eventId)
@@ -144,12 +235,12 @@ class event
         $db = Db::getInstance();
 
         //bind the in parameters
-        $stmt = $db->prepare("SET @myCategoryId = ?");
+        $stmt = $db->prepare("SET @currentCategoryName = ?");
         $stmt->bind_param('s', $category);
         $stmt->execute();
 
         //execute the procedure
-        $result = $db->query('CALL getCategoryEvent(@myCategoryId)');
+        $result = $db->query('CALL getEventsByCategory(@currentCategoryName)');
 
         $db->close();
 
@@ -163,12 +254,12 @@ class event
         $db = Db::getInstance();
 
         //bind the in parameters
-        $stmt = $db->prepare("SET @myTypeId = ?");
+        $stmt = $db->prepare("SET @currentType = ?");
         $stmt->bind_param('s', $type);
         $stmt->execute();
 
         //execute the procedure
-        $result = $db->query('CALL getTypeEvent(@myTypeId)');
+        $result = $db->query('CALL getEventsByType(@currentType)');
 
         $db->close();
 
@@ -199,16 +290,16 @@ class event
         $db = Db::getInstance();
 
         //bind the in parameters
-        $stmt = $db->prepare("SET @startTime = ?");
+        $stmt = $db->prepare("SET @currentEventDate = ?");
         $stmt->bind_param('s', $startDate);
         $stmt->execute();
 
-        $stmt = $db->prepare("SET @endTime = ?");
+        $stmt = $db->prepare("SET @currentEndDate = ?");
         $stmt->bind_param('s', $endDate);
         $stmt->execute();
 
         //execute the procedure
-        $result = $db->query('CALL getEventsInDateRange(@startTime, @endTime)');
+        $result = $db->query('CALL getEventsInDateRange(@currentEventDate, @currentEndDate)');
 
         $db->close();
 
@@ -277,13 +368,108 @@ class event
         return event::getEventArray($result);
     }
 
-    public static function updateEvent($event)
+    //Edit an event in the Db by passing an event object with matching Id and the other changes you want
+    public static function editEvent($event)
     {
         //get instance of db
         $db = Db::getInstance();
 
-        //edit event characteristics, might replace with multiple methods in the
-        //form of setEventName, setEventDescription, setEventLocation, etc.
+        //bind the in parameters
+        $stmt = $db->prepare("SET @currentEventId = ?");
+        $stmt->bind_param('i', $event->getEventId());
+        $stmt->execute();
+
+        //bind the in parameters
+        $stmt = $db->prepare("SET @currentOrganizationId = ?");
+        $stmt->bind_param('i', $event->getOrganizationId());
+        $stmt->execute();
+
+        //bind the in parameters
+        $stmt = $db->prepare("SET @currentEventName = ?");
+        $stmt->bind_param('s', $event->getName());
+        $stmt->execute();
+
+        //bind the in parameters
+        $stmt = $db->prepare("SET @currentEventDescription = ?");
+        $stmt->bind_param('s', $event->getDescription());
+        $stmt->execute();
+
+        //bind the in parameters
+        $stmt = $db->prepare("SET @currentEventPrice = ?");
+        $stmt->bind_param('i', $event->getPrice());
+        $stmt->execute();
+
+        //bind the in parameters
+        $stmt = $db->prepare("SET @currentMinAge = ?");
+        $stmt->bind_param('i', $event->getMinAge());
+        $stmt->execute();
+
+        //bind the in parameters
+        $stmt = $db->prepare("SET @currentMaxAge = ?");
+        $stmt->bind_param('i', $event->getMaxAge());
+        $stmt->execute();
+
+        //bind the in parameters
+        $stmt = $db->prepare("SET @currentEventDate = ?");
+        $stmt->bind_param('s', $event->getStartDate());
+        $stmt->execute();
+
+        //bind the in parameters
+        $stmt = $db->prepare("SET @currentRegistrationOpen = ?");
+        $stmt->bind_param('s', $event->getRegistrationOpen());
+        $stmt->execute();
+
+        //bind the in parameters
+        $stmt = $db->prepare("SET @currentRegistrationClose = ?");
+        $stmt->bind_param('s', $event->getRegistrationClose());
+        $stmt->execute();
+
+        //bind the in parameters
+        $stmt = $db->prepare("SET @currentEndDate = ?");
+        $stmt->bind_param('s', $event->getEndDate());
+        $stmt->execute();
+
+        //bind the in parameters
+        $stmt = $db->prepare("SET @currentEventType = ?");
+        $stmt->bind_param('s', $event->getTypes());
+        $stmt->execute();
+
+        //bind the in parameters
+        $stmt = $db->prepare("SET @currentEventCategory = ?");
+        $stmt->bind_param('s', $event->getCategories());
+        $stmt->execute();
+
+        //bind the in parameters
+        $stmt = $db->prepare("SET @addressLine1 = ?");
+        $stmt->bind_param('s', $event->getAddressLine1());
+        $stmt->execute();
+
+        //bind the in parameters
+        $stmt = $db->prepare("SET @addressLine2 = ?");
+        $stmt->bind_param('s', $event->getAddressLine2());
+        $stmt->execute();
+
+        //bind the in parameters
+        $stmt = $db->prepare("SET @city = ?");
+        $stmt->bind_param('s', $event->getCity());
+        $stmt->execute();
+
+        //bind the in parameters
+        $stmt = $db->prepare("SET @state = ?");
+        $stmt->bind_param('s', $event->getState());
+        $stmt->execute();
+
+        //bind the in parameters
+        $stmt = $db->prepare("SET @postalCode = ?");
+        $stmt->bind_param('s', $event->getPostalCode());
+        $stmt->execute();
+
+        $db->query('CALL editEvent(@currentEventId, @currentOrganizationId, @currentEventName, 
+            @currentEventDescription, @currentEventPrice, @currentMinAge, @currentMaxAge, @currentEventDate, 
+            @currentRegistrationOpen, @currentRegistrationClose, @currentEndDate, @currentEventType,
+            @currentEventCategory, @addressLine1, @addressLine2, @city, @state, @postalCode)');
+
+        $db->close();
     }
 
     public function getEventId()
@@ -345,9 +531,9 @@ class event
         return $this->categories;
     }
 
-    public function getType()
+    public function getTypes()
     {
-        return $this->type;
+        return $this->types;
     }
 
     public function getPrice()
@@ -375,21 +561,24 @@ class event
         return $this->registrationClose;
     }
 
+    //function for returning events data formatted for the user profile
+//    public static function prepUserDisplay($events) {
+//
+//    }
+
     //helper function for getting an Event array from sql result
-    static function getEventArray($result) {
+    private static function getEventArray($result) {
         $array = [];
 
         if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc())
             {
-                $categories = $row["categoryName"];
-                $types = $row["typeName"];
 
                 $array[] = new event($row["eventId"],$row["eventName"], $row["eventDescription"],
                     $row["addressLine1"], $row["addressLine2"], $row["city"], $row["state"],
                     $row["postalCode"], $row["eventDate"], $row["endDate"], $row["organizationId"],
-                    preg_split(",", $categories), preg_split(",", $types), $row["eventPrice"],
-                    $row["minAge"], $row["maxAge"], $row["registrationOpen"], $row["registrationClose"]);
+                    $row["eventCategory"], $row["eventType"], $row["eventPrice"], $row["minAge"],
+                    $row["maxAge"], $row["registrationOpen"], $row["registrationClose"]);
             }
         }
         return $array;
