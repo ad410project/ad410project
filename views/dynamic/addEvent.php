@@ -14,9 +14,12 @@
             <div class="form-group col-md-4">
                 <input type="text" class="form-control" id="eventName" placeholder="Enter event name" name="eventName" required>
             </div>
+        </div>
 
+        <div class="form-row">
             <div class="form-group col-md-6">
-                <input type="text" class="form-control" id="eventDescription" placeholder="Enter event description" name="eventDescription">
+                <textarea class="form-control" rows="5" id="eventDescription" placeholder="Enter event description"
+                          name="eventDescription"></textarea>
             </div>
         </div>
 
@@ -53,7 +56,7 @@
             </div>
         </div>
 
-        <button type="button" class="btn btn-light btn-rounded" onclick="window.history.back();" > Go Back </button>
+        <button type="button" class="btn btn-danger btn-rounded" onclick="window.history.back();" > Go Back </button>
         <button type="submit" class="btn btn-info btn-rounded">Add to my Event list</button>
 
         <br><br><br>

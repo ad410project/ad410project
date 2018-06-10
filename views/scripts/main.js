@@ -88,7 +88,6 @@ function showMapHideCal() {
     map.style.display = 'block';
 }
 
-
 //userProfile form for editChild
 function displayEditChildForm()
 {
@@ -237,7 +236,7 @@ function updateUserProfile()
 
     //POST array values to userProfile
     $.ajax({
-        url: '../dynamic/userProfile.php',
+        url: '?controller=dynamic&action=profile',
         type: 'POST',
         data: {q:staticValues},
         success: function (data) {
@@ -276,7 +275,7 @@ function addKid()
 
     //POST array values to userProfile
     $.ajax({
-        url: '../dynamic/userProfile.php',
+        url: '?controller=dynamic&action=profile',
         type: 'POST',
         data: {q2:dynamicValues},
         success: function (data) {
@@ -294,7 +293,7 @@ $("#myCarousel").on("slide.bs.carousel", function(e) {
     var itemsPerSlide = 3;
     var totalItems = $(".carousel-item").length;
 
-    if (idx >= totalItems - (itemsPerSlide - 1)) {
+    if (idx >= totalItems - (itemsPerSlide = 3)) {
         var it = itemsPerSlide - (totalItems - idx);
         for (var i = 0; i < it; i++) {
             // append slides to end
