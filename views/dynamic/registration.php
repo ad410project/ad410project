@@ -55,7 +55,5 @@
             <button type="submit" class="register-btn">Register</button>
         </div>
     </div>
-    <div class="container signin">
-        <p>Already have an account? <a href="#">Log in</a>.</p>
-    </div>
+    <br> <br>
 </form>
