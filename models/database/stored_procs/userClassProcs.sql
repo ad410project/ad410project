@@ -6,6 +6,7 @@ DROP PROCEDURE IF EXISTS `editUser`;
 DROP PROCEDURE IF EXISTS `editUserAddress`;
 DROP PROCEDURE IF EXISTS `deleteUser`;
 DROP PROCEDURE IF EXISTS `getUserById`;
+DROP PROCEDURE IF EXISTS `userLogin`;
 
 delimiter //
 
@@ -26,7 +27,7 @@ INSERT INTO Addresses VALUES
 (DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT);
 
 INSERT INTO UserAddresses VALUES
-(userEmail, LAST_INSERT_ID());
+((SELECT userId FROM Users WHERE userEmail = email), LAST_INSERT_ID());
 
 COMMIT;
 END//
@@ -65,7 +66,7 @@ IN postalCode VARCHAR(6))
 BEGIN
 UPDATE Addresses 
 JOIN UserAddresses USING (addressId)
-JOIN Users USING (userId)
+JOIN Users USING (userEmail)
 SET
   `addressLine1` = addressLine1,
   `addressLine2` = addressLine2,
@@ -96,10 +97,20 @@ END//
 
 /*getUserById(userEmail)
 	Returns a list of users with a given e-mail address, which serves as their unique ID.*/
-CREATE PROCEDURE getUserById(IN userEmail VARCHAR(45))
+CREATE PROCEDURE getUserById(
+IN userEmail VARCHAR(45))
 BEGIN
 SELECT * FROM users
 WHERE userEmail = users.userEmail;
+END//
+
+/*userLogin(userEmail)
+	Returns encrypted user password to check validity on backend.*/
+CREATE PROCEDURE userLogin(
+IN userEmail VARCHAR(45), IN userPassword VARCHAR(45))
+BEGIN
+SELECT * FROM users
+WHERE email = userEmail AND password = userPassword;
 END//
 
 delimiter ;

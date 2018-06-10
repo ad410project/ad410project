@@ -21,8 +21,8 @@ class event
     private $registrationOpen;
     private $registrationClose;
 
-    public function __construct($eventId, $name, $description, $addressLine1, $addressLine2, $city,
-                                $state, $postalCode, $startDate, $endDate, $organizationId, $categories, $type,
+    public function __construct($eventId, $name, $description, $addressLine1, $addressLine2, $city, $state,
+                                $postalCode, $startDate, $endDate, $organizationId, $categories, $type,
                                 $price, $minAge, $maxAge, $registrationOpen, $registrationClose)
     {
         $this->eventId = $eventId;
@@ -58,7 +58,17 @@ class event
         //get instance of db
         $db = Db::getInstance();
 
-        //delete the event
+        //bind the in parameters
+        $stmt = $db->prepare("SET @currentEventId = ?");
+        $stmt->bind_param('i', $eventId);
+        $stmt->execute();
+
+        //execute the procedure
+        $result = $db->query('CALL getEvent(@currentEventId)');
+
+        $db->close();
+
+        return event::getEventArray($result);
     }
 
     public static function getAllEvents()
@@ -135,7 +145,7 @@ class event
 
         //bind the in parameters
         $stmt = $db->prepare("SET @myCategoryId = ?");
-        $stmt->bind_param('i', $category);
+        $stmt->bind_param('s', $category);
         $stmt->execute();
 
         //execute the procedure
@@ -154,7 +164,7 @@ class event
 
         //bind the in parameters
         $stmt = $db->prepare("SET @myTypeId = ?");
-        $stmt->bind_param('i', $type);
+        $stmt->bind_param('s', $type);
         $stmt->execute();
 
         //execute the procedure
@@ -267,68 +277,13 @@ class event
         return event::getEventArray($result);
     }
 
-    public static function editEventField($eventId, $fieldToChange, $changeToThis)
+    public static function updateEvent($event)
     {
         //get instance of db
         $db = Db::getInstance();
 
         //edit event characteristics, might replace with multiple methods in the
         //form of setEventName, setEventDescription, setEventLocation, etc.
-    }
-
-    public static function editAddress($eventId, $addressLine1, $addressLine2, $city, $state, $postalCode)
-    {
-        //get instance of db
-        $db = Db::getInstance();
-
-        //add an address to the event in the database
-
-        //categories, types, and addresses likely need their own
-        //methods for changes since they can have multiple entries
-    }
-
-    public static function addCategory($eventId, $category)
-    {
-        //get instance of db
-        $db = Db::getInstance();
-
-        //add a category to the event in the database
-
-        //categories, types, and addresses likely need their own
-        //methods for changes since they can have multiple entries
-    }
-
-    public static function removeCategory($eventId, $category)
-    {
-        //get instance of db
-        $db = Db::getInstance();
-
-        //remove a category from the event in the database
-
-        //categories, types, and addresses likely need their own
-        //methods for changes since they can have multiple entries
-    }
-
-    public static function addType($eventId, $type)
-    {
-        //get instance of db
-        $db = Db::getInstance();
-
-        //add a type to the event in the database
-
-        //categories, types, and addresses likely need their own
-        //methods for changes since they can have multiple entries
-    }
-
-    public static function removeType($eventId, $type)
-    {
-        //get instance of db
-        $db = Db::getInstance();
-
-        //remove a type from the event in the database
-
-        //categories, types, and addresses likely need their own
-        //methods for changes since they can have multiple entries
     }
 
     public function getEventId()
@@ -427,8 +382,8 @@ class event
         if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc())
             {
-                $categories[] = $row["categoryName"];
-                $types[] = $row["typeName"];
+                $categories = $row["categoryName"];
+                $types = $row["typeName"];
 
                 $array[] = new event($row["eventId"],$row["eventName"], $row["eventDescription"],
                     $row["addressLine1"], $row["addressLine2"], $row["city"], $row["state"],

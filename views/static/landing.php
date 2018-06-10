@@ -18,7 +18,7 @@
                 <div class="carousel-caption">
                     <h2 class="animated fadeInLeft">Los Angeles</h2>
                     <p class="animated fadeInUp">We had such a great time in LA!</p>
-                    <p class="animated fadeInUp"><a href="?controller=static&action=searchEvents" class="btn btn-transparent btn-rounded btn-large">Search Events</a></p>
+                    <p class="animated fadeInUp"><a href="?controller=dynamic&action=searchEvents" class="btn btn-transparent btn-rounded btn-large">Search Events</a></p>
                 </div>
 
             </div>
@@ -29,7 +29,7 @@
                 <div class="carousel-caption">
                     <h2 class="animated bounceInDown">Chicago</h2>
                     <p class="animated fadeInUp">We had such great pizza in CHI!</p>
-                    <p class="animated fadeInUp"><a href="?controller=static&action=searchEvents" class="btn btn-transparent btn-rounded btn-large">Search Events</a></p>
+                    <p class="animated fadeInUp"><a href="?controller=dynamic&action=searchEvents" class="btn btn-transparent btn-rounded btn-large">Search Events</a></p>
                 </div>
             </div>
             <div class="carousel-item">
@@ -39,7 +39,7 @@
                 <div class="carousel-caption">
                     <h2 class="animated fadeInRight">New York</h2>
                     <p class="animated fadeInRight">It is too crowded!</p>
-                    <p class="animated fadeInRight"><a href="?controller=static&action=searchEvents" class="btn btn-transparent btn-rounded btn-large">Search Events</a></p>
+                    <p class="animated fadeInRight"><a href="?controller=dynamic&action=searchEvents" class="btn btn-transparent btn-rounded btn-large">Search Events</a></p>
                 </div>
             </div>
         </div>

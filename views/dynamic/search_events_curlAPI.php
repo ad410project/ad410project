@@ -4,7 +4,7 @@ session_start();
 
 // If session variable is not set it will redirect to login page
 if (!isset($_SESSION['emailAddress'])) {
-    header("location: ?controller=static&action=login");
+    header("location: ?controller=dynamic&action=login");
     exit;
 }
 ?>
@@ -72,5 +72,5 @@ foreach ($json_output as $k => $v) {
 <script>
     var locations = <?php echo json_encode($geo_locals) ?>;
 </script>
-<script src="../scripts/main.js"></script>
+<script src="views/scripts/main.js"></script>
 
