@@ -660,22 +660,25 @@ END//
 
 
 
- -- public static function addEvent($event)
+
+
+-- public static function addEvent($event)
     -- {
         -- //add event to database
     -- }
 
 
-CREATE PROCEDURE addEvent(IN currentOrganizationId INT, currentEventName VARCHAR(45), currentEventDescription TEXT, currentEventPrice INT, currentMinAge INT, currentMaxAge INT, currentEventDate DATETIME, currentEndDate DATETIME, currentRegistrationOpen DATETIME, currentRegistrationClose DATETIME, currentEventType SET, currentEventCategory SET)
+CREATE PROCEDURE addEvent(IN currentOrganizationId INT, currentEventName VARCHAR(45), currentEventDescription TEXT, currentEventPrice INT, currentMinAge INT, currentMaxAge INT, currentEventDate DATETIME,currentRegistrationOpen DATETIME, currentRegistrationClose DATETIME,  currentEndDate DATETIME, currentEventType SET, currentEventCategory SET)
 
 BEGIN
 START TRANSACTION;
 
 INSERT INTO Events VALUES
-(DEFAULT, currentOrganizationId,currentEventName,currentEventDescription,currentEventPrice,currentMinAge,currentMaxAge,currentEventDate,currentEndDate,currentRegistrationOpen,currentRegistrationClose,currentEventType,currentEventCategory);
+(DEFAULT, currentOrganizationId,currentEventName,currentEventDescription,currentEventPrice,currentMinAge,currentMaxAge,currentEventDate,currentRegistrationOpen,currentRegistrationClose,currentEndDate,currentEventType,currentEventCategory);
 
 COMMIT;
 END//
+
 
 
 
