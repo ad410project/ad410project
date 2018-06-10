@@ -82,23 +82,46 @@ class  user{
 //        $req->execute();
 //	}
 
-	public static function editUser($userId, $firstName, $lastName, $email, $password, $phoneNumber, $notificationState, $userTypeId){
+	public static function editUser($userId, $firstName, $lastName, $email, $password, $phoneNumber, $notificationState, $userTypeId, $addressLine1, $addressLine2, $addressCity, $addressState, $addressZipCode){
 
 		//instance of db
 		$db = Db::getInstance();
 
 		//edit user 
-        $req = $db->prepare('UPDATE TABLE_NAME SET 
-                firstName = ?,
-                lastName = ?,
-                email = ?,
-                password = ?,
-                phoneNumber = ?,
-                notificationState = ?,
-                userTypeId = ? WHERE id = ?');
+        $req = $db->prepare('UPDATE addresses 
+                SET addressLine1 = ?,
+                    addressLine2 = ?,
+                    city = ?,
+                    state = ?,
+                    postalcode = ?,
+                WHERE addressId = ?;');
 
-        $req->bind_param('$userId, $firstName, $lastName, $email, $password, $phoneNumber, $notificationState, $userTypeId');
+        // Bind parameters for address update
+        $req->bind_param('sssssi', $addressLine1, $addressLine2 $addressCity, $addressState, $addressZipCode, $addressId);
+
         $req->execute();
+
+
+        // Prepare query to update organizations record
+        $req = $db->prepare('UPDATE users 
+                                SET addressId=?, 
+                                    firstName=?, 
+                                    lastName=?, 
+                                    email=?, 
+                                    phoneNumber=?, 
+                                    notificationState=?
+                                    userId=?
+                                WHERE userId = ?;');
+
+        $req->bind_param('$userId', $firstName, $lastName, $email, $password, $phoneNumber, $notificationState, $userTypeId);
+
+        $req->execute();
+
+
+        // Close Connection
+        $db->close();
+
+        return 'User Updated';
 	}
 
 	public function deleteUser($user_id){
