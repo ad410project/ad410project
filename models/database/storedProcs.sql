@@ -158,13 +158,14 @@ COMMIT;
 END//
 
 /*editUser(userEmail, userPassword, firstName, lastName, phoneNumber, notificationState, userType)
-	Updates all user profile information based on input data.*/
+	Updates all user profile information based on input data. Note that as written, userType 
+    should be input as the string value - "new", "registered", "organization", or "admin"*/
 CREATE PROCEDURE editUser(
-IN userId INT(11),
-IN firstName VARCHAR(45),
-IN lastName VARCHAR(45),
+IN userIdIn INT(11),
 IN userEmail VARCHAR(45),
 IN userPassword VARCHAR(45),
+IN firstName VARCHAR(45),
+IN lastName VARCHAR(45),
 IN phoneNumber VARCHAR(10),
 IN notificationState TINYINT(4),
 IN userType VARCHAR(45))
@@ -177,13 +178,13 @@ UPDATE Users SET
   `phoneNumber` = phoneNumber,
   `notificationState` = notificationState,
   `userTypeId` = (SELECT userTypeId FROM userType WHERE userTypeName = userType) 
-WHERE `userId` = userId;
+WHERE userIdIn = userId;
 END//
 
 /*editUserAddress(userEmail, addressLine1, addressLine2, city, state, postalCode)
 	Updates all userAddress information.*/
 CREATE PROCEDURE editUserAddress(
-IN userId INT(11),
+IN userIdIn INT(11),
 IN addressLine1 VARCHAR(45),
 IN addressLine2 VARCHAR(45),
 IN city VARCHAR(45),
@@ -192,42 +193,40 @@ IN postalCode VARCHAR(6))
 BEGIN
 UPDATE Addresses 
 JOIN UserAddresses USING (addressId)
-JOIN Users USING (userEmail)
+JOIN Users USING (userId)
 SET
   `addressLine1` = addressLine1,
   `addressLine2` = addressLine2,
   `city` = city,
   `state`  = state,
   `postalCode` = postalCode
-WHERE `userId` = userId;
+WHERE userIdIn = userId;
 END//
 
 /*deleteUser(userEmail)
 	Removes the user from the userProfile section. Also removes related data from
 	UserAddresses and Addresses tables.*/
 CREATE PROCEDURE deleteUser(
-IN userId VARCHAR(45))
+IN userIdIn INT(11))
 BEGIN
 
 START TRANSACTION;
 
-DELETE FROM Users
-WHERE `userId` = userId;
-
 DELETE FROM Addresses
-WHERE `addressId` = (SELECT addressId FROM UserAddresses WHERE `userId` = userId);
+WHERE addressId = (SELECT addressId FROM UserAddresses WHERE userIdIn = userId);
 
-DELETE FROM UserAddresses
-WHERE `userId` = userId;
+DELETE FROM Users
+WHERE userIdIn = userId;
+
 END//
 
 /*getUserById(userEmail)
 	Returns a list of users with a given e-mail address, which serves as their unique ID.*/
 CREATE PROCEDURE getUserById(
-IN userId VARCHAR(45))
+IN userIdIn INT(11))
 BEGIN
 SELECT * FROM users
-WHERE `userId` = userId;
+WHERE userIdIn = userId;
 END//
 
 /*userLogin(userEmail)
