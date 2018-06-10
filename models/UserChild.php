@@ -22,6 +22,7 @@ class UserChild
         $this->child_Dob=$child_Dob;
         $this->childAllergies=$childAllergies;
         $this->emergencyContactNum=$emergencyContactNum;
+
     }
 
     public function addChild($user_id, $first_name, $last_name, $child_Dob, $childAllergies, $emergencyContactNum){
@@ -29,7 +30,7 @@ class UserChild
         $db = Db::getInstance();
 
         // Prepare the query
-        $stmt = $db->prepare('INSERT INTO Children (childId, userId, firstName, lastName, childDob, childAllergies, emergencyContactNum)
+        $stmt = $db->prepare('INSERT INTO Children(childId, userId, firstName, lastName, childDob, childAllergies, emergencyContactNum)
                VALUES (DEFAULT ,?, ?, ?, ?,?,?)');
 
         $stmt->bind_param('issdss', $user_id, $first_name, $last_name, $child_Dob, $childAllergies, $emergencyContactNum);
@@ -41,7 +42,7 @@ class UserChild
 
     public function removeChild($child_id){
         //remove child in the database
-        $db = Database::getInstance();
+        $db = Db::getInstance();
 
         // Prepare the query
         $stmt = $db->prepare('DELETE FROM Children WHERE child_id = ?');
@@ -56,7 +57,7 @@ class UserChild
     public static function editChild($child_id,$user_id, $first_name, $last_name, $child_Dob,$childAllergies,$emergencyContactNum){
         //edit child in the database
 
-        $db = Database::getInstance();
+        $db = Db::getInstance();
         // Prepare the query
         $stmt = $db->prepare('UPDATE Children
         SET  user_id=?, frist_name= ?, last_name=?, child_Dob=?, childAllergies = ?, emergencyContactNum=?
@@ -72,8 +73,8 @@ class UserChild
     //Get a Child by Id
     public static function getChild($child_id){
         //find child in the database
-
-        $db = Database::getInstance();
+        $col1 = null; $col2 = null; $col3 = null; $col4= null; $col5 = null; $col6 = null; $col7 = null; $col8 = null;
+        $db = Db::getInstance();
         // Prepare the query
         $stmt = $db->prepare('SELECT childId, userId, firstName, lastName, childDob,childAllergies, emergencyContactNum FROM Children
         WHERE childId = ?');
