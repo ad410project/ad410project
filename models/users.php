@@ -108,12 +108,13 @@ class  user{
                                     firstName=?, 
                                     lastName=?, 
                                     email=?, 
+                                    password=?,
                                     phoneNumber=?, 
                                     notificationState=?
                                     userId=?
                                 WHERE userId = ?;');
 
-        $req->bind_param('$userId', $firstName, $lastName, $email, $password, $phoneNumber, $notificationState, $userTypeId);
+        $req->bind_param('issisii', $userId, $firstName, $lastName, $email, $password, $phoneNumber, $notificationState, $userId);
 
         $req->execute();
 
