@@ -394,7 +394,12 @@ currentRegistrationOpen DATETIME,
 currentRegistrationClose DATETIME,  
 currentEndDate DATETIME, 
 currentEventType SET('Day Camp', 'Summer Camp', 'Overnight Camp', 'Half Day', 'Full Day', 'One Week', 'Two Week', 'Full Summer', 'Other'), 
-currentEventCategory SET('Academics', 'Animals & Farms', 'Arts & Crafts', 'Language & Culture', 'Multi-Activity Day Camp', 'Nature & Environment', 'Overnight Camp', 'Performing Arts', 'Religious Programs', 'Science & Technology', 'Special Needs', 'Sports & Fitness'))
+currentEventCategory SET('Academics', 'Animals & Farms', 'Arts & Crafts', 'Language & Culture', 'Multi-Activity Day Camp', 'Nature & Environment', 'Overnight Camp', 'Performing Arts', 'Religious Programs', 'Science & Technology', 'Special Needs', 'Sports & Fitness'),
+addressLine1 VARCHAR(45),
+addressLine2 VARCHAR(45),
+city VARCHAR(45),
+state VARCHAR(45),
+postalCode VARCHAR(6))
 
 BEGIN
 DECLARE eventIdNew INT DEFAULT NULL;
@@ -416,6 +421,8 @@ SET addressIdNew = LAST_INSERT_ID();
 INSERT INTO eventaddresses VALUES
 (eventIdNew, addressIdNew);
 
+CALL editEventAddress(eventIdNew, addressLine1, addressLine2, city, state, postalCode);
+
 COMMIT;
 END//
 
@@ -433,8 +440,15 @@ IN currentRegistrationOpen DATETIME,
 IN currentRegistrationClose DATETIME,
 IN currentEndDate DATETIME,
 currentEventType SET('Day Camp', 'Summer Camp', 'Overnight Camp', 'Half Day', 'Full Day', 'One Week', 'Two Week', 'Full Summer', 'Other'), 
-currentEventCategory SET('Academics', 'Animals & Farms', 'Arts & Crafts', 'Language & Culture', 'Multi-Activity Day Camp', 'Nature & Environment', 'Overnight Camp', 'Performing Arts', 'Religious Programs', 'Science & Technology', 'Special Needs', 'Sports & Fitness'))
+currentEventCategory SET('Academics', 'Animals & Farms', 'Arts & Crafts', 'Language & Culture', 'Multi-Activity Day Camp', 'Nature & Environment', 'Overnight Camp', 'Performing Arts', 'Religious Programs', 'Science & Technology', 'Special Needs', 'Sports & Fitness'),
+addressLine1 VARCHAR(45),
+addressLine2 VARCHAR(45),
+city VARCHAR(45),
+state VARCHAR(45),
+postalCode VARCHAR(6))
 BEGIN
+START TRANSACTION;
+
 UPDATE Events SET
   `eventId` = currentEventId,
   `organizationId` = currentOrganizationId,
@@ -450,6 +464,10 @@ UPDATE Events SET
   `eventType` = currentEventType,
   `eventCategory` = currentEventCategory
 WHERE eventId = currentEventId;
+
+CALL editEventAddress(eventIdIn, addressLine1, addressLine2, city, state, postalCode);
+
+COMMIT;
 END//
 
 /*Edits the event's address*/
