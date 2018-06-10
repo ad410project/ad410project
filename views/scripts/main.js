@@ -205,6 +205,25 @@ function removeEditChildForm()
     }, false);
 })();
 
+$(document).ready(function() {
+    var emptyValues = {};
+    //POST array values to userProfile
+
+    emptyValues = "Hello World";
+
+    $.ajax({
+        url: '?controller=dynamic&action=profile',
+        type: 'POST',
+        data: {q3: emptyValues},
+        success: function (data) {
+            console.log(emptyValues);
+
+        }
+    })
+
+});
+
+
 function updateUserProfile()
 {
 
@@ -215,20 +234,31 @@ function updateUserProfile()
     var email = document.getElementById('email');
     var pWord = document.getElementById('pWord');
     var phone = document.getElementById('phone');
+    //Address
+    var street = document.getElementById('street');
+    var street2 = document.getElementById('street2');
+    var city = document.getElementById('city');
+    var state = document.getElementById('state');
+    var zip = document.getElementById('zip');
 
-    if (null != fName && null != lName && null != email && null != pWord && null != phone)
+    if (null != fName && null != lName && null != email && null != pWord && null != phone && null != street && null != city && null != state && null != zip)
     {
-        var valFname = fName.value;
-        var valLname = lName.value;
-        var valEmail = email.value;
-        var valPWord = pWord.value;
-        var valPhone = phone.value;
+        var valFname    = fName.value;
+        var valLname    = lName.value;
+        var valEmail    = email.value;
+        var valPWord    = pWord.value;
+        var valPhone    = phone.value;
+        var valStreet   = street.value;
+        var valStreet2   = street2.value;
+        var valCity         = city.value;
+        var valState    = state.value;
+        var valZip      = zip.value;
 
-        staticValues = {fN:valFname, lN:valLname, em:valEmail, pw:valPWord, ph:valPhone};
+        staticValues = {fN:valFname, lN:valLname, em:valEmail, pw:valPWord, ph:valPhone, str:valStreet, str2:valStreet2, ct:valCity, sta:valState, zp:valZip };
     }
     else
     {
-        staticValues = {fN:fName.placeholder, lN:lName.placeholder, em: email.placeholder, pw: pWord.placeholder, ph: phone.placeholder};
+        staticValues = {fN:fName.placeholder, lN:lName.placeholder, em: email.placeholder, pw: pWord.placeholder, ph: phone.placeholder, str: street.placeholder, str2: street2.placeholder, ct: city.placeholder, sta: state.placeholder, zp: zip.placeholder};
     }
 
     removeEditChildForm();
