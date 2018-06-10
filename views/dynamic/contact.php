@@ -29,7 +29,7 @@
 
         <div class="form-row">
             <div class="form-group col-md-6">
-                <textarea class="form-control" rows="5" id="comment" name="commentMessage" required></textarea>
+                <textarea class="form-control" rows="5" id="comment" name="commentMessage" placeholder="Your Message" required></textarea>
             </div>
         </div>
 
@@ -38,6 +38,8 @@
                 <button type="submit" class="register-btn">Submit Message</button>
             </div>
         </div>
+
+        <br>
     </div>
 
 </form>

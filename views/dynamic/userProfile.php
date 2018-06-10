@@ -169,37 +169,8 @@ function addKid($kidValues)
 }
 
 ?>
-<!DOCTYPE html>
-<html xmlns:float="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="UTF-8">
-    <title>User Profile</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!-- Popper JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 
-    <link rel="stylesheet" href="../styles/styles.css">
-    <script type="application/javascript" src="../scripts/main.js"></script>
-
-</head>
-<body>
 <div class="container">
-    <section id="top-nav_section">
-        <div class="d-flex justify-content-between">
-            <div class="p-2 my-flex-item">Welcome <?php print ' ' . $userInfo[1] ?></div>
-            <div class="p-2 my-flex-item">
-                <a href="#">
-                    <span class="glyphicons glyphicons-home">Home</span>
-                </a>
-            </div>
-            <div class="p-2 my-flex-item"><a href="">Logout</a></div>
-        </div>
-    </section>
     <br>
 
 
@@ -214,7 +185,6 @@ function addKid($kidValues)
                     Looks good!
                 </div>
                 <!-- </div> -->
-
                 <!-- <div class="form-group col-md-6"> -->
                 <label for="lastName">Last Name</label>
                 <input type="text" class="form-control form-control-sm" id="lName" placeholder="<?php print $userInfo[4] ?>" name="lastName" required>
@@ -262,17 +232,3 @@ function addKid($kidValues)
         <!-- <form method="post" action="userProfile.php"> -->
         <button type="submit" class="col-md-12 btn btn-secondary" name="btnUpdateProfile" onsubmit="">Update</button>
     </form>
-
-    <section id="bottom-nav_section">
-        <div class="d-flex justify-content-center fixed-bottom">
-            <div class="p-2 my-flex-item"><a href="">Contact us</a></div>
-            <div class="p-2 my-flex-item"><a href="">Terms of use</a></div>
-            <div class="p-2 my-flex-item"><a href="">FAQs</a></div>
-        </div>
-    </section>
-
-
-    <!--</div> <!-- end row2 -->
-</div>
-</body>
-</html>

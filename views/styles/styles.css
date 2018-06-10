@@ -460,6 +460,90 @@ body {
     background-color: green;
 }
 
+.card-text, .register {
+    font-size: small;
+}
+
+.terms {
+    font-size: smaller;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/*search_events_public*/
+body #events_body {
+    perspective: 1000px;
+}
+
+
+.container #date_search_content {
+    padding-top: 20px;
+    background: lightcyan;
+}
+
+.container #distance_search_content {
+    padding-top: 20px;
+    background: lightcyan;
+}
+ul {
+    padding: 0;
+    list-style: none;
+}
+
+.modal{
+    align-items: center;
+}
+
+
+.card-block{
+    align-content: left;
+    background-color: #CAEBF2;
+}
+
+.card-title{
+    font-size: small;
+    font-family: "Comic Sans MS";
+}
+.card-text{
+    font-size: small;
+    font-style: italic;
+
+}
+
+li {
+    margin: 0;
+    float: left;
+}
+
+/*.card img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}*/
+
+.owl-item {
+    transition: all 250ms ease-out;
+    transform: translate3d(0px, 0px, 0px) scale(1);
+}
+.owl-item.active {
+    transform: translate3d(0px, 0px, -20px) scale(1) rotateY(-55deg);
+}
+.owl-item.active + .active {
+    transform: translate3d(0px, 0px, 20px) scale(1);
+}
+.owl-item.active + .active + .active {
+    transform: translate3d(0px, 0px, 20px) scale(1);
+}
+.owl-item.active + .active + .active + .active {
+    transform: translate3d(0px, 0px, 20px) scale(1);
+}
+.owl-item.active + .active + .active + .active + .active {
+    transform: translate3d(0px, 0px, -20px) scale(1) rotateY(55deg);
+}
+
+body.modal-open div.modal-backdrop {
+    z-index: 0;
+}
 
 #page-wrap {
     background: #F1F1F1;
