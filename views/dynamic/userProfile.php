@@ -251,6 +251,7 @@ function addKid($kidValues)
 }
 
 ?>
+<<<<<<< HEAD
 
 <!DOCTYPE html>
 <html xmlns:float="http://www.w3.org/1999/xhtml">
@@ -272,6 +273,22 @@ function addKid($kidValues)
 </head>
 <body>
 <form  method="post" id="editUserFormContainer" class="needs-validation" novalidate>
+=======
+<body>
+<script type="text/javascript" src="../scripts/main.js" ></script>
+<div class="container">
+    <section id="top-nav_section">
+        <div class="d-flex justify-content-between">
+            <div class="p-2 my-flex-item">Welcome <?php print ' ' . $userInfo[1] ?></div>
+            <div class="p-2 my-flex-item">
+                <a href="#">
+                    <span class="glyphicons glyphicons-home">Home</span>
+                </a>
+            </div>
+            <div class="p-2 my-flex-item"><a href="">Logout</a></div>
+        </div>
+    </section>
+>>>>>>> f86ea335c5d77cd0278c4a745d3366c701f47a96
     <br>
     <br>
     <div class="container">
