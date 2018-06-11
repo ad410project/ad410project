@@ -7,6 +7,7 @@ class DynamicController {
             header('Location: ?controller=dynamic&action=login');
         }
         require_once('views/dynamic/home.php');
+
     }
 
     public function error() {
@@ -64,6 +65,7 @@ class DynamicController {
 //3.1 If the form is submitted
         if (!isset($_SESSION['emailAddress'])) {
 //3.1.1 Assigning posted values to variables.
+
             $emailAddress = $_POST['emailAddress'];
             $password = $_POST['password'];
 
@@ -81,11 +83,13 @@ class DynamicController {
                 $emailAddress = $_POST['emailAddress'];
                 header('Location: ?controller=dynamic&action=userProfile');
             } else {
+
 //3.1.3 If the login credentials doesn't match, he will be shown with an error message.
-                echo "Invalid Login Credentials." . $link->error;
+                    echo "Invalid Login Credentials." . $link->error;
+                }
             }
+            require_once('views/dynamic/login.php');
         }
-        require_once('views/dynamic/login.php');
     }
 
     public function userProfile() {
