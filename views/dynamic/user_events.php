@@ -2,20 +2,8 @@
 
 require_once('connection.php');
 $link = Db::getInstance();
-$userId = null;
-$emailAddress = $_SESSION['emailAddress'];
-$sql = "SELECT userId FROM Users WHERE email='$emailAddress'";
-$result = $link->query($sql);
-if ($result->num_rows > 0) {
-while ($row = $result->fetch_assoc()) {
-    $userId = $row["userId"];
-    echo("<script>console.log('uid: " . $userId . "');</script>");
-}
-}
-
-$sql = "SELECT Events.* FROM Events INNER JOIN childevents ON Events.eventId = childevents.eventId WHERE childevents.userID = '$userId'"; // TODO: there should be a query to get events by user, for now selecting all events, need to be a backend call.
+$sql = "SELECT * FROM Events"; // TODO: there should be a query to get events by user, for now selecting all events, need to be a backend call.
 $allEvents = $link->query($sql);
-//echo("<script>console.log('events: " . $allEvents . "');</script>");
 
 $action = filter_input(INPUT_POST, 'action');
 if ($action == 'delete_event') {
@@ -58,26 +46,26 @@ $results = $json_output->results;
 
             <?php
             foreach ($results as $k => $v) {
-                $topicName = $v->assetTopics[0]->topic->topicName;
-                $name = $v->assetName;
-                $topicTaxonomy = $v->assetTopics[0]->topic->topicTaxonomy;
-                $registrationUrlAdr = $v->registrationUrlAdr;
-                $addressUrl = $v->urlAdr;
+            $topicName = $v->assetTopics[0]->topic->topicName;
+            $name = $v->assetName;
+            $topicTaxonomy = $v->assetTopics[0]->topic->topicTaxonomy;
+            $registrationUrlAdr = $v->registrationUrlAdr;
+            $addressUrl = $v->urlAdr;
 
-                $activityStartDate = $v->activityStartDate;
-                $activityEndDate = $v->activityEndDate;
+            $activityStartDate = $v->activityStartDate;
+            $activityEndDate = $v->activityEndDate;
 
-                $parsedStartDate = substr($activityStartDate, 0, 10);
-                $parsedEndDate = substr($activityEndDate, 0, 10);
+            $parsedStartDate = substr($activityStartDate, 0, 10);
+            $parsedEndDate = substr($activityEndDate, 0, 10);
 
-                $sDate = new DateTime($parsedStartDate);
-                $eDate = new DateTime($parsedEndDate);
-                $start_date = $sDate->format('M d Y');
-                $end_date = $eDate->format('M d Y');
+            $sDate = new DateTime($parsedStartDate);
+            $eDate = new DateTime($parsedEndDate);
+            $start_date = $sDate->format('M d Y');
+            $end_date = $eDate->format('M d Y');
 
-                $placeName = $v->place->placeName;
-                $onlineRegistration = $v->assetLegacyData->onlineRegistration;
-                $description = $v->assetComponents[0]->assetName;
+            $placeName = $v->place->placeName;
+            $onlineRegistration = $v->assetLegacyData->onlineRegistration;
+            $description = $v->assetComponents[0]->assetName;
 
             if ($k == 1) { ?>
             <div class="carousel-item col-md-4 active">
@@ -149,8 +137,7 @@ $results = $json_output->results;
                 </thead>
 
                 <tbody>
-                <?php if (is_array($allEvents)){
-                 foreach ($allEvents as $event) : ?>
+                <?php foreach ($allEvents as $event) : ?>
                     <tr class="delete_mem<?php echo $event['id']; ?>">
 
                         <td><?php echo $event['eventName']; ?></td>
@@ -190,7 +177,7 @@ $results = $json_output->results;
                             </form>
                         </td>
                     </tr>
-                <?php endforeach;} ?>
+                <?php endforeach; ?>
                 </tbody>
             </table>
             <br><br>
