@@ -82,6 +82,8 @@
         if(!isset($_SESSION['emailAddress'])){
             header('Location: ?controller=dynamic&action=login');
         }
+        $user = user::getUserByEmail($_SESSION['emailAddress']);
+
         require_once('views/dynamic/userProfile.php');
     }
 
