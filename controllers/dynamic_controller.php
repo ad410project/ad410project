@@ -1,6 +1,9 @@
 <?php
   class DynamicController {
     public function home() {
+        if(!isset($_SESSION['emailAddress'])){
+            header('Location: ?controller=dynamic&action=login');
+        }
       require_once('views/dynamic/home.php');
     }
 
@@ -76,6 +79,9 @@
     }
 
     public function profile() {
+        if(!isset($_SESSION['emailAddress'])){
+            header('Location: ?controller=dynamic&action=login');
+        }
         require_once('views/dynamic/userProfile.php');
     }
 
@@ -91,14 +97,23 @@
     }
 
     public function user_events() {
+        if(!isset($_SESSION['emailAddress'])){
+            header('Location: ?controller=dynamic&action=login');
+        }
         require_once('views/dynamic/user_events.php');
     }
 
     public function addEvent() {
+        if(!isset($_SESSION['emailAddress'])){
+            header('Location: ?controller=dynamic&action=login');
+        }
           require_once('views/dynamic/addEvent.php');
     }
 
     public function editEvent() {
+        if(!isset($_SESSION['emailAddress'])){
+            header('Location: ?controller=dynamic&action=login');
+        }
           require_once('views/dynamic/editEvent.php');
     }
   }
