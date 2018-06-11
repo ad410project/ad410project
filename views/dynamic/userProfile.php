@@ -8,7 +8,7 @@
 
 session_start();
 
-if(isset($_SESSION['email']) && !isset($_POST['email']))
+if(isset($_SESSION['emailAddress']) && !isset($_POST['email']))
 {
     $userInfo = array_values(getUser());
 }
@@ -16,7 +16,7 @@ if(isset($_SESSION['email']) && !isset($_POST['email']))
 
 if(isset($_POST['email']))
 {
-    if(!isset($_SESSION['email']))
+    if(!isset($_SESSION['emailAddress']))
     {
         $_SESSION['email'] = $_POST['email'];
     }
@@ -25,7 +25,7 @@ if(isset($_POST['email']))
 
 function getUser()
 {
-    require_once "../../connection.php";
+    require_once "connection.php";
 
     $mysqli = null;
     static $id;
@@ -47,7 +47,7 @@ function getUser()
 
     try {
         //for now _SESSION or _POST provides email address
-        $userEmail = $_SESSION['email'];
+        $userEmail = $_SESSION['emailAddress'];
 
         //connect, get all info about a specific user
         $mysqli = Db::getInstance();
@@ -57,7 +57,7 @@ function getUser()
         $stmt->bind_param('s', $userEmail);
         $stmt->execute();
         $stmt->bind_result($id, $email, $pWord, $fName, $lName, $phone, $notifState, $userTypeId);
-        while ($stmt->fetch())
+        if ($stmt->fetch())
             $stmt->close();
 
         //get user's address
@@ -100,7 +100,7 @@ if(isset($_POST['q']))
 
 function updateUserProfile($userInfo)
 {
-    require_once "../../connection.php";
+    require_once "connection.php";
 
     $userId = null;
     $email = null;
@@ -145,7 +145,7 @@ function updateUserProfile($userInfo)
     }
     $mysqli->close();
 
-    session_destroy(); //Is this correct ?
+   // session_destroy(); //Is this correct ?
 }
 
 if(isset($_POST['q2']))
@@ -158,7 +158,7 @@ if(isset($_POST['q2']))
 
 function addKid($kidValues)
 {
-    require_once "../../connection.php";
+    require_once "connection.php";
     require_once '../../models/UserChild.php';
 
     $userInfo = getUser();
@@ -174,20 +174,20 @@ function addKid($kidValues)
     <br>
 
 
-    <form id="editUserFormContainer" class="needs-validation" novalidate>
+    <form id="editUserFormContainer" class="needs-validation" method="post" action="index.php?controller=dynamic&action=profile" novalidate>
         <div class="row">
 
             <!-- copied from registration page -->
             <div class="form-group col-md-6" id="editUserForm">
                 <label for="firstName">First Name</label>
-                <input type="text" class="form-control form-control-sm" id="fName" placeholder="<?php print $userInfo[3] ?>" name="firstName" required>
+                <input type="text" class="form-control form-control-sm" id="fName" value="<?php print $userInfo[3] ?>" name="firstName" required>
                 <div class="valid-feedback">
                     Looks good!
                 </div>
                 <!-- </div> -->
                 <!-- <div class="form-group col-md-6"> -->
                 <label for="lastName">Last Name</label>
-                <input type="text" class="form-control form-control-sm" id="lName" placeholder="<?php print $userInfo[4] ?>" name="lastName" required>
+                <input type="text" class="form-control form-control-sm" id="lName" value="<?php print $userInfo[4] ?>" name="lastName" required>
                 <div class="valid-feedback">
                     Looks good!
                 </div>
@@ -195,13 +195,13 @@ function addKid($kidValues)
 
                 <!--  <div class="form-group col-md-6"> -->
                 <label for="emailAddress">Email Address</label>
-                <input type="email" class="form-control form-control-sm" id="email" placeholder="<?php print $userInfo[1] ?>" name="emailAddress" required>
+                <input type="email" class="form-control form-control-sm" id="email" value="<?php print $userInfo[1] ?>" name="emailAddress" required>
                 <div class="invalid-feedback">
                     Please edit email address.
                 </div>
 
                 <label for="address">Home Address</label>
-                <input type="text" class="form-control form-control-sm" id="address" placeholder="<?php print $userInfo[8] . ", " . $userInfo[9] . ", " . $userInfo[10] . ", ". $userInfo[11] . " " . $userInfo[12] ?>" name="address" required>
+                <input type="text" class="form-control form-control-sm" id="address" value="<?php print $userInfo[8] . ", " . $userInfo[9] . ", " . $userInfo[10] . ", ". $userInfo[11] . " " . $userInfo[12] ?>" name="address" required>
                 <div class="invalid-feedback">
                     Please edit home address.
                 </div>
@@ -209,7 +209,7 @@ function addKid($kidValues)
 
                 <!--   <div class="form-group col-md-6"> -->
                 <label for="phoneNumber">Phone Number</label>
-                <input type="tel" class="form-control form-control-sm" id="phone" placeholder="<?php print $userInfo[5] ?>" name="phoneNumber" required
+                <input type="tel" class="form-control form-control-sm" id="phone" value="<?php print $userInfo[5] ?>" name="phoneNumber" required
                        pattern="[0-9]{3}[0-9]{3}[0-9]{4}"
                        size="10">
                 <div class="invalid-feedback">
@@ -219,7 +219,7 @@ function addKid($kidValues)
 
                 <!--   <div class="form-group col-md-4"> -->
                 <label for="password">Password</label>
-                <input type="password" class="form-control form-control-sm" id="pWord" placeholder="<?php print $userInfo[2] ?>" name="password" required>
+                <input type="password" class="form-control form-control-sm" id="pWord" value="<?php print $userInfo[2] ?>" name="password" required>
                 <div class="invalid-feedback">
                     Please provide a password.
                 </div>
@@ -231,4 +231,5 @@ function addKid($kidValues)
         </div> <!-- end row -->
         <!-- <form method="post" action="userProfile.php"> -->
         <button type="submit" class="col-md-12 btn btn-secondary" name="btnUpdateProfile" onsubmit="">Update</button>
+        <br><br><br>
     </form>

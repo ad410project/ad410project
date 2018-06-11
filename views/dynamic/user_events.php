@@ -2,8 +2,20 @@
 
 require_once('connection.php');
 $link = Db::getInstance();
-$sql = "SELECT * FROM Events"; // TODO: there should be a query to get events by user, for now selecting all events, need to be a backend call.
+$userId = null;
+$emailAddress = $_SESSION['emailAddress'];
+$sql = "SELECT userId FROM Users WHERE email='$emailAddress'";
+$result = $link->query($sql);
+if ($result->num_rows > 0) {
+while ($row = $result->fetch_assoc()) {
+    $userId = $row["userId"];
+    echo("<script>console.log('uid: " . $userId . "');</script>");
+}
+}
+
+$sql = "SELECT Events.* FROM Events INNER JOIN childevents ON Events.eventId = childevents.eventId WHERE childevents.userID = '$userId'"; // TODO: there should be a query to get events by user, for now selecting all events, need to be a backend call.
 $allEvents = $link->query($sql);
+//echo("<script>console.log('events: " . $allEvents . "');</script>");
 
 $action = filter_input(INPUT_POST, 'action');
 if ($action == 'delete_event') {
@@ -137,7 +149,8 @@ $results = $json_output->results;
                 </thead>
 
                 <tbody>
-                <?php foreach ($allEvents as $event) : ?>
+                <?php if (is_array($allEvents)){
+                 foreach ($allEvents as $event) : ?>
                     <tr class="delete_mem<?php echo $event['id']; ?>">
 
                         <td><?php echo $event['eventName']; ?></td>
@@ -177,7 +190,7 @@ $results = $json_output->results;
                             </form>
                         </td>
                     </tr>
-                <?php endforeach; ?>
+                <?php endforeach;} ?>
                 </tbody>
             </table>
             <br><br>
