@@ -51,14 +51,14 @@ endforeach;
 
         <div class="form-row">
             <div class="form-group col-md-4">
-                <input type="text" class="form-control" id="eventName" placeholder="Enter event name" name="eventName" value="<? echo $getEventName?>" required>
+                <input type="text" class="form-control" id="eventName" placeholder="Enter event name" name="eventName" value="<?php echo $getEventName?>" required>
             </div>
         </div>
 
         <div class="form-row">
             <div class="form-group col-md-6">
                 <textarea class="form-control" rows="5" id="eventDescription" placeholder="Enter event description"
-                          name="eventDescription"><? echo $getEventDesc?>
+                          name="eventDescription"><?php echo $getEventDesc?>
                 </textarea>
             </div>
         </div>
@@ -67,13 +67,13 @@ endforeach;
             <div class="form-group col-md-2">
                 <label for="minAge">Min Age</label>
                 <input type="text" class="form-control" id="ageMin" placeholder="Enter minimum age" name="ageMin"
-                       value="<? echo $getMinAge?>">
+                       value="<?php echo  $getMinAge?>">
             </div>
 
             <div class="form-group col-md-2">
                 <label for="maxAge">Max Age</label>
                 <input type="text" class="form-control" id="ageMax" placeholder="Enter maximum age" name="ageMax"
-                       value="<? echo $getMaxAge?>">
+                       value="<?php echo  $getMaxAge?>">
             </div>
         </div>
 
@@ -81,13 +81,13 @@ endforeach;
             <div class="form-group col-md-2">
                 <label for="regOpenDate">Registration Open Date</label>
                 <input type="date" class="form-control" id="registrationOpenDate"  name="registrationOpenDate"
-                       value="<? echo $getRegistrationOpenDate?>">
+                       value="<?php echo  $getRegistrationOpenDate?>">
             </div>
 
             <div class="form-group col-md-2">
                 <label for="regCloseDate">Registration Close Date</label>
                 <input type="date" class="form-control" id="registrationCloseDate"  name="registrationCloseDate"
-                       value="<? echo $getRegistrationCloseDate?>">
+                       value="<?php echo  $getRegistrationCloseDate?>">
             </div>
         </div>
 
@@ -97,7 +97,7 @@ endforeach;
             </div>
             <div class="form-group col-md-4">
                 <input type="date" class="form-control" id="eventDate" placeholder="Enter event date" name="eventDate"
-                       value="<? echo $getEventDate?>">
+                       value="<?php print  $getEventDate?>">
             </div>
         </div>
 
