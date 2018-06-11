@@ -8,7 +8,7 @@
             //3.1.4 if the user is logged in Greets the user with message
             if (isset($_SESSION['emailAddress'])) {
                 echo '<li class="nav-item"><a class="nav-link" href="?controller=dynamic&action=home">Home</a></li>';
-                echo '<li class="nav-item"><a class="nav-link" href="?controller=dynamic&action=profile">Profile</a></li>';
+                echo '<li class="nav-item"><a class="nav-link" href="?controller=dynamic&action=userProfile">Profile</a></li>';
                 echo '<li class="nav-item"><a class="nav-link" href="?controller=dynamic&action=logout">Logout</a></li>';
             } else {
                 //3.2 When the user visits the page first time, simple login form will be displayed.
