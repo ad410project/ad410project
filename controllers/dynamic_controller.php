@@ -60,9 +60,10 @@
 //3.1.1 Assigning posted values to variables.
             if (isset($_POST['emailAddress']) && isset($_POST['emailAddress'])) {
                 $emailAddress = $_POST['emailAddress'];
+               // echo("<script>console.log('email: " . $emailAddress . "');</script>");
 
-                echo("<script>console.log('email: " . $emailAddress . "');</script>");
                 $password = $_POST['password'];
+               // echo("<script>console.log('password: " . $password . "');</script>");
 //3.1.2 Checking the values are existing in the database or not
                 $query = "SELECT * FROM Users WHERE email='$emailAddress' and password='$password'";
 
