@@ -4,7 +4,7 @@
         if(!isset($_SESSION['emailAddress'])){
             header('Location: ?controller=dynamic&action=login');
         }
-      require_once('views/dynamic/home.php');
+      require_once('views/dynamic/user_events.php');
     }
 
     public function error() {
