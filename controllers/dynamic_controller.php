@@ -1,6 +1,9 @@
 <?php
   class DynamicController {
     public function home() {
+        if(!isset($_SESSION['emailAddress'])){
+            header('Location: ?controller=dynamic&action=login');
+        }
       require_once('views/dynamic/home.php');
     }
 
@@ -55,27 +58,37 @@
 //3.1 If the form is submitted
         if (!isset($_SESSION['emailAddress'])) {
 //3.1.1 Assigning posted values to variables.
-            $emailAddress = $_POST['emailAddress'];
-            $password = $_POST['password'];
-//3.1.2 Checking the values are existing in the database or not
-            $query = "SELECT * FROM Users WHERE email='$emailAddress' and password='$password'";
-
-            $result = $link->query($query);
-            $count = mysqli_num_rows($result);
-//3.1.2 If the posted values are equal to the database values, then session will be created for the user.
-            if ($count == 1) {
-                $_SESSION['emailAddress'] = $emailAddress;
+            if (isset($_POST['emailAddress']) && isset($_POST['emailAddress'])) {
                 $emailAddress = $_POST['emailAddress'];
-                header('Location: ?controller=dynamic&action=profile');
-            } else {
+               // echo("<script>console.log('email: " . $emailAddress . "');</script>");
+
+                $password = $_POST['password'];
+               // echo("<script>console.log('password: " . $password . "');</script>");
+//3.1.2 Checking the values are existing in the database or not
+                $query = "SELECT * FROM Users WHERE email='$emailAddress' and password='$password'";
+
+                $result = $link->query($query);
+                $count = mysqli_num_rows($result);
+//3.1.2 If the posted values are equal to the database values, then session will be created for the user.
+                if ($count == 1) {
+                    $_SESSION['emailAddress'] = $emailAddress;
+                    $emailAddress = $_POST['emailAddress'];
+                    header('Location: ?controller=dynamic&action=profile');
+                } else {
 //3.1.3 If the login credentials doesn't match, he will be shown with an error message.
-                echo "Invalid Login Credentials." . $link->error;
+                    echo "Invalid Login Credentials." . $link->error;
+                }
             }
+            require_once('views/dynamic/login.php');
         }
-        require_once('views/dynamic/login.php');
     }
 
     public function profile() {
+        if(!isset($_SESSION['emailAddress'])){
+            header('Location: ?controller=dynamic&action=login');
+        }
+        $user = user::getUserByEmail($_SESSION['emailAddress']);
+
         require_once('views/dynamic/userProfile.php');
     }
 
@@ -91,14 +104,23 @@
     }
 
     public function user_events() {
+        if(!isset($_SESSION['emailAddress'])){
+            header('Location: ?controller=dynamic&action=login');
+        }
         require_once('views/dynamic/user_events.php');
     }
 
     public function addEvent() {
+        if(!isset($_SESSION['emailAddress'])){
+            header('Location: ?controller=dynamic&action=login');
+        }
           require_once('views/dynamic/addEvent.php');
     }
 
     public function editEvent() {
+        if(!isset($_SESSION['emailAddress'])){
+            header('Location: ?controller=dynamic&action=login');
+        }
           require_once('views/dynamic/editEvent.php');
     }
   }
