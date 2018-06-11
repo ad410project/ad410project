@@ -8,38 +8,38 @@
 ?>
 <!--<!DOCTYPE html>-->
 <!--<html xmlns:float="http://www.w3.org/1999/xhtml">-->
-<head>
-    <meta charset="UTF-8">
-    <title>Home</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Home</title>-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1">-->
+<!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">-->
     <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!-- Popper JS -->
+<!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
+<!--    <!-- Popper JS -->-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
     <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-
-<!--    <link rel="stylesheet" href="../styles/styles.css">-->
-
-    <script type="application/javascript" src="../scripts/main.js"></script>
+<!--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>-->
+<!---->
+<!--<!--    <link rel="stylesheet" href="../styles/styles.css">-->
+<!---->
+<!--    <script type="application/javascript" src="../scripts/main.js"></script>-->
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCf6m35Pbc-BmCZzxrlUlCWmMpHOrWyMms&callback=initMap">
     </script>
-</head>
+<!--</head>-->
 <body>
 <div class="container">
-    <section id="top-nav_section">
-        <div class="d-flex justify-content-between">
-            <div class="p-2 my-flex-item">Welcome, user</div>
-             <div class="p-2 my-flex-item">
-                <a href="#">
-                    <span class="glyphicons glyphicons-home">Home</span>
-                </a>
-            </div>
-            <div class="p-2 my-flex-item"><a href="">Logout</a></div>
-        </div>
-    </section>
+<!--    <section id="top-nav_section">-->
+<!--        <div class="d-flex justify-content-between">-->
+<!--            <div class="p-2 my-flex-item">Welcome, user</div>-->
+<!--             <div class="p-2 my-flex-item">-->
+<!--                <a href="#">-->
+<!--                    <span class="glyphicons glyphicons-home">Home</span>-->
+<!--                </a>-->
+<!--            </div>-->
+<!--            <div class="p-2 my-flex-item"><a href="">Logout</a></div>-->
+<!--        </div>-->
+<!--    </section>-->
     <br>
     <section id="tabs_section" class="w-60 p-3 float-left clearfix">
         <ul class="nav nav-tabs">
@@ -105,13 +105,13 @@
                 ?>
         </ul>
     </div>
-    <section id="bottom-nav_section">
-        <div class="d-flex justify-content-center fixed-bottom">
-            <div class="p-2 my-flex-item"><a href="">Contact us</a></div>
-            <div class="p-2 my-flex-item"><a href="">Terms of use</a></div>
-            <div class="p-2 my-flex-item"><a href="">FAQs</a></div>
-        </div>
-    </section>
+<!--    <section id="bottom-nav_section">-->
+<!--        <div class="d-flex justify-content-center fixed-bottom">-->
+<!--            <div class="p-2 my-flex-item"><a href="">Contact us</a></div>-->
+<!--            <div class="p-2 my-flex-item"><a href="">Terms of use</a></div>-->
+<!--            <div class="p-2 my-flex-item"><a href="">FAQs</a></div>-->
+<!--        </div>-->
+<!--    </section>-->
 </div>
 </body>
 <!--</html>-->

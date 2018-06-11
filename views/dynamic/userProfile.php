@@ -106,7 +106,7 @@ if(isset($_POST['q']))
 
 if(isset($_POST['q3']))
 {
-    $numKids = array_values(showUserKids());
+        $numKids = array_values(showUserKids());
 }
 
 
