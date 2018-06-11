@@ -72,7 +72,7 @@ class  user{
     // edit user profile
     public static function editUser($userId, $firstName, $lastName, $email, $password, $phoneNumber, $notificationState, $userTypeId, $addressLine1, $addressLine2, $addressCity, $addressState, $addressZipCode){
         //instance of db
-        $addressId = 0;
+        $addressId = "";
         $db = Db::getInstance();
         //check if user has address in database yet
         $stmt = $db->prepare('SELECT addressId
@@ -94,7 +94,7 @@ class  user{
                                         AND addressLine2 = ?
                                         AND city = ?
                                         AND state = ?
-                                        AND postalCode = ?');
+                                        AND postalCode = ?;');
             // Bind parameters for address
             $req->bind_param('sssss', $addressLine1, $addressLine2, $addressCity, $addressState, $addressZipCode);
             $req->execute();
@@ -107,19 +107,19 @@ class  user{
         } else { // if num_rows > 0 - so user address is already in database
             $stmt->fetch(); // get $addressId from userAddresses linking table
             //edit address
-            $req = $db->prepare('UPDATE Addresses 
+            $req = $db->prepare('UPDATE addresses 
                 SET addressLine1 = ?,
                     addressLine2 = ?,
                     city = ?,
                     state = ?,
                     postalcode = ?
-                WHERE addressId = ?');
+                WHERE addressId = ?;');
             // Bind parameters for address update
             $req->bind_param('sssssi', $addressLine1, $addressLine2, $addressCity, $addressState, $addressZipCode, $addressId);
             $req->execute();
         }
         // Prepare stmt to update user name
-        $req = $db->prepare('UPDATE Users 
+        $req = $db->prepare('UPDATE users 
                                 SET email=?, 
                                     password=?,
                                     firstName=?, 
