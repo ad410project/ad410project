@@ -65,24 +65,26 @@ class DynamicController {
 //3.1 If the form is submitted
         if (!isset($_SESSION['emailAddress'])) {
 //3.1.1 Assigning posted values to variables.
+            if (isset($_POST['emailAddress']) && isset($_POST['emailAddress'])) {
 
-            $emailAddress = $_POST['emailAddress'];
-            $password = $_POST['password'];
 
-            $options = array("cost" => 10);
-            $hashPassword = password_hash($password, PASSWORD_BCRYPT, $options);
+                $emailAddress = $_POST['emailAddress'];
+                $password = $_POST['password'];
+
+                $options = array("cost" => 10);
+                $hashPassword = password_hash($password, PASSWORD_BCRYPT, $options);
 
 //3.1.2 Checking the values are existing in the database or not
-            $query = "SELECT * FROM Users WHERE email='$emailAddress'";
-            $result = $link->query($query);
-            $count = mysqli_num_rows($result);
+                $query = "SELECT * FROM Users WHERE email='$emailAddress'";
+                $result = $link->query($query);
+                $count = mysqli_num_rows($result);
 
 //3.1.2 If the posted values are equal to the database values, then session will be created for the user.
-            if ($count == 1 && password_verify($password, $hashPassword)==$hashPassword) {
-                $_SESSION['emailAddress'] = $emailAddress;
-                $emailAddress = $_POST['emailAddress'];
-                header('Location: ?controller=dynamic&action=userProfile');
-            } else {
+                if ($count == 1 && password_verify($password, $hashPassword) == $hashPassword) {
+                    $_SESSION['emailAddress'] = $emailAddress;
+                    $emailAddress = $_POST['emailAddress'];
+                    header('Location: ?controller=dynamic&action=userProfile');
+                } else {
 
 //3.1.3 If the login credentials doesn't match, he will be shown with an error message.
                     echo "Invalid Login Credentials." . $link->error;
@@ -90,7 +92,8 @@ class DynamicController {
             }
             require_once('views/dynamic/login.php');
         }
-    }
+        }
+
 
     public function userProfile() {
         if (!isset($_SESSION['emailAddress'])) {
