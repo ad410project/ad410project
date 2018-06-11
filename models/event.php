@@ -211,6 +211,24 @@ class event
         return event::getEventArray($result);
     }
 
+    //function for returning events data formatted for the user profile
+    public static function getEventsForUserDisplay($userId) {
+        //get instance of db
+        $db = Db::getInstance();
+
+        //bind the in parameters
+        $stmt = $db->prepare("SET @currentUserId = ?");
+        $stmt->bind_param('i', $userId);
+        $stmt->execute();
+
+        //execute the procedure
+        $result = $db->query('CALL getEventsByUserIdTrimmed(@currentUserId)');
+
+        $db->close();
+
+        return event::getEventArray($result);
+    }
+
     public static function getEventsByChildId($childId)
     {
         //get instance of db
@@ -560,11 +578,6 @@ class event
     {
         return $this->registrationClose;
     }
-
-    //function for returning events data formatted for the user profile
-//    public static function prepUserDisplay($events) {
-//
-//    }
 
     //helper function for getting an Event array from sql result
     private static function getEventArray($result) {
