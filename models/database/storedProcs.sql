@@ -37,6 +37,7 @@ DROP PROCEDURE IF EXISTS `editEventAddress`;
 DROP PROCEDURE IF EXISTS `getEventId`;
 DROP PROCEDURE IF EXISTS `getEventsByUserId`;
 DROP PROCEDURE IF EXISTS `getEventsByDateRange`; 
+DROP PROCEDURE IF EXISTS `getEventsByUserIdTrimmed`;
 
 -- ORGANIZATION PROCS DROP COMMANDS --
 DROP PROCEDURE IF EXISTS `getOrganization`;
@@ -357,6 +358,17 @@ JOIN ChildEvents ON Events.eventId = ChildEvents.eventId
 JOIN Children ON ChildEvents.childId = Children.childId
 JOIN Users ON Children.userId = Users.userId
 WHERE Users.userId = currentUserId;
+END//
+
+/*getEvents in the future, ordered bye event start date*/
+CREATE PROCEDURE getEventsByUserIdTrimmed(IN currentUserId INT)
+BEGIN
+SELECT * FROM events
+JOIN ChildEvents ON Events.eventId = ChildEvents.eventId
+JOIN Children ON ChildEvents.childId = Children.childId
+JOIN Users ON Children.userId = Users.userId
+WHERE Users.userId = currentUserId AND events.endDate >= CURDATE()
+ORDER BY events.startDate;
 END//
 	
 

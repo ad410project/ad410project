@@ -52,12 +52,13 @@ INSERT INTO Organizations VALUES
  INSERT INTO `Events` VALUES
 	(DEFAULT, 2, 'Woodland Park Day Camp', 'Our day camp is located at Lower Woodland, the entrance at N 50th St and Woodland Park Ave N',NULL, NULL,NULL,NULL,NULL,NULL, NULL,145,186),
     (DEFAULT, 2, ' Carkeek Park Day Camp', 'Carkeek enjoys 220 acres of forest, wetlands, meadow, and beach. Our day camp uses the upper meadow as a base for all operations throughout the week, giving the campers a chance to explore Carkeek’s various ecosystems',
-		240.00, 5, 13, 20170717, NULL, NULL, NULL,38,2888),
+		240.00, 5, 13, 20180917, NULL, NULL, NULL,38,2888),
 	(DEFAULT, 1, 'Flying Spaghetti Western: June Session', 'Programming and activities will be the same at both camp sessions', 
-		700.00, 8, 17, 20180717, 20180428, 20180629, NULL,264,904),
+		700.00, 8, 17, 20180817, 20180828, 20180829, NULL,264,904),
 	(DEFAULT, 1, 'Flying Spaghetti Western: August Session', 'Programming and activities will be the same at both camp sessions', 
-		700.00, 8, 17, 20180717, 20180428, 20180629, NULL,11,1221),
-	(DEFAULT, 2, 'Camp Sealth: Session 1', 'Short week', 340.00, 6, 14, NULL, NULL, NULL, NULL,66,1604);
+		700.00, 8, 17, 20180817, 20180928, 20180929, NULL,11,1221),
+	(DEFAULT, 2, 'Camp Sealth: Session 1', 'Short week', 340.00, 6, 14, NULL, NULL, NULL, NULL,66,1604),
+    (DEFAULT, 2, 'Camp Sealth: Session 2', 'Short week', 340.00, 6, 14, 20180710, 20180713, 20180712, 20180711,66,1604);
  
  -- UserAdresses Table 
 INSERT INTO UserAddresses VALUES
