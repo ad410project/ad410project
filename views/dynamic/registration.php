@@ -19,13 +19,13 @@
 
             <div class="form-group col-md-6">
                 <label for="emailAddress">Email Address</label>
-                <input type="email" class="form-control" id="emailAddress" placeholder="Enter email address"
+                <input type="email" class="form-control" id="emailAddress" name="emailAddress" placeholder="Enter email address"
                        name="emailAddress" required>
             </div>
 
             <div class="form-group col-md-6">
                 <label for="phoneNumber">Phone Number</label>
-                <input type="tel" class="form-control" id="phoneNumber" placeholder="Enter 10 digit phone number"
+                <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="Enter 10 digit phone number"
                        name="phoneNumber" required
                        pattern="[0-9]{3}[0-9]{3}[0-9]{4}"
                        size="10">
@@ -33,7 +33,7 @@
 
             <div class="form-group col-md-4">
                 <label for="password">Password</label>
-                <input type="password" class="form-control" id="password" placeholder="Enter password" name="password_1"
+                <input type="password" class="form-control" id="password_1" placeholder="Enter password" name="password_1"
                        required>
             </div>
 
@@ -47,8 +47,17 @@
                 <label for="userRole">Register as </label>
                 <select name="userRole" id="userRole" required>
                     <option value="">Select...</option>
-                    <option value="user">Individual User</option>
-                    <option value="organization">Organization</option>
+                    <option value="1">Individual User</option>
+                    <option value="2">Organization</option>
+                </select>
+            </div>
+
+            <div class="form-group col-md-12">
+                <label for="notificationState">Notifications</label>
+                <select name="notificationState" id="notificationState" required>
+                    <option value="">I want it...</option>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
                 </select>
             </div>
 
