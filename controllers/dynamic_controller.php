@@ -1,29 +1,24 @@
 <?php
 
-class DynamicController
-{
+class DynamicController {
 
-    public function home()
-    {
+    public function home() {
         if (!isset($_SESSION['emailAddress'])) {
             header('Location: ?controller=dynamic&action=login');
         }
-        require_once('../views/dynamic/user_events.php');
+            require_once('views/dynamic/user_events.php');
 
     }
 
-    public function error()
-    {
-        require_once('../views/static/error.php');
+    public function error() {
+        require_once('views/static/error.php');
     }
 
-    public function searchEvents()
-    {
-        require_once('../views/dynamic/search_events_public.php');
+    public function searchEvents() {
+        require_once('views/dynamic/search_events_public.php');
     }
 
-    public function registration()
-    {
+    public function registration() {
 
         $link = Db::getInstance();
 
@@ -60,89 +55,87 @@ class DynamicController
         } else {
             echo 'not set bbo';
         }
-        require_once('../views/dynamic/registration.php');
+        require_once('views/dynamic/registration.php');
     }
 
-    public function login()
-    {
+    public function login() {
         $link = Db::getInstance();
 
 //3. If the form is submitted or not.
 //3.1 If the form is submitted
         if (!isset($_SESSION['emailAddress'])) {
 //3.1.1 Assigning posted values to variables.
+            if (isset($_POST['emailAddress']) && isset($_POST['emailAddress'])) {
 
-            $emailAddress = $_POST['emailAddress'];
-            $password = $_POST['password'];
 
-            $options = array("cost" => 10);
-            $hashPassword = password_hash($password, PASSWORD_BCRYPT, $options);
+                $emailAddress = $_POST['emailAddress'];
+                $password = $_POST['password'];
+
+                $options = array("cost" => 10);
+                $hashPassword = password_hash($password, PASSWORD_BCRYPT, $options);
 
 //3.1.2 Checking the values are existing in the database or not
-            $query = "SELECT * FROM Users WHERE email='$emailAddress'";
-            $result = $link->query($query);
-            $count = mysqli_num_rows($result);
+                $query = "SELECT * FROM Users WHERE email='$emailAddress'";
+                $result = $link->query($query);
+                $count = mysqli_num_rows($result);
 
 //3.1.2 If the posted values are equal to the database values, then session will be created for the user.
-            if ($count == 1 && password_verify($password, $hashPassword) == $hashPassword) {
-                $_SESSION['emailAddress'] = $emailAddress;
-                $emailAddress = $_POST['emailAddress'];
-                header('Location: ?controller=dynamic&action=userProfile');
-            } else {
+                if ($count == 1 && password_verify($password, $hashPassword) == $hashPassword) {
+                    $_SESSION['emailAddress'] = $emailAddress;
+                    $emailAddress = $_POST['emailAddress'];
+                    header('Location: ?controller=dynamic&action=userProfile');
+                } else {
 
 //3.1.3 If the login credentials doesn't match, he will be shown with an error message.
-                echo "Invalid Login Credentials." . $link->error;
+                    echo "Invalid Login Credentials." . $link->error;
+                }
             }
+            require_once('views/dynamic/login.php');
         }
-        require_once('../views/dynamic/login.php');
-    }
+        }
 
 
-    public function userProfile()
-    {
+    public function userProfile() {
         if (!isset($_SESSION['emailAddress'])) {
             header('Location: ?controller=dynamic&action=login');
         }
         //$user = user::getUserByEmail($_SESSION['emailAddress']);
 
-        require_once('../views/dynamic/userProfile.php');
+        require_once('views/dynamic/userProfile.php');
     }
 
-    public function logout()
-    {
+    public function logout() {
         session_start();
         session_destroy();
         header('Location: ?controller=static&action=landing');
 //        require_once('views/dynamic/logout.php');
     }
 
-    public function contact()
-    {
-        require_once('../views/dynamic/contact.php');
+    public function contact() {
+        require_once('views/dynamic/contact.php');
     }
 
-    public function user_events()
-    {
+    public function user_events() {
         if (!isset($_SESSION['emailAddress'])) {
             header('Location: ?controller=dynamic&action=login');
         }
-        require_once('../views/dynamic/user_events.php');
+        require_once('views/dynamic/user_events.php');
     }
 
-    public function addEvent()
-    {
+    public function addEvent() {
         if (!isset($_SESSION['emailAddress'])) {
             header('Location: ?controller=dynamic&action=login');
         }
         require_once('views/dynamic/addEvent.php');
     }
 
-    public function editEvent()
-    {
+    public function editEvent() {
         if (!isset($_SESSION['emailAddress'])) {
             header('Location: ?controller=dynamic&action=login');
         }
         require_once('views/dynamic/editEvent.php');
     }
+
 }
-    ?>
+
+?>
