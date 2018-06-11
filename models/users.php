@@ -135,7 +135,7 @@ class  user{
     }
 
     // get user by email
-    public function getUserByEmail($email) {
+    public static function getUserByEmail($email) {
         //instance of db
         $db = Db::getInstance();
         $userId = 0;
@@ -154,7 +154,7 @@ class  user{
     }
 
     // get user by userId
-    public function getUserById($userId) {
+    public static function getUserById($userId) {
         //instance of db
         $db = Db::getInstance();
         $email = "";
