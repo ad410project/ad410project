@@ -13,7 +13,7 @@
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <div class="zoom">
-                <img src="views/images/kids_kites.png" alt="Los Angeles">
+                <img src="views/images/kids_kites.png" alt="kids playing with kites">
                 </div>
                 <div class="carousel-caption">
                     <p class="animated fadeInUp"><a href="?controller=dynamic&action=searchEvents" class="btn btn-transparent btn-rounded btn-large">Search Events</a></p>
@@ -22,7 +22,7 @@
             </div>
             <div class="carousel-item">
                 <div class="zoom">
-                <img src="views/images/kids_playing.png" alt="Chicago">
+                <img src="views/images/kids_playing.png" alt="kids playing">
                 </div>
                 <div class="carousel-caption">
                     <p class="animated fadeInUp"><a href="?controller=dynamic&action=searchEvents" class="btn btn-transparent btn-rounded btn-large">Search Events</a></p>
@@ -30,7 +30,7 @@
             </div>
             <div class="carousel-item">
                 <div class="zoom">
-                <img src="views/images/kids_swing.png" alt="New York">
+                <img src="views/images/kids_swing.png" alt="kids swinging">
                 </div>
                 <div class="carousel-caption">
                     <p class="animated fadeInRight"><a href="?controller=dynamic&action=searchEvents" class="btn btn-transparent btn-rounded btn-large">Search Events</a></p>

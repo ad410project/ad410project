@@ -144,6 +144,17 @@ class event
         $db->close();
     }
 
+    public static function addEventHack($name, $description, $minAge, $maxAge,$eventDate ,$registrationOpen, $registrationClose)
+    {
+        $db = Db::getInstance();
+        $query = "INSERT INTO events (eventName, eventDescription, minAge, maxAge, eventDate, registrationOpen, registrationClose) 
+                              VALUES('$name', '$description', '$minAge', '$maxAge','$eventDate' ,'$registrationOpen', '$registrationClose')";
+        if ($db->query($query) === TRUE) {
+        } else {
+            echo "Error: " . $db->error;
+        }
+    }
+
     public static function deleteEvent($eventId)
     {
         //get instance of db

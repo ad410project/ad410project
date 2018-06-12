@@ -97,9 +97,9 @@ $results = $json_output->results;
                             <p class="card-text"> Dates: <?php echo $start_date; ?> - <?php echo $end_date; ?></p>
                         </div>
                         <div class="card-footer">
-                            <div class="card-button">
+                       <!--     <div class="card-button">
                                 <a href="?controller=dynamic&action=addApiEventToMyEvents">Add to my event</a>
-                            </div>
+                            </div> -->
                             <!-- TODO: Add function to add this event into events database-->
                         </div>
                     </div>
