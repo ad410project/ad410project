@@ -19,31 +19,31 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <textarea class="form-control" rows="5" id="eventDescription" placeholder="Enter event description"
-                          name="eventDescription"></textarea>
+                          name="eventDescription" required></textarea>
             </div>
         </div>
 
         <div class="form-row">
             <div class="form-group col-md-2">
                 <label for="minAge">Min Age</label>
-                <input type="text" class="form-control" id="ageMin" placeholder="Enter minimum age" name="ageMin">
+                <input type="text" class="form-control" id="ageMin" placeholder="Enter minimum age" name="ageMin" required>
             </div>
 
             <div class="form-group col-md-2">
                 <label for="maxAge">Max Age</label>
-                <input type="text" class="form-control" id="ageMax" placeholder="Enter maximum age" name="ageMax">
+                <input type="text" class="form-control" id="ageMax" placeholder="Enter maximum age" name="ageMax" required>
             </div>
         </div>
 
         <div class="form-row">
             <div class="form-group col-md-2">
                 <label for="regOpenDate">Registration Open Date</label>
-                <input type="date" class="form-control" id="registrationOpenDate"  name="registrationOpenDate">
+                <input type="date" class="form-control" id="registrationOpenDate"  name="registrationOpenDate" required>
             </div>
 
             <div class="form-group col-md-2">
                 <label for="regCloseDate">Registration Close Date</label>
-                <input type="date" class="form-control" id="registrationCloseDate"  name="registrationCloseDate">
+                <input type="date" class="form-control" id="registrationCloseDate"  name="registrationCloseDate" required>
             </div>
         </div>
 
@@ -52,7 +52,7 @@
                 <label for="regOpenDate">Event Date</label>
             </div>
             <div class="form-group col-md-4">
-                <input type="date" class="form-control" id="eventDate" placeholder="Enter event date" name="eventDate">
+                <input type="date" class="form-control" id="eventDate" placeholder="Enter event date" name="eventDate"required>
             </div>
         </div>
 
