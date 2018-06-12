@@ -1,5 +1,4 @@
 <div id="main_container" class="jumbotron-fluid">
-    <p>Stuff about how great the application is.</p>
     <div id="carousel" class="carousel slide" data-ride="carousel">
 
         <!-- Indicators -->
@@ -13,27 +12,38 @@
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <div class="zoom">
-                <img src="views/images/kids_kites.png" alt="Los Angeles">
+                    <img src="views/images/img_riverview_park.png" alt="Riverview Park">
                 </div>
                 <div class="carousel-caption">
-                    <p class="animated fadeInUp"><a href="?controller=dynamic&action=searchEvents" class="btn btn-transparent btn-rounded btn-large">Search Events</a></p>
-                </div>
-
-            </div>
-            <div class="carousel-item">
-                <div class="zoom">
-                <img src="views/images/kids_playing.png" alt="Chicago">
-                </div>
-                <div class="carousel-caption">
-                    <p class="animated fadeInUp"><a href="?controller=dynamic&action=searchEvents" class="btn btn-transparent btn-rounded btn-large">Search Events</a></p>
+                    <h2 class="animated fadeInLeft">Riverview Park</h2>
+                    <p class="animated fadeInUp">We had such a great time there!</p>
+                    <p class="animated fadeInUp"><a href="?controller=dynamic&action=searchEvents"
+                                                    class="btn btn-transparent btn-rounded btn-large">Search Events</a>
+                    </p>
                 </div>
             </div>
             <div class="carousel-item">
                 <div class="zoom">
-                <img src="views/images/kids_swing.png" alt="New York">
+                    <img src="views/images/img_richmondbeachsaltwater_park.png" alt="Richmond Beach Saltwater Park">
                 </div>
                 <div class="carousel-caption">
-                    <p class="animated fadeInRight"><a href="?controller=dynamic&action=searchEvents" class="btn btn-transparent btn-rounded btn-large">Search Events</a></p>
+                    <h2 class="animated bounceInDown">Richmond Beach Saltwater Park</h2>
+                    <p class="animated fadeInUp">We spent the day searching for seashells. It was fun!</p>
+                    <p class="animated fadeInUp"><a href="?controller=dynamic&action=searchEvents"
+                                                    class="btn btn-transparent btn-rounded btn-large">Search Events</a>
+                    </p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="zoom">
+                    <img src="views/images/img_greenlake_park.png" alt="Green Lake Park">
+                </div>
+                <div class="carousel-caption">
+                    <h2 class="animated fadeInRight">Green Lake Park</h2>
+                    <p class="animated fadeInRight">The Park was warm and crowded. I've made a lot of new friends!</p>
+                    <p class="animated fadeInRight"><a href="?controller=dynamic&action=searchEvents"
+                                                       class="btn btn-transparent btn-rounded btn-large">Search
+                            Events</a></p>
                 </div>
             </div>
         </div>

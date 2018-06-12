@@ -3,6 +3,7 @@ body {
     background: black;
     font-family: Open Sans, Helvetica, sans-serif;
     font-style: normal;
+    font-size: 100%;
 }
 
 
@@ -92,7 +93,7 @@ button:hover {
 .cancel-btn {
     width: auto;
     padding: 10px 18px;
-    background-color: #f44336;
+    background-color: #F44336;
     text-shadow: 2px 2px 4px #2D6077;
 }
 
@@ -164,7 +165,8 @@ span.psw {
     padding-top: 60px;
 }
 
-/* Modal Content/Box */
+/* Modal Content Box (Discontinued)*/
+
 .modal-content {
     background-color: #2D6077;
     margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
@@ -275,8 +277,10 @@ footer ul {
 }
 
 
-#carousel{
-    background-color: darkgrey;
+/*Main Carousel Section*/
+
+.carousel{
+    background-color: #F2FEFE;
 }
 
 #carousel.carousel-inner{
@@ -291,6 +295,22 @@ footer ul {
     padding-bottom:80px;
     text-shadow: 2px 2px 4px #2D6077;
 
+}
+
+
+/*
+Forces carousel-item image to be 100% width and not max width of 100%
+*/
+.carousel-item .img-fluid {
+    width:100%;
+}
+
+/*
+anchors are inline so you need to make them block to go full width
+*/
+.carousel-item p {
+    display: block;
+    width:100%;
 }
 
 span.carousel-control-next-icon{
@@ -322,9 +342,8 @@ span.carousel-control-prev-icon{
     -webkit-transform: inherit;
 }
 
-/**
- * Search Events Button
- */
+/*Search Events Button */
+
 .btn-transparent {
     background: transparent;
     color: #F1F1F1 !important;
@@ -344,9 +363,8 @@ span.carousel-control-prev-icon{
     font-size: 18px;
 }
 
-/**
- * Change animation duration
- */
+/*Change animation duration */
+
 .animated {
     -webkit-animation-duration: 1.5s;
     animation-duration: 1.5s;
@@ -415,20 +433,7 @@ body {
     background-color: #F2FEFE;
 }
 
-/*Removed by Francesco
-/*
-#tabs_section {
-    float: left;
-    width: 40%;
-}
-#filter_section {
-    float: right;
-    margin-top: 12em;
-    margin-right: 8em;
-    alignment: center;
-    width: 35%;
-}
-*/
+/*Maps Section*/
 
 #map {
     width: 1105px;
@@ -444,6 +449,8 @@ body {
     background-color: #316117 !important;
     color: #F1F1F1;
 }
+
+/*Jumbotron */
 
 .jumbotron-fluid{
     background-color: #F1F1F1;
@@ -538,3 +545,115 @@ body.modal-open div.modal-backdrop {
     z-index: 0;
 }
 
+#page-wrap {
+    background: #F1F1F1;
+    min-width: 780px;
+    max-width: 1260px;
+    margin: 10px auto;
+}
+
+#page-wrap #inside {
+    margin: 10px 10px 0px 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+@media screen and (min-width:320px)  { /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */ }
+@media screen and (min-width:480px)  { /* smartphones, Android phones, landscape iPhone */ }
+@media screen and (min-width:600px)  { /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */ }
+@media screen and (min-width:801px)  { /* tablet, landscape iPad, lo-res laptops ands desktops */ }
+@media screen and (min-width:1025px) {
+    .carousel .container{
+        max-width: 100%;
+        max-height: 200%;
+    }
+
+
+}
+@media screen and (min-width:1281px) { /* hi-res laptops and desktops */ }
+
+
+.card-text, .register {
+    font-size: small;
+}
+
+.terms {
+    font-size: smaller;
+    font-family: Open Sans, Helvetica, sans-serif;
+}
+
+
+/*search_events_public*/
+body #events_body {
+    perspective: 1000px;
+}
+
+
+.container #date_search_content {
+    padding-top: 20px;
+    background: lightcyan;
+}
+
+.container #distance_search_content {
+    padding-top: 20px;
+    background: lightcyan;
+}
+ul {
+    padding: 0;
+    list-style: none;
+}
+
+.modal{
+    align-items: center;
+}
+
+
+.card-block{
+    align-content: left;
+    background-color: #CAEBF2;
+}
+
+.card-title{
+    font-size: small;
+    font-family: "Comic Sans MS";
+}
+.card-text{
+    font-size: small;
+    font-style: italic;
+
+}
+
+li {
+    margin: 0;
+    float: left;
+}
+
+/*.card img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}*/
+
+.owl-item {
+    transition: all 250ms ease-out;
+    transform: translate3d(0px, 0px, 0px) scale(1);
+}
+.owl-item.active {
+    transform: translate3d(0px, 0px, -20px) scale(1) rotateY(-55deg);
+}
+.owl-item.active + .active {
+    transform: translate3d(0px, 0px, 20px) scale(1);
+}
+.owl-item.active + .active + .active {
+    transform: translate3d(0px, 0px, 20px) scale(1);
+}
+.owl-item.active + .active + .active + .active {
+    transform: translate3d(0px, 0px, 20px) scale(1);
+}
+.owl-item.active + .active + .active + .active + .active {
+    transform: translate3d(0px, 0px, -20px) scale(1) rotateY(55deg);
+}
+
+body.modal-open div.modal-backdrop {
+    z-index: 0;
+}
