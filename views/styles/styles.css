@@ -1,0 +1,540 @@
+/* Full-width input fields */
+body {
+    background: black;
+    font-family: Open Sans, Helvetica, sans-serif;
+    font-style: normal;
+}
+
+
+.label{
+    cursor: pointer;
+    color: #F1F1F1;
+    display: block;
+    padding: 10px;
+    margin: 3px;
+}
+
+.content{
+    max-width: 50em;
+    padding: 15px;
+    height: 700px;
+    margin: 0 auto;
+    background-color: #F2FEFE;
+    overflow: scroll;
+}
+
+
+input[type=text], input[type=name], input[type=password], input[type=email], input[type=tel] , input[type=email]  {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #F1F1F1;
+}
+
+input[type=text]:focus, input[type=name]:focus, input[type=password]:focus, input[type=email]:focus, input[type=tel]:focus , input[type=email]:focus {
+    background-color: #F1F1F1;
+    outline: none;
+}
+
+/* Overwrite default styles of hr */
+hr{
+    border: 1px solid #F1F1F1;
+    margin-bottom: 25px;
+}
+
+/* Set a style for the submit/register button */
+.register-btn {
+    background-color: #4CAF50;
+    color: #F1F1F1;
+    padding: 16px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+}
+
+
+.register-btn:hover {
+    opacity:1;
+}
+
+/* Add a blue text color to links */
+a {
+    color: dodgerblue;
+}
+
+/* Set a grey background color and center the text of the "sign in" section */
+.signin {
+    background-color: #F1F1F1;
+    text-align: center;
+}
+
+/* Set a style for all buttons */
+button {
+    background-color: #4CAF50;
+    color: white;
+    text-shadow: 2px 2px 4px #2D6077;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+/* Extra styles for the cancel button */
+.cancel-btn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+    text-shadow: 2px 2px 4px #2D6077;
+}
+
+/* Center the image and position the close button */
+.img-container {
+    text-align: center;
+    margin: 24px 0 12px 0;
+    position: relative;
+}
+
+/* resize images */
+.container img {
+    width: 150px;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+}
+
+
+img.logo {
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    left: 0;
+    top: -15px;
+    z-index: 0;
+    opacity: 0.2%;
+    border-radius: 0;
+}
+
+img.logo-banner {
+    width: 189px;
+    height: 64px;
+    position: absolute;
+    left: 0;
+    top: -10px;
+    z-index: 0;
+    opacity: 0.2%;
+    border-radius: 0;
+}
+
+.container {
+    padding: 16px;
+}
+
+.modal.container{
+    background-color: #F1F1F1;
+}
+
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-top: 60px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #2D6077;
+    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 50%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button (x) */
+.close {
+    position: absolute;
+    right: 25px;
+    top: 0;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: red;
+    cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animate-zoom 0.6s
+}
+
+@-webkit-keyframes animate-zoom {
+    from {-webkit-transform: scale(0)}
+    to {-webkit-transform: scale(1)}
+}
+
+@keyframes animate-zoom {
+    from {transform: scale(0)}
+    to {transform: scale(1)}
+}
+
+/* Style all font awesome icons */
+.fa {
+    padding: 20px;
+    font-size: 30px;
+    width: 50px;
+    text-align: center;
+    text-decoration: none;
+}
+
+/* Add a hover effect if you want */
+.fa:hover {
+    opacity: 0.7;
+}
+
+/* Set a specific color for each brand */
+
+/* Facebook */
+.fa-facebook {
+    background: #3B5998;
+    color: white;
+}
+
+/* Twitter */
+.fa-twitter {
+    background: #55ACEE;
+    color: white;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+    span.psw {
+        display: block;
+        float: none;
+    }
+
+    .cancel-btn {
+        width: 100%;
+    }
+}
+
+footer {
+    margin: 0 auto;
+    height:65px;
+    border-top: 1px dotted #666;
+    clear:both; 	/*to recognize the main div wrapper*/
+    line-height:50px; /*centered the footer section*/
+    text-align: center;
+    width: 100%;
+    overflow: hidden;
+}
+
+footer ul li {
+    float:left;
+    list-style-type:none;  /*removed the bullets*/
+    margin: 0 30px 0 10px;
+    color: #666;
+    font-size:.7em;
+    position: relative;
+    display: block;
+    right: 50%;
+}
+
+footer ul {
+    list-style: none;
+    position: relative;
+    float: left;
+    display: block;
+    left: 50%;
+}
+
+
+#carousel{
+    background-color: darkgrey;
+}
+
+#carousel.carousel-inner{
+    height: 800px;
+}
+
+#carousel .carousel-inner img{
+    width: 100% !important;
+    height: 100% !important;
+}
+.carousel-caption{
+    padding-bottom:80px;
+    text-shadow: 2px 2px 4px #2D6077;
+
+}
+
+span.carousel-control-next-icon{
+    background-color: #3B5998 !important;
+}
+span.carousel-control-prev-icon{
+    background-color: #3B5998 !important;
+}
+
+/* Bootstrap Zoom Effect*/
+
+.zoom{
+    position:relative;
+    overflow: hidden;
+}
+
+.zoom:hover img{
+    transform:scale(1.5);
+    transform-origin: 50% 50%;
+    -moz-transform: scale(1.5);
+    -moz-transform-origin: 50% 50%;
+    -webkit-transform: scale(1.5);
+    -webkit-transform-origin: 50% 50%;
+}
+
+.zoom img{
+    transition: all 8s ease-in-out;
+    -moz-transform: inherit;
+    -webkit-transform: inherit;
+}
+
+/**
+ * Search Events Button
+ */
+.btn-transparent {
+    background: transparent;
+    color: #F1F1F1 !important;
+    border: 2px solid #F1F1F1 !important;
+}
+.btn-transparent:hover {
+    background-color: #2D6077 !important;
+    animation: pulsate 1s ease-out infinite;
+}
+
+.btn-rounded {
+    border-radius: 70px;
+}
+
+.btn-large {
+    padding: 11px 45px;
+    font-size: 18px;
+}
+
+/**
+ * Change animation duration
+ */
+.animated {
+    -webkit-animation-duration: 1.5s;
+    animation-duration: 1.5s;
+}
+
+@-webkit-keyframes pulsate {
+    0%   { box-shadow: 0 0 0 #F1F1F1; }
+    50%  { box-shadow: 0 0 17px #F1F1F1; }
+    100% { box-shadow: 0 0 0 #F1F1F1; }
+}
+
+
+@-webkit-keyframes fadeInRight {
+    from {
+        opacity: 0;
+        -webkit-transform: translate3d(100px, 0, 0);
+        transform: translate3d(100px, 0, 0);
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        -webkit-transform: translate3d(100px, 0, 0);
+        transform: translate3d(100px, 0, 0);
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+    }
+}
+
+.fadeInRight {
+    -webkit-animation-name: fadeInRight;
+    animation-name: fadeInRight;
+}
+
+
+
+a.navbar-brand{
+    justify-content: right;
+    margin-right: 78%;
+}
+
+.navbar{
+    background-color: #2D6077 !important;
+}
+
+.navbar-brand{
+    color: #F1F1F1 !important;
+}
+
+.nav-link{
+    color: #F1F1F1 !important;
+}
+
+body {
+    background-color: #F2FEFE;
+}
+
+/*Removed by Francesco
+/*
+#tabs_section {
+    float: left;
+    width: 40%;
+}
+#filter_section {
+    float: right;
+    margin-top: 12em;
+    margin-right: 8em;
+    alignment: center;
+    width: 35%;
+}
+*/
+
+#map {
+    width: 1105px;
+    height: 400px;
+    background-color: grey;
+}
+
+.nav {
+    background-color: #316117 !important;
+}
+
+.nav>li>a {
+    background-color: #316117 !important;
+    color: #F1F1F1;
+}
+
+.jumbotron-fluid{
+    background-color: #F1F1F1;
+}
+
+.container.button{
+    background-color: green;
+}
+
+.card-text, .register {
+    font-size: small;
+}
+
+.terms {
+    font-size: smaller;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/*search_events_public*/
+body #events_body {
+    perspective: 1000px;
+}
+
+
+.container #date_search_content {
+    padding-top: 20px;
+    background: lightcyan;
+}
+
+.container #distance_search_content {
+    padding-top: 20px;
+    background: lightcyan;
+}
+ul {
+    padding: 0;
+    list-style: none;
+}
+
+.modal{
+    align-items: center;
+}
+
+
+.card-block{
+    align-content: left;
+    background-color: #CAEBF2;
+}
+
+.card-title{
+    font-size: small;
+    font-family: "Comic Sans MS";
+}
+.card-text{
+    font-size: small;
+    font-style: italic;
+
+}
+
+li {
+    margin: 0;
+    float: left;
+}
+
+/*.card img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}*/
+
+.owl-item {
+    transition: all 250ms ease-out;
+    transform: translate3d(0px, 0px, 0px) scale(1);
+}
+.owl-item.active {
+    transform: translate3d(0px, 0px, -20px) scale(1) rotateY(-55deg);
+}
+.owl-item.active + .active {
+    transform: translate3d(0px, 0px, 20px) scale(1);
+}
+.owl-item.active + .active + .active {
+    transform: translate3d(0px, 0px, 20px) scale(1);
+}
+.owl-item.active + .active + .active + .active {
+    transform: translate3d(0px, 0px, 20px) scale(1);
+}
+.owl-item.active + .active + .active + .active + .active {
+    transform: translate3d(0px, 0px, -20px) scale(1) rotateY(55deg);
+}
+
+body.modal-open div.modal-backdrop {
+    z-index: 0;
+}
+

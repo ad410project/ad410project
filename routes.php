@@ -1,18 +1,24 @@
 <?php
-  function call($controller, $action) {
-          require_once('controllers/' . $controller . '_controller.php');
 
-          switch($controller) {
-              case 'pages':
-                  $controller = new PagesController();
-                  break;
+function call($controller, $action) {
+    require_once('controllers/'. $controller .'_controller.php');
+
+    switch($controller) {
+        case 'static':
+            require_once('models/users.php');
+            $controller = new StaticController();
+            break;
+        case 'dynamic':
+            require_once('models/users.php');
+            $controller = new DynamicController();
+            break;
     }
 
     $controller->{ $action }();
-  }
+}
 
-  // One entry for static pages, one for our Books controller
-  $controllers = array('pages' => ['home', 'error']);
+
+$controllers = array('static' => ['landing', 'error', 'terms'], 'dynamic' => ['home', 'error', 'registration', 'login',  'searchEvents', 'logout', 'userProfile', 'contact', 'user_events', 'addEvent', 'editEvent']);
 
 // check that the requested controller and action are both allowed
 // if someone tries to access something else
@@ -20,11 +26,10 @@
 
 if (array_key_exists($controller, $controllers)) {
     if (in_array($action, $controllers[$controller])) {
-      call($controller, $action);
+        call($controller, $action);
     } else {
-      call('pages', 'error');
+        call('static', 'error');
     }
-  } else {
-    call('pages', 'error');
-  }
-?>
+} else {
+    call('static', 'error');
+}
