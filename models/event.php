@@ -1,8 +1,6 @@
 <?php
 class event
 {
-
-    private $eventId;
     private $organizationId;
     private $name;
     private $description;
@@ -21,11 +19,10 @@ class event
     private $registrationOpen;
     private $registrationClose;
 
-    public function __construct($eventId, $name, $description, $addressLine1, $addressLine2, $city, $state,
+    public function __construct($name, $description, $addressLine1, $addressLine2, $city, $state,
                                 $postalCode, $startDate, $endDate, $organizationId, $categories, $types,
                                 $price, $minAge, $maxAge, $registrationOpen, $registrationClose)
     {
-        $this->eventId = $eventId;
         $this->name = $name;
         $this->description = $description;
         $this->addressLine1 = $addressLine1;
@@ -45,8 +42,19 @@ class event
         $this->registrationClose = $registrationClose;
     }
 
+    public function addEvent1($event){
+        $db = Db::getInstance();
+        $query = "INSERT INTO events (organizationId, eventName, eventDescription, eventPrice, minAge, maxAge, 
+eventDate, registrationOpen, registrationClose, enddate, eventType, eventCategory) 
+                      VALUES('$event->organizationId', '$event->name', '$event->description', '$event->price', 
+                      '$event->minAge', $event->maxAge,$event->eventDate ,$event->registrationOpen, 
+                      $event->registrationClose, $event->eventDate, $event->categories, $event->types)";
+        $result = mysqli_query($db, $query) or die ("Could not add user to the DB." . mysqli_error());
+        header("location: ?controller=dynamic&action=home");
+    }
+
     //Add a new event by passing an event object
-    public static function addEvent($event)
+    public function addEvent($event)
     {
         //get instance of db
         $db = Db::getInstance();
@@ -596,4 +604,5 @@ class event
         }
         return $array;
     }
+
 }
