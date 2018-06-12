@@ -123,9 +123,25 @@ class DynamicController {
     }
 
     public function addEvent() {
+        require_once('models/event.php');
         if (!isset($_SESSION['emailAddress'])) {
             header('Location: ?controller=dynamic&action=login');
         }
+        else{
+            if(isset($_POST['eventName']) && isset($_POST['eventDescription']) && isset($_POST['ageMin']) && isset($_POST['ageMax']) &&
+                isset($_POST['registrationOpenDate']) && isset($_POST['registrationCloseDate']) && $_POST['eventDate']){
+            $eventName = $_POST['eventName'];
+            $eventDesc = $_POST['eventDescription'];
+            $ageMin = $_POST['ageMin'];
+            $ageMax = $_POST['ageMax'];
+            $regOpenDate = $_POST['registrationOpenDate'];
+            $regCloseDate = $_POST['registrationCloseDate'];
+            $eventDate = $_POST['eventDate'];
+            //I don't have time to do this properly.  I'm at work.  Hacky =/
+            event::addEventHack($eventName, $eventDesc, $ageMin, $ageMax, $eventDate, $regOpenDate, $regCloseDate);
+        }
+
+    }
         require_once('views/dynamic/addEvent.php');
     }
 
